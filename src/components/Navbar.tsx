@@ -25,13 +25,19 @@ const Navbar = () => {
       const sections = navLinks.map(link => link.href.substring(1));
       let currentSection = '#home';
 
-      for (const section of sections) {
-        const element = document.getElementById(section);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          if (rect.top <= 150 && rect.bottom >= 150) {
-            currentSection = `#${section}`;
-            break;
+      // Check if scrolled to bottom of page - highlight last section (contact)
+      const isAtBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 50;
+      if (isAtBottom) {
+        currentSection = '#contact';
+      } else {
+        for (const section of sections) {
+          const element = document.getElementById(section);
+          if (element) {
+            const rect = element.getBoundingClientRect();
+            if (rect.top <= 150 && rect.bottom >= 150) {
+              currentSection = `#${section}`;
+              break;
+            }
           }
         }
       }
