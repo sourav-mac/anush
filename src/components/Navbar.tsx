@@ -13,6 +13,21 @@ const navLinks = [
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isDark, setIsDark] = useState(false);
+
+  useEffect(() => {
+    // Check for saved theme preference or system preference
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+      setIsDark(true);
+      document.documentElement.classList.add('dark');
+    } else {
+      setIsDark(false);
+      document.documentElement.classList.remove('dark');
+    }
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,6 +36,18 @@ const Navbar = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const toggleTheme = () => {
+    if (isDark) {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+      setIsDark(false);
+    } else {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+      setIsDark(true);
+    }
+  };
 
   return (
     <nav
@@ -57,14 +84,16 @@ const Navbar = () => {
               variant="outline"
               size="icon"
               className="rounded-full border-border hover:border-primary hover:bg-primary/10"
+              onClick={toggleTheme}
             >
-              <Sun className="h-4 w-4" />
+              {isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
             </Button>
             <Button
               variant="default"
-              className="hidden md:flex font-mono text-sm bg-transparent border border-border hover:border-primary hover:bg-primary hover:text-primary-foreground transition-all"
+              className="hidden md:flex font-mono text-sm bg-foreground text-background hover:bg-foreground/90 transition-all"
+              asChild
             >
-              Hire Me
+              <a href="mailto:pradhananush.sagar@gmail.com">Hire Me</a>
             </Button>
 
             {/* Mobile Menu Button */}
@@ -93,8 +122,11 @@ const Navbar = () => {
                   {link.name}
                 </a>
               ))}
-              <Button className="font-mono text-sm bg-primary text-primary-foreground hover:bg-primary/90 mt-2">
-                Hire Me
+              <Button 
+                className="font-mono text-sm bg-primary text-primary-foreground hover:bg-primary/90 mt-2"
+                asChild
+              >
+                <a href="mailto:pradhananush.sagar@gmail.com">Hire Me</a>
               </Button>
             </div>
           </div>
