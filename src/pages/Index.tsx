@@ -5,12 +5,12 @@ import Stats from '@/components/Stats';
 import About from '@/components/About';
 import Projects from '@/components/Projects';
 import FAQ from '@/components/FAQ';
-import Contact from '@/components/Contact';
+import HireMe from '@/components/HireMe';
 import Footer from '@/components/Footer';
 
 const Index = () => {
   useEffect(() => {
-    document.title = "Dipak Mourya | Software Developer Portfolio";
+    document.title = "Anush Pradhan | Software Developer Portfolio";
   }, []);
 
   return (
@@ -22,7 +22,7 @@ const Index = () => {
         <About />
         <Projects />
         <FAQ />
-        <Contact />
+        <HireMe />
       </main>
       <Footer />
     </div>
