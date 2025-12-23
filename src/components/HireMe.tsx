@@ -58,7 +58,7 @@ const HireMe = () => {
   ];
 
   return (
-    <section id="hireme" className="py-24 md:py-32 border-t border-border">
+    <section id="contact" className="py-24 md:py-32 border-t border-border">
       <div className="container mx-auto px-6">
         {/* Hero Header */}
         <div className="text-center mb-16 space-y-4">
