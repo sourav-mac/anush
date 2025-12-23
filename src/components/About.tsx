@@ -1,5 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
+import HireMeDialog from './HireMeDialog';
 
 const About = () => {
   return (
@@ -30,14 +31,13 @@ const About = () => {
                   <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </a>
               </Button>
-              <Button 
-                className="font-mono bg-primary text-primary-foreground hover:bg-primary/90 transition-all"
-                asChild
-              >
-                <a href="mailto:pradhananush.sagar@gmail.com">
+              <HireMeDialog>
+                <Button 
+                  className="font-mono bg-primary text-primary-foreground hover:bg-primary/90 transition-all"
+                >
                   Hire Me
-                </a>
-              </Button>
+                </Button>
+              </HireMeDialog>
             </div>
           </div>
 
