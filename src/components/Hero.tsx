@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Github, Linkedin, Mail, Phone, ChevronDown, Calendar } from 'lucide-react';
+import heroImage from '@/assets/hero-image.png';
 
 const roles = ['CSE Student', 'Tech Innovator', 'Problem Solver', 'Freelance Developer'];
 
@@ -102,25 +103,19 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Right Content - Illustration */}
+          {/* Right Content - Image */}
           <div className="relative hidden lg:flex justify-center items-center">
             <div className="relative animate-float">
               {/* Decorative Circle */}
               <div className="absolute -top-10 -right-10 w-80 h-80 rounded-full bg-primary/10 border border-primary/20" />
               
-              {/* Main Illustration Placeholder */}
-              <div className="relative z-10 w-96 h-96 rounded-2xl bg-gradient-to-br from-card to-secondary/50 border border-border flex items-center justify-center overflow-hidden">
-                <div className="text-center p-8">
-                  <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-primary/20 flex items-center justify-center">
-                    <span className="font-mono text-4xl text-primary font-bold">AP</span>
-                  </div>
-                  <p className="font-mono text-muted-foreground text-sm">CSE Student</p>
-                </div>
-                
-                {/* Decorative Elements */}
-                <div className="absolute top-4 left-4 w-3 h-3 bg-primary rounded-full animate-pulse" />
-                <div className="absolute top-4 right-4 w-2 h-2 bg-primary/50 rounded-full" />
-                <div className="absolute bottom-4 left-4 w-2 h-2 bg-primary/50 rounded-full" />
+              {/* Hero Image */}
+              <div className="relative z-10">
+                <img 
+                  src={heroImage} 
+                  alt="Anush Pradhan" 
+                  className="w-96 h-auto object-contain drop-shadow-2xl"
+                />
               </div>
             </div>
 
