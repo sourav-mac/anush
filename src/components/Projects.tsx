@@ -24,11 +24,11 @@ const projects = [
     color: 'from-blue-500/20 to-indigo-500/20',
   },
   {
-    title: 'Vulture Cloud Hackathon',
-    description: 'Achieved All India Rank 20, developed innovative tech solutions under pressure.',
-    category: 'Hackathon',
+    title: 'Weather App',
+    description: 'A beautiful, responsive weather application with real-time weather, 5-day forecasts, and air quality information.',
+    category: 'Web App',
     image: null,
-    color: 'from-purple-500/20 to-pink-500/20',
+    color: 'from-sky-500/20 to-cyan-500/20',
   },
 ];
 
