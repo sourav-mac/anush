@@ -106,31 +106,41 @@ const Hero = () => {
           {/* Right Content - Image */}
           <div className="relative flex justify-center items-center">
             <div className="relative animate-float">
-              {/* Soft ambient glow */}
-              <div className="absolute inset-0 -m-6 bg-primary/10 blur-3xl rounded-full" />
+          {/* Outer Glow */}
+              <div className="absolute inset-0 -m-8 bg-gradient-to-br from-primary/30 via-primary/10 to-transparent blur-2xl rounded-full" />
               
-              {/* Clean circular frame */}
-              <div className="relative w-64 md:w-80 lg:w-96 h-64 md:h-80 lg:h-96 rounded-full bg-gradient-to-b from-muted/50 to-muted/20 border border-border/50 shadow-xl">
-                {/* Clipped image inside circle */}
-                <div className="absolute inset-0 rounded-full overflow-hidden">
+              {/* Main Container */}
+              <div className="relative z-10">
+                {/* Gradient border effect - the circular frame */}
+                <div className="absolute -inset-1 bg-gradient-to-br from-primary via-primary/50 to-primary/20 rounded-full blur-sm" />
+                
+                {/* Circular background frame */}
+                <div className="relative w-64 md:w-80 lg:w-96 h-64 md:h-80 lg:h-96 rounded-full border-2 border-primary/60 shadow-2xl bg-gradient-to-br from-background via-background to-muted/30">
+                  {/* Bottom clip mask - clips only lower portion */}
+                  <div className="absolute inset-0 rounded-full overflow-hidden">
+                    <img 
+                      src={heroImage} 
+                      alt="Anush Pradhan" 
+                      className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[140%] h-auto object-contain object-bottom"
+                    />
+                  </div>
+                  
+                  {/* Top overflow image - shows above circle */}
                   <img 
                     src={heroImage} 
-                    alt="Anush Pradhan" 
-                    className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[130%] h-auto object-contain object-bottom"
+                    alt="" 
+                    aria-hidden="true"
+                    className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[140%] h-auto object-contain object-bottom drop-shadow-2xl pointer-events-none"
+                    style={{ 
+                      clipPath: 'polygon(0 0, 100% 0, 100% 50%, 0 50%)'
+                    }}
                   />
+                  
+                  {/* Subtle inner glow */}
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-t from-primary/10 via-transparent to-transparent pointer-events-none" />
                 </div>
-                
-                {/* 3D overflow - head extends above */}
-                <img 
-                  src={heroImage} 
-                  alt="" 
-                  aria-hidden="true"
-                  className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[130%] h-auto object-contain object-bottom pointer-events-none"
-                  style={{ 
-                    clipPath: 'polygon(0 0, 100% 0, 100% 45%, 0 45%)'
-                  }}
-                />
               </div>
+              
             </div>
 
             {/* Scroll Indicator */}
