@@ -1,4 +1,5 @@
 import { Linkedin, Mail, Phone } from 'lucide-react';
+import Logo from './Logo';
 
 const socialLinks = [
   { icon: Linkedin, href: 'https://www.linkedin.com/in/anush-pradhan-49412428a', label: 'LinkedIn' },
@@ -12,12 +13,9 @@ const Footer = () => {
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           {/* Logo */}
-          <div className="flex items-center gap-2">
-            <div className="w-10 h-10 rounded-lg border-2 border-primary flex items-center justify-center">
-              <span className="font-mono font-bold text-primary text-sm">AP</span>
-            </div>
-            <span className="font-mono text-sm text-muted-foreground">Anush Pradhan</span>
-          </div>
+          <a href="#home">
+            <Logo />
+          </a>
 
           {/* Copyright */}
           <p className="font-mono text-sm text-muted-foreground text-center">
