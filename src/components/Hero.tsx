@@ -115,20 +115,21 @@ const Hero = () => {
               {/* Inner decorative ring */}
               <div className="absolute -inset-4 md:-inset-5 border border-primary/30 rounded-full" />
               
-              {/* Main Image Container */}
+              {/* Main Container with overflow visible */}
               <div className="relative z-10">
-                {/* Gradient border effect */}
+                {/* Gradient border effect - the circular frame */}
                 <div className="absolute -inset-1 bg-gradient-to-br from-primary via-primary/50 to-primary/20 rounded-full blur-sm" />
                 
-                <div className="relative rounded-full overflow-hidden border-2 border-primary/60 shadow-2xl">
+                {/* Circular background frame */}
+                <div className="relative w-64 md:w-80 lg:w-96 h-64 md:h-80 lg:h-96 rounded-full border-2 border-primary/60 shadow-2xl bg-gradient-to-br from-background via-background to-muted/30 overflow-visible">
+                  {/* Image that extends outside the frame */}
                   <img 
                     src={heroImage} 
                     alt="Anush Pradhan" 
-                    className="w-64 md:w-80 lg:w-96 h-64 md:h-80 lg:h-96 object-cover object-top"
+                    className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[130%] h-auto max-h-[140%] object-contain object-bottom drop-shadow-2xl"
                   />
-                  {/* Overlay gradient */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent" />
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-primary/5" />
+                  {/* Subtle inner glow */}
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-t from-primary/10 via-transparent to-transparent pointer-events-none" />
                 </div>
               </div>
               
