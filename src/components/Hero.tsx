@@ -107,33 +107,40 @@ const Hero = () => {
           <div className="relative flex justify-center items-center">
             <div className="relative animate-float">
               {/* Outer Glow */}
-              <div className="absolute inset-0 -m-12 bg-gradient-to-br from-primary/30 via-primary/10 to-transparent blur-3xl" style={{ borderRadius: '60% 40% 30% 70% / 60% 30% 70% 40%' }} />
+              <div className="absolute inset-0 -m-16 bg-gradient-to-br from-primary/40 via-primary/10 to-transparent blur-3xl rounded-full" />
               
               {/* Decorative Rotating Border */}
-              <div className="absolute -inset-6 md:-inset-8 border-2 border-dashed border-primary/30 animate-spin" style={{ animationDuration: '20s', borderRadius: '60% 40% 30% 70% / 60% 30% 70% 40%' }} />
+              <div className="absolute -inset-8 md:-inset-10 border-2 border-dashed border-primary/20 rounded-full animate-spin" style={{ animationDuration: '25s' }} />
               
-              {/* Secondary organic shape behind */}
-              <div className="absolute -inset-3 bg-primary/10 backdrop-blur-sm" style={{ borderRadius: '30% 70% 70% 30% / 30% 30% 70% 70%' }} />
+              {/* Inner decorative ring */}
+              <div className="absolute -inset-4 md:-inset-5 border border-primary/30 rounded-full" />
               
-              {/* Main Image Container with organic blob shape */}
-              <div 
-                className="relative z-10 border-4 border-primary/50 shadow-2xl glow-primary"
-                style={{ borderRadius: '60% 40% 55% 45% / 55% 60% 40% 45%' }}
-              >
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/30 via-transparent to-transparent z-10 pointer-events-none" style={{ borderRadius: '60% 40% 55% 45% / 55% 60% 40% 45%' }} />
-                <img 
-                  src={heroImage} 
-                  alt="Anush Pradhan" 
-                  className="w-64 md:w-80 lg:w-96 h-64 md:h-80 lg:h-96 object-cover object-top scale-125 -translate-y-4"
-                  style={{ clipPath: 'none' }}
-                />
+              {/* Main Image Container */}
+              <div className="relative z-10">
+                {/* Gradient border effect */}
+                <div className="absolute -inset-1 bg-gradient-to-br from-primary via-primary/50 to-primary/20 rounded-full blur-sm" />
+                
+                <div className="relative rounded-full overflow-hidden border-2 border-primary/60 shadow-2xl">
+                  <img 
+                    src={heroImage} 
+                    alt="Anush Pradhan" 
+                    className="w-64 md:w-80 lg:w-96 h-64 md:h-80 lg:h-96 object-cover object-top"
+                  />
+                  {/* Overlay gradient */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-primary/5" />
+                </div>
               </div>
               
               {/* Decorative Floating Elements */}
-              <div className="absolute -top-4 -right-4 w-6 h-6 bg-primary animate-pulse" style={{ borderRadius: '63% 37% 54% 46% / 55% 48% 52% 45%' }} />
-              <div className="absolute -bottom-3 -left-3 w-5 h-5 bg-primary/70 animate-pulse" style={{ animationDelay: '0.5s', borderRadius: '37% 63% 43% 57% / 48% 52% 48% 52%' }} />
-              <div className="absolute top-1/3 -right-8 w-4 h-4 bg-primary/50 animate-pulse" style={{ animationDelay: '1s', borderRadius: '50% 50% 43% 57% / 43% 57% 43% 57%' }} />
-              <div className="absolute bottom-1/3 -left-6 w-3 h-3 bg-primary/40 animate-pulse" style={{ animationDelay: '1.5s', borderRadius: '43% 57% 50% 50% / 57% 43% 57% 43%' }} />
+              <div className="absolute -top-6 -right-2 w-5 h-5 rounded-full bg-gradient-to-br from-primary to-primary/50 animate-pulse shadow-lg shadow-primary/50" />
+              <div className="absolute -bottom-4 -left-4 w-4 h-4 rounded-full bg-gradient-to-tr from-primary/80 to-primary/30 animate-pulse shadow-lg shadow-primary/40" style={{ animationDelay: '0.5s' }} />
+              <div className="absolute top-1/4 -right-8 w-3 h-3 rounded-full bg-primary/60 animate-pulse" style={{ animationDelay: '1s' }} />
+              <div className="absolute bottom-1/4 -left-6 w-2 h-2 rounded-full bg-primary/40 animate-pulse" style={{ animationDelay: '1.5s' }} />
+              
+              {/* Accent lines */}
+              <div className="absolute -top-3 left-1/2 w-8 h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent" />
+              <div className="absolute -bottom-3 left-1/2 w-12 h-0.5 bg-gradient-to-r from-transparent via-primary/60 to-transparent" />
             </div>
 
             {/* Scroll Indicator */}
