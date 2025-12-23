@@ -80,11 +80,23 @@ export default {
           from: { opacity: "0", transform: "translateY(10px)" },
           to: { opacity: "1", transform: "translateY(0)" },
         },
+        "spin-slow": {
+          from: { transform: "rotate(0deg)" },
+          to: { transform: "rotate(360deg)" },
+        },
+        "border-beam": {
+          "0%": { offsetDistance: "0%" },
+          "100%": { offsetDistance: "100%" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "count-up": "count-up 0.5s ease-out forwards",
+        "spin-slow": "spin-slow 4s linear infinite",
+      },
+      backgroundImage: {
+        "gradient-conic": "conic-gradient(from 0deg, var(--tw-gradient-stops))",
       },
     },
   },
