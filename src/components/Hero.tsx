@@ -77,9 +77,9 @@ const Hero = () => {
                 className="font-mono border-primary/30 bg-transparent hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all group"
                 asChild
               >
-                <a href="mailto:pradhananush.sagar@gmail.com">
+                <a href="#timeline">
                   <Calendar className="mr-2 h-4 w-4 group-hover:animate-pulse" />
-                  Contact Me
+                  Timeline
                 </a>
               </Button>
 
