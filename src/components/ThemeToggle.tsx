@@ -36,7 +36,7 @@ const ThemeToggle = () => {
         checked={isDark}
         onChange={() => {}}
       />
-      <div className={`icon icon--moon ${isDark ? 'scale-0 rotate-[360deg]' : ''}`}>
+      <div className="icon icon--moon">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
@@ -51,7 +51,7 @@ const ThemeToggle = () => {
           />
         </svg>
       </div>
-      <div className={`icon icon--sun ${isDark ? 'scale-100 rotate-[360deg]' : 'scale-0'}`}>
+      <div className="icon icon--sun">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
