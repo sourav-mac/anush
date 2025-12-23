@@ -106,14 +106,8 @@ const Hero = () => {
           {/* Right Content - Image */}
           <div className="relative flex justify-center items-center">
             <div className="relative animate-float">
-              {/* Outer Glow */}
-              <div className="absolute inset-0 -m-16 bg-gradient-to-br from-primary/40 via-primary/10 to-transparent blur-3xl rounded-full" />
-              
-              {/* Decorative Rotating Border */}
-              <div className="absolute -inset-8 md:-inset-10 border-2 border-dashed border-primary/20 rounded-full animate-spin" style={{ animationDuration: '25s' }} />
-              
-              {/* Inner decorative ring */}
-              <div className="absolute -inset-4 md:-inset-5 border border-primary/30 rounded-full" />
+          {/* Outer Glow */}
+              <div className="absolute inset-0 -m-8 bg-gradient-to-br from-primary/30 via-primary/10 to-transparent blur-2xl rounded-full" />
               
               {/* Main Container */}
               <div className="relative z-10">
@@ -147,15 +141,6 @@ const Hero = () => {
                 </div>
               </div>
               
-              {/* Decorative Floating Elements */}
-              <div className="absolute -top-6 -right-2 w-5 h-5 rounded-full bg-gradient-to-br from-primary to-primary/50 animate-pulse shadow-lg shadow-primary/50" />
-              <div className="absolute -bottom-4 -left-4 w-4 h-4 rounded-full bg-gradient-to-tr from-primary/80 to-primary/30 animate-pulse shadow-lg shadow-primary/40" style={{ animationDelay: '0.5s' }} />
-              <div className="absolute top-1/4 -right-8 w-3 h-3 rounded-full bg-primary/60 animate-pulse" style={{ animationDelay: '1s' }} />
-              <div className="absolute bottom-1/4 -left-6 w-2 h-2 rounded-full bg-primary/40 animate-pulse" style={{ animationDelay: '1.5s' }} />
-              
-              {/* Accent lines */}
-              <div className="absolute -top-3 left-1/2 w-8 h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent" />
-              <div className="absolute -bottom-3 left-1/2 w-12 h-0.5 bg-gradient-to-r from-transparent via-primary/60 to-transparent" />
             </div>
 
             {/* Scroll Indicator */}
