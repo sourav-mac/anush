@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { Menu, X, Sun, Moon } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import Logo from './Logo';
+import ThemeToggle from './ThemeToggle';
 
 const navLinks = [
   { name: 'Home', href: '#home' },
@@ -103,7 +104,7 @@ const Navbar = () => {
                 }`}
               >
                 {link.name}
-                <span
+                <span 
                   className={`absolute -bottom-1 left-0 h-0.5 bg-primary transition-all ${
                     activeSection === link.href ? 'w-full' : 'w-0 group-hover:w-full'
                   }`} 
@@ -114,14 +115,7 @@ const Navbar = () => {
 
           {/* Right Side */}
           <div className="flex items-center gap-4">
-            <Button
-              variant="outline"
-              size="icon"
-              className="rounded-full border-border hover:border-primary hover:bg-primary/10"
-              onClick={toggleTheme}
-            >
-              {isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
-            </Button>
+            <ThemeToggle isDark={isDark} onToggle={toggleTheme} />
             <Button
               variant="default"
               className="hidden md:flex font-mono text-sm bg-foreground text-background hover:bg-foreground/90 transition-all"
