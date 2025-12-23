@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Circle } from 'lucide-react';
+import { ArrowRight, Circle, MapPin, Phone, Mail } from 'lucide-react';
 
 const Contact = () => {
   return (
@@ -9,23 +9,42 @@ const Contact = () => {
           {/* Availability Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/10">
             <Circle className="h-2 w-2 fill-primary text-primary animate-pulse" />
-            <span className="font-mono text-sm text-primary">Available for work</span>
+            <span className="font-mono text-sm text-primary">Open for opportunities</span>
           </div>
 
           {/* Heading */}
           <h2 className="font-mono text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
-            Let's create your next
+            Let's create something
             <br />
-            <span className="text-primary">big idea.</span>
+            <span className="text-primary">amazing together.</span>
           </h2>
+
+          {/* Contact Info */}
+          <div className="flex flex-wrap justify-center gap-6 text-muted-foreground font-mono text-sm">
+            <div className="flex items-center gap-2">
+              <Phone className="h-4 w-4 text-primary" />
+              <span>+91 7319229955</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Mail className="h-4 w-4 text-primary" />
+              <span>pradhananush.sagar@gmail.com</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <MapPin className="h-4 w-4 text-primary" />
+              <span>Salt Lake, Kolkata</span>
+            </div>
+          </div>
 
           {/* CTA Button */}
           <Button
             size="lg"
             className="font-mono bg-primary text-primary-foreground hover:bg-primary/90 transition-all group px-8"
+            asChild
           >
-            Contact Me
-            <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+            <a href="mailto:pradhananush.sagar@gmail.com">
+              Contact Me
+              <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+            </a>
           </Button>
         </div>
       </div>

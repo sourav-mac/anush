@@ -3,30 +3,30 @@ import { ArrowUpRight, ArrowRight } from 'lucide-react';
 
 const projects = [
   {
-    title: 'HappyCraft Event LLP',
-    description: 'Premium Event Management Website',
-    category: 'Website',
+    title: 'Fraud Detection System',
+    description: 'System to detect fraudulent activities in E-commerce using pattern recognition and data analysis.',
+    category: 'Data Analysis',
+    image: null,
+    color: 'from-red-500/20 to-orange-500/20',
+  },
+  {
+    title: 'E-Waste Management Platform',
+    description: 'Platform for efficient disposal and recycling of e-waste materials with tracking system.',
+    category: 'Web Platform',
     image: null,
     color: 'from-emerald-500/20 to-teal-500/20',
   },
   {
-    title: 'KET Design & Interior',
-    description: 'Luxury Interior & Architectural Website',
-    category: 'Website',
-    image: null,
-    color: 'from-amber-500/20 to-orange-500/20',
-  },
-  {
-    title: 'StaffWorks Portal',
-    description: 'Employee Management Platform',
-    category: 'Web Application',
+    title: 'AI Disaster Management',
+    description: 'AI-driven system to help predict and manage disaster response strategies effectively.',
+    category: 'AI/ML',
     image: null,
     color: 'from-blue-500/20 to-indigo-500/20',
   },
   {
-    title: 'Mudd Vision',
-    description: 'Dealer & Sales Management Platform',
-    category: 'Software Application',
+    title: 'Vulture Cloud Hackathon',
+    description: 'Achieved All India Rank 20, developed innovative tech solutions under pressure.',
+    category: 'Hackathon',
     image: null,
     color: 'from-purple-500/20 to-pink-500/20',
   },
@@ -45,7 +45,7 @@ const Projects = () => {
             Selected <span className="text-primary">Projects</span>
           </h2>
           <p className="text-muted-foreground font-mono text-sm max-w-xl mx-auto">
-            Here's a curated selection showcasing my expertise and the achieved results.
+            Here are some of my key projects showcasing my expertise in tech innovation and problem solving.
           </p>
         </div>
 
