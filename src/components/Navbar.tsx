@@ -15,6 +15,7 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isDark, setIsDark] = useState(false);
+  const [activeSection, setActiveSection] = useState('#home');
 
   useEffect(() => {
     // Check for saved theme preference or system preference
@@ -33,8 +34,28 @@ const Navbar = () => {
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
+
+      // Detect active section based on scroll position
+      const sections = navLinks.map(link => link.href.substring(1));
+      let currentSection = '#home';
+
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          if (rect.top <= 150 && rect.bottom >= 150) {
+            currentSection = `#${section}`;
+            break;
+          }
+        }
+      }
+
+      setActiveSection(currentSection);
     };
+
     window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Initial check
+
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -50,6 +71,11 @@ const Navbar = () => {
     }
   };
 
+  const handleNavClick = (href: string) => {
+    setActiveSection(href);
+    setIsMobileMenuOpen(false);
+  };
+
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -59,7 +85,7 @@ const Navbar = () => {
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <a href="#home">
+          <a href="#home" onClick={() => handleNavClick('#home')}>
             <Logo />
           </a>
 
@@ -69,10 +95,19 @@ const Navbar = () => {
               <a
                 key={link.name}
                 href={link.href}
-                className="font-mono text-sm text-muted-foreground hover:text-primary transition-colors relative group"
+                onClick={() => handleNavClick(link.href)}
+                className={`font-mono text-sm transition-colors relative group ${
+                  activeSection === link.href 
+                    ? 'text-primary' 
+                    : 'text-muted-foreground hover:text-primary'
+                }`}
               >
                 {link.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full" />
+                <span 
+                  className={`absolute -bottom-1 left-0 h-0.5 bg-primary transition-all ${
+                    activeSection === link.href ? 'w-full' : 'w-0 group-hover:w-full'
+                  }`} 
+                />
               </a>
             ))}
           </div>
@@ -115,8 +150,12 @@ const Navbar = () => {
                 <a
                   key={link.name}
                   href={link.href}
-                  className="font-mono text-sm text-muted-foreground hover:text-primary transition-colors py-2"
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  className={`font-mono text-sm transition-colors py-2 ${
+                    activeSection === link.href 
+                      ? 'text-primary' 
+                      : 'text-muted-foreground hover:text-primary'
+                  }`}
+                  onClick={() => handleNavClick(link.href)}
                 >
                   {link.name}
                 </a>
