@@ -35,6 +35,7 @@ const Hero = () => {
   }, [displayText, isDeleting, currentRoleIndex]);
 
   const socialLinks = [
+    { icon: Github, href: 'https://github.com/anushpradhan', label: 'GitHub' },
     { icon: Linkedin, href: 'https://www.linkedin.com/in/anush-pradhan-49412428a', label: 'LinkedIn' },
     { icon: Mail, href: 'mailto:pradhananush.sagar@gmail.com', label: 'Email' },
     { icon: Phone, href: 'tel:+917319229955', label: 'Phone' },
