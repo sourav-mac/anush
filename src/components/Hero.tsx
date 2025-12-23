@@ -121,12 +121,11 @@ const Hero = () => {
                 <div className="absolute -inset-1 bg-gradient-to-br from-primary via-primary/50 to-primary/20 rounded-full blur-sm" />
                 
                 {/* Circular background frame */}
-                <div className="relative w-64 md:w-80 lg:w-96 h-64 md:h-80 lg:h-96 rounded-full border-2 border-primary/60 shadow-2xl bg-gradient-to-br from-background via-background to-muted/30 overflow-visible">
-                  {/* Image that extends outside the frame */}
+                <div className="relative w-64 md:w-80 lg:w-96 h-64 md:h-80 lg:h-96 rounded-full border-2 border-primary/60 shadow-2xl bg-gradient-to-br from-background via-background to-muted/30 overflow-hidden">
                   <img 
                     src={heroImage} 
                     alt="Anush Pradhan" 
-                    className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[120%] h-auto max-h-[120%] object-contain object-bottom drop-shadow-2xl"
+                    className="w-full h-full object-cover object-top drop-shadow-2xl"
                   />
                   {/* Subtle inner glow */}
                   <div className="absolute inset-0 rounded-full bg-gradient-to-t from-primary/10 via-transparent to-transparent pointer-events-none" />
