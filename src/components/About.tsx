@@ -1,6 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 import HireMeDialog from './HireMeDialog';
+import profilePhoto from '@/assets/profile-photo.jpg';
 
 const About = () => {
   return (
@@ -50,8 +51,8 @@ const About = () => {
                 <div className="relative w-72 h-80 md:w-80 md:h-96 rounded-2xl overflow-hidden bg-gradient-to-br from-card to-secondary">
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="text-center">
-                      <div className="w-32 h-32 mx-auto mb-6 rounded-full bg-primary/20 flex items-center justify-center border-2 border-primary/30">
-                        <span className="font-mono text-5xl text-primary font-bold">AP</span>
+                      <div className="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden border-2 border-primary/30">
+                        <img src={profilePhoto} alt="Anush Pradhan" className="w-full h-full object-cover" />
                       </div>
                       <p className="font-mono text-foreground text-lg font-semibold">Anush Pradhan</p>
                       <p className="font-mono text-muted-foreground text-sm mt-1">CSE Student | TIU Kolkata</p>
