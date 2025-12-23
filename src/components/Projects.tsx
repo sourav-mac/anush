@@ -92,17 +92,6 @@ const Projects = () => {
             </div>
           ))}
         </div>
-
-        {/* View All Button */}
-        <div className="text-center mt-12">
-          <Button
-            variant="outline"
-            className="font-mono border-primary/30 bg-transparent hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all group"
-          >
-            View All Projects
-            <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-          </Button>
-        </div>
       </div>
     </section>
   );
