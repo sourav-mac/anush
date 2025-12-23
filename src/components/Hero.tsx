@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Github, Linkedin, Mail, Phone, ChevronDown, Calendar } from 'lucide-react';
-import heroImage from '@/assets/mountain-hero.png';
+import heroImage from '@/assets/hero-image.png';
 import TimelineDialog from './TimelineDialog';
 
 const roles = ['CSE Student', 'Tech Innovator', 'Problem Solver', 'Freelance Developer'];
@@ -107,11 +107,25 @@ const Hero = () => {
           <div className="relative flex justify-center items-center">
             <div className="relative animate-float">
               {/* Minimal Circle Container */}
-              <div className="relative w-64 md:w-80 lg:w-96 h-64 md:h-80 lg:h-96 rounded-full border border-border/50 bg-muted/20 overflow-hidden">
+              <div className="relative w-64 md:w-80 lg:w-96 h-64 md:h-80 lg:h-96 rounded-full border border-border/50 bg-muted/20">
+                {/* Bottom clip mask - clips only lower portion */}
+                <div className="absolute inset-0 rounded-full overflow-hidden">
+                  <img 
+                    src={heroImage} 
+                    alt="Anush Pradhan" 
+                    className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[140%] h-auto object-contain object-bottom"
+                  />
+                </div>
+                
+                {/* Top overflow image - shows above circle */}
                 <img 
                   src={heroImage} 
-                  alt="Anush Pradhan" 
-                  className="w-full h-full object-cover"
+                  alt="" 
+                  aria-hidden="true"
+                  className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[140%] h-auto object-contain object-bottom pointer-events-none"
+                  style={{ 
+                    clipPath: 'polygon(0 0, 100% 0, 100% 50%, 0 50%)'
+                  }}
                 />
               </div>
             </div>
