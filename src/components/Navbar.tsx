@@ -90,20 +90,20 @@ const Navbar = () => {
           </a>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-10">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
                 onClick={() => handleNavClick(link.href)}
-                className={`font-mono text-sm transition-colors relative group ${
+                className={`font-medium text-base transition-colors relative group ${
                   activeSection === link.href 
-                    ? 'text-primary' 
-                    : 'text-muted-foreground hover:text-primary'
+                    ? 'text-primary font-semibold' 
+                    : 'text-foreground hover:text-primary'
                 }`}
               >
                 {link.name}
-                <span 
+                <span
                   className={`absolute -bottom-1 left-0 h-0.5 bg-primary transition-all ${
                     activeSection === link.href ? 'w-full' : 'w-0 group-hover:w-full'
                   }`} 
