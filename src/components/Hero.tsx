@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Github, Linkedin, Mail, Phone, ChevronDown, Calendar } from 'lucide-react';
 import heroImage from '@/assets/hero-image.png';
+import TimelineDialog from './TimelineDialog';
 
 const roles = ['CSE Student', 'Tech Innovator', 'Problem Solver', 'Freelance Developer'];
 
@@ -74,16 +75,15 @@ const Hero = () => {
 
             {/* CTA Buttons */}
             <div className="flex flex-wrap items-center gap-4">
-              <Button
-                variant="outline"
-                className="font-mono border-primary/30 bg-transparent hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all group"
-                asChild
-              >
-                <a href="#timeline">
+              <TimelineDialog>
+                <Button
+                  variant="outline"
+                  className="font-mono border-primary/30 bg-transparent hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all group"
+                >
                   <Calendar className="mr-2 h-4 w-4 group-hover:animate-pulse" />
                   Timeline
-                </a>
-              </Button>
+                </Button>
+              </TimelineDialog>
 
               {/* Social Icons */}
               <div className="flex items-center gap-2">
