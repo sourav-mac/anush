@@ -106,17 +106,26 @@ const Hero = () => {
           {/* Right Content - Image */}
           <div className="relative flex justify-center items-center">
             <div className="relative animate-float">
-              {/* Decorative Circle */}
-              <div className="absolute -top-10 -right-10 w-60 md:w-80 h-60 md:h-80 rounded-full bg-primary/10 border border-primary/20" />
+              {/* Outer Glow Ring */}
+              <div className="absolute inset-0 -m-8 rounded-full bg-gradient-to-br from-primary/20 via-primary/5 to-transparent blur-2xl" />
               
-              {/* Hero Image */}
-              <div className="relative z-10">
+              {/* Decorative Rotating Border */}
+              <div className="absolute -inset-4 md:-inset-6 rounded-full border-2 border-dashed border-primary/30 animate-spin" style={{ animationDuration: '20s' }} />
+              
+              {/* Main Image Container */}
+              <div className="relative z-10 rounded-full overflow-hidden border-4 border-primary/40 shadow-2xl glow-primary">
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/20 via-transparent to-transparent z-10" />
                 <img 
                   src={heroImage} 
                   alt="Anush Pradhan" 
-                  className="w-64 md:w-80 lg:w-96 h-auto object-contain drop-shadow-2xl"
+                  className="w-64 md:w-80 lg:w-96 h-64 md:h-80 lg:h-96 object-cover object-top"
                 />
               </div>
+              
+              {/* Decorative Dots */}
+              <div className="absolute -top-2 -right-2 w-4 h-4 rounded-full bg-primary animate-pulse" />
+              <div className="absolute -bottom-2 -left-2 w-3 h-3 rounded-full bg-primary/60 animate-pulse" style={{ animationDelay: '0.5s' }} />
+              <div className="absolute top-1/2 -right-6 w-2 h-2 rounded-full bg-primary/40 animate-pulse" style={{ animationDelay: '1s' }} />
             </div>
 
             {/* Scroll Indicator */}
