@@ -4,7 +4,6 @@ import { Menu, X } from 'lucide-react';
 import Logo from './Logo';
 import ThemeToggle from './ThemeToggle';
 import HireMeDialog from './HireMeDialog';
-import TimelineDialog from './TimelineDialog';
 const navLinks = [
   { name: 'Home', href: '#home' },
   { name: 'About Me', href: '#about' },
@@ -91,14 +90,6 @@ const Navbar = () => {
           {/* Right Side */}
           <div className="flex items-center gap-4">
             <ThemeToggle />
-            <TimelineDialog>
-              <Button
-                variant="outline"
-                className="hidden md:flex font-mono text-sm"
-              >
-                Timeline
-              </Button>
-            </TimelineDialog>
             <HireMeDialog>
               <Button
                 variant="default"
@@ -138,14 +129,6 @@ const Navbar = () => {
                   {link.name}
                 </a>
               ))}
-              <TimelineDialog>
-                <Button 
-                  variant="outline"
-                  className="font-mono text-sm mt-2"
-                >
-                  Timeline
-                </Button>
-              </TimelineDialog>
               <HireMeDialog>
                 <Button 
                   className="font-mono text-sm bg-primary text-primary-foreground hover:bg-primary/90 mt-2"
