@@ -126,7 +126,7 @@ const Hero = () => {
                   <img 
                     src={heroImage} 
                     alt="Anush Pradhan" 
-                    className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-[150%] h-auto max-h-[160%] object-contain object-bottom drop-shadow-2xl"
+                    className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[120%] h-auto max-h-[120%] object-contain object-bottom drop-shadow-2xl"
                   />
                   {/* Subtle inner glow */}
                   <div className="absolute inset-0 rounded-full bg-gradient-to-t from-primary/10 via-transparent to-transparent pointer-events-none" />
