@@ -33,7 +33,7 @@ const Navbar = () => {
           {/* Logo */}
           <a href="#home" className="flex items-center gap-2">
             <div className="w-10 h-10 rounded-lg border-2 border-primary flex items-center justify-center">
-              <span className="font-mono font-bold text-primary text-sm">DM</span>
+              <span className="font-mono font-bold text-primary text-sm">AP</span>
             </div>
           </a>
 
