@@ -43,12 +43,9 @@ const About = () => {
 
           {/* Right Content - Profile Image */}
           <div className="relative flex justify-center lg:justify-end">
-            <div className="relative">
-              {/* Decorative Border */}
-              <div className="absolute -inset-4 rounded-3xl border border-primary/20 bg-gradient-to-br from-primary/5 to-transparent" />
-              
-              {/* Profile Container */}
-              <div className="relative w-72 h-80 md:w-80 md:h-96 rounded-2xl overflow-hidden bg-gradient-to-br from-card to-secondary border border-border">
+          <div className="relative group">
+              {/* Profile Container with Animated Border */}
+              <div className="animated-border-box relative w-72 h-80 md:w-80 md:h-96 rounded-2xl overflow-hidden bg-gradient-to-br from-card to-secondary">
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="text-center">
                     <div className="w-32 h-32 mx-auto mb-6 rounded-full bg-primary/20 flex items-center justify-center border-2 border-primary/30">
