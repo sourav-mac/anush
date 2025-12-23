@@ -117,14 +117,15 @@ const Hero = () => {
               
               {/* Main Image Container with organic blob shape */}
               <div 
-                className="relative z-10 overflow-hidden border-4 border-primary/50 shadow-2xl glow-primary"
+                className="relative z-10 border-4 border-primary/50 shadow-2xl glow-primary"
                 style={{ borderRadius: '60% 40% 55% 45% / 55% 60% 40% 45%' }}
               >
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/30 via-transparent to-transparent z-10" />
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/30 via-transparent to-transparent z-10 pointer-events-none" style={{ borderRadius: '60% 40% 55% 45% / 55% 60% 40% 45%' }} />
                 <img 
                   src={heroImage} 
                   alt="Anush Pradhan" 
-                  className="w-64 md:w-80 lg:w-96 h-64 md:h-80 lg:h-96 object-cover object-top scale-110"
+                  className="w-64 md:w-80 lg:w-96 h-64 md:h-80 lg:h-96 object-cover object-top scale-125 -translate-y-4"
+                  style={{ clipPath: 'none' }}
                 />
               </div>
               
