@@ -66,7 +66,9 @@ const Logo = ({ className = "" }: { className?: string }) => {
           strokeWidth="0.5"
         />
       </svg>
-      <span className="font-mono font-bold text-primary text-[10px] tracking-widest">ANUSH</span>
+      <span className="font-mono font-bold text-primary text-xs tracking-wider uppercase">
+        Anush
+      </span>
     </div>
   );
 };
