@@ -7,7 +7,6 @@ import Projects from '@/components/Projects';
 import FAQ from '@/components/FAQ';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
-import SocialLinks from '@/components/SocialLinks';
 
 const Index = () => {
   useEffect(() => {
@@ -26,7 +25,6 @@ const Index = () => {
         <Contact />
       </main>
       <Footer />
-      <SocialLinks />
     </div>
   );
 };
