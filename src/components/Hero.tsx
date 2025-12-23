@@ -106,26 +106,33 @@ const Hero = () => {
           {/* Right Content - Image */}
           <div className="relative flex justify-center items-center">
             <div className="relative animate-float">
-              {/* Outer Glow Ring */}
-              <div className="absolute inset-0 -m-8 rounded-full bg-gradient-to-br from-primary/20 via-primary/5 to-transparent blur-2xl" />
+              {/* Outer Glow */}
+              <div className="absolute inset-0 -m-12 bg-gradient-to-br from-primary/30 via-primary/10 to-transparent blur-3xl" style={{ borderRadius: '60% 40% 30% 70% / 60% 30% 70% 40%' }} />
               
               {/* Decorative Rotating Border */}
-              <div className="absolute -inset-4 md:-inset-6 rounded-full border-2 border-dashed border-primary/30 animate-spin" style={{ animationDuration: '20s' }} />
+              <div className="absolute -inset-6 md:-inset-8 border-2 border-dashed border-primary/30 animate-spin" style={{ animationDuration: '20s', borderRadius: '60% 40% 30% 70% / 60% 30% 70% 40%' }} />
               
-              {/* Main Image Container */}
-              <div className="relative z-10 rounded-full overflow-hidden border-4 border-primary/40 shadow-2xl glow-primary">
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/20 via-transparent to-transparent z-10" />
+              {/* Secondary organic shape behind */}
+              <div className="absolute -inset-3 bg-primary/10 backdrop-blur-sm" style={{ borderRadius: '30% 70% 70% 30% / 30% 30% 70% 70%' }} />
+              
+              {/* Main Image Container with organic blob shape */}
+              <div 
+                className="relative z-10 overflow-hidden border-4 border-primary/50 shadow-2xl glow-primary"
+                style={{ borderRadius: '60% 40% 55% 45% / 55% 60% 40% 45%' }}
+              >
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/30 via-transparent to-transparent z-10" />
                 <img 
                   src={heroImage} 
                   alt="Anush Pradhan" 
-                  className="w-64 md:w-80 lg:w-96 h-64 md:h-80 lg:h-96 object-cover object-top"
+                  className="w-64 md:w-80 lg:w-96 h-64 md:h-80 lg:h-96 object-cover object-top scale-110"
                 />
               </div>
               
-              {/* Decorative Dots */}
-              <div className="absolute -top-2 -right-2 w-4 h-4 rounded-full bg-primary animate-pulse" />
-              <div className="absolute -bottom-2 -left-2 w-3 h-3 rounded-full bg-primary/60 animate-pulse" style={{ animationDelay: '0.5s' }} />
-              <div className="absolute top-1/2 -right-6 w-2 h-2 rounded-full bg-primary/40 animate-pulse" style={{ animationDelay: '1s' }} />
+              {/* Decorative Floating Elements */}
+              <div className="absolute -top-4 -right-4 w-6 h-6 bg-primary animate-pulse" style={{ borderRadius: '63% 37% 54% 46% / 55% 48% 52% 45%' }} />
+              <div className="absolute -bottom-3 -left-3 w-5 h-5 bg-primary/70 animate-pulse" style={{ animationDelay: '0.5s', borderRadius: '37% 63% 43% 57% / 48% 52% 48% 52%' }} />
+              <div className="absolute top-1/3 -right-8 w-4 h-4 bg-primary/50 animate-pulse" style={{ animationDelay: '1s', borderRadius: '50% 50% 43% 57% / 43% 57% 43% 57%' }} />
+              <div className="absolute bottom-1/3 -left-6 w-3 h-3 bg-primary/40 animate-pulse" style={{ animationDelay: '1.5s', borderRadius: '43% 57% 50% 50% / 57% 43% 57% 43%' }} />
             </div>
 
             {/* Scroll Indicator */}
