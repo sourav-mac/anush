@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { toast } from "@/hooks/use-toast";
 
 const ThemeToggle = () => {
   const [isDark, setIsDark] = useState(false);
@@ -21,12 +20,6 @@ const ThemeToggle = () => {
       document.documentElement.classList.toggle("dark", next);
       document.body.classList.toggle("dark", next);
       localStorage.setItem("theme", next ? "dark" : "light");
-
-      toast({
-        title: next ? "Dark mode" : "Light mode",
-        description: "Theme updated",
-      });
-
       return next;
     });
   };
