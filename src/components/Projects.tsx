@@ -34,7 +34,7 @@ const projects = [
 
 const Projects = () => {
   return (
-    <section id="projects" className="py-24 md:py-32 bg-card/20">
+    <section id="projects" className="py-16 md:py-20 bg-card/20">
       <div className="container mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-16 space-y-4">
