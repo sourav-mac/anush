@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
 import Logo from './Logo';
 import ThemeToggle from './ThemeToggle';
-
+import HireMeDialog from './HireMeDialog';
 const navLinks = [
   { name: 'Home', href: '#home' },
   { name: 'About Me', href: '#about' },
@@ -90,13 +90,14 @@ const Navbar = () => {
           {/* Right Side */}
           <div className="flex items-center gap-4">
             <ThemeToggle />
-            <Button
-              variant="default"
-              className="hidden md:flex font-mono text-sm bg-foreground text-background hover:bg-foreground/90 transition-all"
-              asChild
-            >
-              <a href="mailto:pradhananush.sagar@gmail.com">Hire Me</a>
-            </Button>
+            <HireMeDialog>
+              <Button
+                variant="default"
+                className="hidden md:flex font-mono text-sm bg-foreground text-background hover:bg-foreground/90 transition-all"
+              >
+                Hire Me
+              </Button>
+            </HireMeDialog>
 
             {/* Mobile Menu Button */}
             <Button
@@ -128,12 +129,13 @@ const Navbar = () => {
                   {link.name}
                 </a>
               ))}
-              <Button 
-                className="font-mono text-sm bg-primary text-primary-foreground hover:bg-primary/90 mt-2"
-                asChild
-              >
-                <a href="mailto:pradhananush.sagar@gmail.com">Hire Me</a>
-              </Button>
+              <HireMeDialog>
+                <Button 
+                  className="font-mono text-sm bg-primary text-primary-foreground hover:bg-primary/90 mt-2"
+                >
+                  Hire Me
+                </Button>
+              </HireMeDialog>
             </div>
           </div>
         )}
