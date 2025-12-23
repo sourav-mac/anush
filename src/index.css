@@ -18,6 +18,8 @@
     --primary: 142 76% 36%;
     --primary-foreground: 0 0% 100%;
 
+    --toggle-sun: 45 96% 55%;
+
     --secondary: 0 0% 94%;
     --secondary-foreground: 0 0% 10%;
 
@@ -61,6 +63,8 @@
 
     --primary: 142 76% 36%;
     --primary-foreground: 0 0% 100%;
+
+    --toggle-sun: 45 96% 55%;
 
     --secondary: 0 0% 12%;
     --secondary-foreground: 0 0% 95%;
@@ -145,7 +149,7 @@
 
   .toggle .icon--sun {
     transform: scale(0);
-    @apply text-yellow-300;
+    color: hsl(var(--toggle-sun));
   }
 
   .dark .toggle .icon--moon {
