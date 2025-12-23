@@ -7,24 +7,24 @@ import {
 
 const faqs = [
   {
-    question: 'What is your current role?',
+    question: 'What is your current status?',
     answer:
-      'I am currently working as a Software Developer, building scalable web applications and contributing to full-stack development projects. I specialize in React, Node.js, and modern web technologies.',
+      "I'm currently pursuing B.Tech in Computer Science and Engineering at Techno India University, Kolkata (2022-2026). I'm actively looking for internship opportunities and freelance projects to gain more industry experience.",
   },
   {
-    question: 'How much does it cost for a high-performing website?',
+    question: 'What are your technical skills?',
     answer:
-      'The cost varies based on complexity, features, and timeline. A basic website starts from $500, while complex web applications can range from $2,000 to $10,000+. I provide detailed quotes after understanding your requirements.',
+      'I have hands-on experience with C, C++, HTML, CSS, Microsoft Office Suite, and Project Management & Documentation. I continuously learn new technologies and have participated in hackathons to sharpen my problem-solving skills.',
   },
   {
-    question: 'How long will the work take from start to finish?',
+    question: 'What achievements do you have?',
     answer:
-      'Project timelines depend on scope and complexity. A simple website takes 1-2 weeks, while complex applications may take 4-8 weeks. I always provide realistic timelines and keep you updated throughout.',
+      'I achieved All India Rank 20 in the Vulture Cloud Hackathon and hold an IBM Certificate. I also scored 94.08% in Higher Secondary (12th) and 85% in Secondary (10th) examinations.',
   },
   {
-    question: 'Are you available to join as full-time?',
+    question: 'Are you available for opportunities?',
     answer:
-      'I am open to full-time opportunities that align with my career goals. I am particularly interested in roles involving modern web technologies, challenging problems, and collaborative team environments.',
+      "Yes, I'm open to internships, freelance projects, and full-time opportunities that align with my interests in software development, tech innovation, and problem-solving. Feel free to reach out via email or LinkedIn.",
   },
 ];
 

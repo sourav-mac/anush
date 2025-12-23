@@ -9,28 +9,34 @@ const About = () => {
           {/* Left Content */}
           <div className="space-y-8 animate-slide-up">
             <p className="text-muted-foreground font-mono text-sm md:text-base leading-relaxed">
-              Hi, I'm <span className="text-primary font-semibold">Dipak Mourya</span>, a passionate
-              Software Developer with hands-on experience in real-time projects and a strong focus
-              on building scalable, efficient solutions. I continuously evolve my skills and embrace
-              new technologies. With a degree in Computer Science Engineering, I enhance my
-              efficiency in software development. Currently, I'm pursuing an{' '}
-              <span className="text-primary font-semibold">
-                Master of Business Administration (MBA)
-              </span>{' '}
-              in Business Analytics, merging my technical expertise with business insight for
-              impactful results.
+              Hi, I'm <span className="text-primary font-semibold">Anush Pradhan</span>, a passionate
+              CSE student at <span className="text-primary font-semibold">Techno India University</span> with 
+              a strong interest in programming, tech innovation, and real-world problem solving. 
+              I'm driven, quick to learn, and passionate about turning ideas into impactful solutions.
+              With expertise in C, C++, HTML, CSS, and project management, I continuously evolve my 
+              skills and embrace new technologies. I achieved{' '}
+              <span className="text-primary font-semibold">All India Rank 20</span> in the Vulture Cloud 
+              Hackathon and hold certifications from IBM.
             </p>
 
             <div className="flex flex-wrap gap-4">
               <Button
                 variant="outline"
                 className="font-mono border-primary/30 bg-transparent hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all group"
+                asChild
               >
-                Discover More
-                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                <a href="https://www.linkedin.com/in/anush-pradhan-49412428a" target="_blank" rel="noopener noreferrer">
+                  Discover More
+                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                </a>
               </Button>
-              <Button className="font-mono bg-primary text-primary-foreground hover:bg-primary/90 transition-all">
-                Hire Me
+              <Button 
+                className="font-mono bg-primary text-primary-foreground hover:bg-primary/90 transition-all"
+                asChild
+              >
+                <a href="mailto:pradhananush.sagar@gmail.com">
+                  Hire Me
+                </a>
               </Button>
             </div>
           </div>
@@ -46,10 +52,10 @@ const About = () => {
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="text-center">
                     <div className="w-32 h-32 mx-auto mb-6 rounded-full bg-primary/20 flex items-center justify-center border-2 border-primary/30">
-                      <span className="font-mono text-5xl text-primary font-bold">DM</span>
+                      <span className="font-mono text-5xl text-primary font-bold">AP</span>
                     </div>
-                    <p className="font-mono text-foreground text-lg font-semibold">Dipak Mourya</p>
-                    <p className="font-mono text-muted-foreground text-sm mt-1">Software Developer</p>
+                    <p className="font-mono text-foreground text-lg font-semibold">Anush Pradhan</p>
+                    <p className="font-mono text-muted-foreground text-sm mt-1">CSE Student | TIU Kolkata</p>
                   </div>
                 </div>
 

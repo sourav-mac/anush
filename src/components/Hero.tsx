@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { Github, Linkedin, Mail, Send, ChevronDown, Calendar } from 'lucide-react';
+import { Github, Linkedin, Mail, Phone, ChevronDown, Calendar } from 'lucide-react';
 
-const roles = ['Software Developer', 'Full Stack Developer', 'Web Developer', 'React Developer'];
+const roles = ['CSE Student', 'Tech Innovator', 'Problem Solver', 'Freelance Developer'];
 
 const Hero = () => {
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
@@ -35,10 +35,9 @@ const Hero = () => {
   }, [displayText, isDeleting, currentRoleIndex]);
 
   const socialLinks = [
-    { icon: Github, href: '#', label: 'GitHub' },
-    { icon: Linkedin, href: '#', label: 'LinkedIn' },
-    { icon: Mail, href: '#', label: 'Gmail' },
-    { icon: Send, href: '#', label: 'Telegram' },
+    { icon: Linkedin, href: 'https://www.linkedin.com/in/anush-pradhan-49412428a', label: 'LinkedIn' },
+    { icon: Mail, href: 'mailto:pradhananush.sagar@gmail.com', label: 'Email' },
+    { icon: Phone, href: 'tel:+917319229955', label: 'Phone' },
   ];
 
   return (
@@ -57,7 +56,7 @@ const Hero = () => {
               <h1 className="font-mono text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
                 Hello I'm
                 <br />
-                <span className="text-primary">Dipak Mourya</span>
+                <span className="text-primary">Anush Pradhan</span>
               </h1>
               <p className="text-lg md:text-xl text-muted-foreground">
                 I'm a passionate{' '}
@@ -66,9 +65,9 @@ const Hero = () => {
             </div>
 
             <p className="text-muted-foreground leading-relaxed max-w-lg font-mono text-sm">
-              With expertise in web technologies, I specialize in building responsive web experiences
-              with a focus on intuitive design that enhances user satisfaction and drives business
-              value.
+              CSE student at Techno India University with a strong interest in programming, 
+              tech innovation, and real-world problem solving. Driven, quick to learn, and 
+              passionate about turning ideas into impactful solutions.
             </p>
 
             {/* CTA Buttons */}
@@ -76,9 +75,12 @@ const Hero = () => {
               <Button
                 variant="outline"
                 className="font-mono border-primary/30 bg-transparent hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all group"
+                asChild
               >
-                <Calendar className="mr-2 h-4 w-4 group-hover:animate-pulse" />
-                Timeline
+                <a href="mailto:pradhananush.sagar@gmail.com">
+                  <Calendar className="mr-2 h-4 w-4 group-hover:animate-pulse" />
+                  Contact Me
+                </a>
               </Button>
 
               {/* Social Icons */}
@@ -87,6 +89,8 @@ const Hero = () => {
                   <a
                     key={social.label}
                     href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="w-11 h-11 rounded-full border border-border flex items-center justify-center hover:border-primary hover:bg-primary/10 transition-all group"
                     aria-label={social.label}
                   >
@@ -107,9 +111,9 @@ const Hero = () => {
               <div className="relative z-10 w-96 h-96 rounded-2xl bg-gradient-to-br from-card to-secondary/50 border border-border flex items-center justify-center overflow-hidden">
                 <div className="text-center p-8">
                   <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-primary/20 flex items-center justify-center">
-                    <span className="font-mono text-4xl text-primary font-bold">DM</span>
+                    <span className="font-mono text-4xl text-primary font-bold">AP</span>
                   </div>
-                  <p className="font-mono text-muted-foreground text-sm">Software Developer</p>
+                  <p className="font-mono text-muted-foreground text-sm">CSE Student</p>
                 </div>
                 
                 {/* Decorative Elements */}

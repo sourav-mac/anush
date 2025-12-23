@@ -1,11 +1,9 @@
-import { Github, Linkedin, Mail, Send, Twitter } from 'lucide-react';
+import { Linkedin, Mail, Phone } from 'lucide-react';
 
 const socialLinks = [
-  { icon: Github, href: '#', label: 'GitHub' },
-  { icon: Linkedin, href: '#', label: 'LinkedIn' },
-  { icon: Twitter, href: '#', label: 'Twitter' },
-  { icon: Mail, href: '#', label: 'Email' },
-  { icon: Send, href: '#', label: 'Telegram' },
+  { icon: Linkedin, href: 'https://www.linkedin.com/in/anush-pradhan-49412428a', label: 'LinkedIn' },
+  { icon: Mail, href: 'mailto:pradhananush.sagar@gmail.com', label: 'Email' },
+  { icon: Phone, href: 'tel:+917319229955', label: 'Phone' },
 ];
 
 const Footer = () => {
@@ -16,9 +14,9 @@ const Footer = () => {
           {/* Logo */}
           <div className="flex items-center gap-2">
             <div className="w-10 h-10 rounded-lg border-2 border-primary flex items-center justify-center">
-              <span className="font-mono font-bold text-primary text-sm">DM</span>
+              <span className="font-mono font-bold text-primary text-sm">AP</span>
             </div>
-            <span className="font-mono text-sm text-muted-foreground">Dipak Mourya</span>
+            <span className="font-mono text-sm text-muted-foreground">Anush Pradhan</span>
           </div>
 
           {/* Copyright */}
@@ -32,6 +30,8 @@ const Footer = () => {
               <a
                 key={social.label}
                 href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-9 h-9 rounded-full border border-border flex items-center justify-center hover:border-primary hover:bg-primary/10 transition-all group"
                 aria-label={social.label}
               >

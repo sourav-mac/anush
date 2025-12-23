@@ -1,10 +1,10 @@
 import { useEffect, useState, useRef } from 'react';
 
 const stats = [
-  { value: 2, label: 'Years of', sublabel: 'experience' },
-  { value: 10, label: 'Projects', sublabel: 'Completed' },
-  { value: 15, label: 'Technical', sublabel: 'Skills' },
-  { value: 200, label: 'LeetCode', sublabel: 'Solved' },
+  { value: 3, label: 'Projects', sublabel: 'Completed' },
+  { value: 20, label: 'AIR Rank', sublabel: 'Hackathon' },
+  { value: 6, label: 'Technical', sublabel: 'Skills' },
+  { value: 94, label: 'Percent', sublabel: '12th Grade' },
 ];
 
 const Stats = () => {
