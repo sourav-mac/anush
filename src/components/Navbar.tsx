@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Menu, X, Sun, Moon } from 'lucide-react';
+import Logo from './Logo';
 
 const navLinks = [
   { name: 'Home', href: '#home' },
@@ -58,10 +59,8 @@ const Navbar = () => {
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <a href="#home" className="flex items-center gap-2">
-            <div className="w-10 h-10 rounded-lg border-2 border-primary flex items-center justify-center">
-              <span className="font-mono font-bold text-primary text-sm">AP</span>
-            </div>
+          <a href="#home">
+            <Logo />
           </a>
 
           {/* Desktop Navigation */}
