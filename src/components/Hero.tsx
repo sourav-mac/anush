@@ -115,18 +115,33 @@ const Hero = () => {
               {/* Inner decorative ring */}
               <div className="absolute -inset-4 md:-inset-5 border border-primary/30 rounded-full" />
               
-              {/* Main Container with overflow visible */}
+              {/* Main Container */}
               <div className="relative z-10">
                 {/* Gradient border effect - the circular frame */}
                 <div className="absolute -inset-1 bg-gradient-to-br from-primary via-primary/50 to-primary/20 rounded-full blur-sm" />
                 
                 {/* Circular background frame */}
-                <div className="relative w-64 md:w-80 lg:w-96 h-64 md:h-80 lg:h-96 rounded-full border-2 border-primary/60 shadow-2xl bg-gradient-to-br from-background via-background to-muted/30 overflow-hidden">
+                <div className="relative w-64 md:w-80 lg:w-96 h-64 md:h-80 lg:h-96 rounded-full border-2 border-primary/60 shadow-2xl bg-gradient-to-br from-background via-background to-muted/30">
+                  {/* Bottom clip mask - clips only lower portion */}
+                  <div className="absolute inset-0 rounded-full overflow-hidden">
+                    <img 
+                      src={heroImage} 
+                      alt="Anush Pradhan" 
+                      className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[140%] h-auto object-contain object-bottom"
+                    />
+                  </div>
+                  
+                  {/* Top overflow image - shows above circle */}
                   <img 
                     src={heroImage} 
-                    alt="Anush Pradhan" 
-                    className="w-full h-full object-cover object-top drop-shadow-2xl"
+                    alt="" 
+                    aria-hidden="true"
+                    className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[140%] h-auto object-contain object-bottom drop-shadow-2xl pointer-events-none"
+                    style={{ 
+                      clipPath: 'polygon(0 0, 100% 0, 100% 50%, 0 50%)'
+                    }}
                   />
+                  
                   {/* Subtle inner glow */}
                   <div className="absolute inset-0 rounded-full bg-gradient-to-t from-primary/10 via-transparent to-transparent pointer-events-none" />
                 </div>
