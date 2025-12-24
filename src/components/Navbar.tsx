@@ -71,13 +71,13 @@ const Navbar = () => {
           </a>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-4 lg:gap-6 xl:gap-10">
+          <div className="hidden md:flex items-center gap-5 lg:gap-8 xl:gap-10">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
                 onClick={() => handleNavClick(link.href)}
-                className={`font-medium text-xs lg:text-sm xl:text-base transition-colors relative group ${
+                className={`font-medium text-sm lg:text-base xl:text-lg transition-colors relative group ${
                   activeSection === link.href 
                     ? 'text-primary font-semibold' 
                     : 'text-foreground hover:text-primary'
