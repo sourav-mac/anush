@@ -9,14 +9,14 @@ const Contact = () => {
           {/* Availability Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/10">
             <Circle className="h-2 w-2 fill-primary text-primary animate-pulse" />
-            <span className="font-mono text-sm text-primary">Open for opportunities</span>
+            <span className="font-mono text-sm text-primary">Actively seeking opportunities</span>
           </div>
 
           {/* Heading */}
           <h2 className="font-mono text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
-            Let's create something
+            Fresh graduate ready to
             <br />
-            <span className="text-primary">amazing together.</span>
+            <span className="text-primary">make an impact.</span>
           </h2>
 
           {/* Contact Info */}
@@ -41,8 +41,8 @@ const Contact = () => {
             className="font-mono bg-primary text-primary-foreground hover:bg-primary/90 transition-all group px-8"
             asChild
           >
-            <a href="mailto:pradhananush.sagar@gmail.com">
-              Contact Me
+            <a href="mailto:pradhananush.sagar@gmail.com?subject=Job Opportunity Inquiry">
+              Hire Me
               <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </a>
           </Button>
