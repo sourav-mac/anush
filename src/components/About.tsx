@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Award, GraduationCap, Calendar, MapPin, Code } from 'lucide-react';
+import { ArrowRight, Award, GraduationCap, Calendar, MapPin, Code, Download } from 'lucide-react';
 import HireMeDialog from './HireMeDialog';
 import { AnimatedSection } from './AnimatedSection';
 import SkillBar from './SkillBar';
@@ -110,6 +110,16 @@ const About = () => {
                 <a href="https://www.linkedin.com/in/anush-pradhan-49412428a" target="_blank" rel="noopener noreferrer">
                   Discover More
                   <ArrowRight className="ml-2 h-3 w-3 sm:h-4 sm:w-4 group-hover:translate-x-1 transition-transform" />
+                </a>
+              </Button>
+              <Button
+                variant="outline"
+                className="font-mono text-xs sm:text-sm border-primary/30 bg-transparent hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all group"
+                asChild
+              >
+                <a href="/resume.pdf" download="Anush_Pradhan_Resume.pdf">
+                  <Download className="mr-2 h-3 w-3 sm:h-4 sm:w-4 group-hover:animate-bounce" />
+                  Resume
                 </a>
               </Button>
               <HireMeDialog>
