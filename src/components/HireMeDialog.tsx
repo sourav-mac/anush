@@ -44,17 +44,17 @@ const HireMeDialog = ({ children }: HireMeDialogProps) => {
     {
       icon: Code2,
       title: 'Full-Stack Development',
-      badge: '2+ Years',
+      badge: 'Eager Learner',
     },
     {
       icon: Palette,
       title: 'UI/UX Design',
-      badge: '10+ Projects',
+      badge: 'Fresh Perspective',
     },
     {
       icon: Zap,
-      title: 'Performance',
-      badge: '98% Satisfaction',
+      title: 'Quick Adapter',
+      badge: 'Ready to Grow',
     },
   ];
 
@@ -66,7 +66,7 @@ const HireMeDialog = ({ children }: HireMeDialogProps) => {
       <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle className="font-mono text-2xl md:text-3xl font-bold text-center">
-            Let's Build <span className="text-primary">Something Amazing</span>
+            Let's <span className="text-primary">Connect</span>
           </DialogTitle>
         </DialogHeader>
 
@@ -74,11 +74,11 @@ const HireMeDialog = ({ children }: HireMeDialogProps) => {
           {/* Left - Contact Form */}
           <div className="space-y-4">
             <div>
-              <h3 className="font-mono text-lg font-bold mb-1">
-                Start <span className="text-primary">Your Project</span>
+            <h3 className="font-mono text-lg font-bold mb-1">
+                Get in <span className="text-primary">Touch</span>
               </h3>
               <p className="text-muted-foreground font-mono text-sm">
-                Let's discuss your project requirements!
+                Looking for opportunities to contribute and grow!
               </p>
             </div>
 
