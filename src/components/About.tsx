@@ -40,12 +40,12 @@ const certificates = [
 
 const About = () => {
   return (
-    <section id="about" className="py-24 md:py-32">
-      <div className="container mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+    <section id="about" className="py-16 sm:py-20 md:py-24 lg:py-32">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           {/* Left Content */}
-          <div className="space-y-8 animate-slide-up">
-            <p className="text-muted-foreground font-mono text-sm md:text-base leading-relaxed">
+          <div className="space-y-6 sm:space-y-8 animate-slide-up order-2 lg:order-1">
+            <p className="text-muted-foreground font-mono text-xs sm:text-sm md:text-base leading-relaxed text-center lg:text-left">
               Hi, I'm <span className="text-primary font-semibold">Anush Pradhan</span>, a passionate
               CSE student at <span className="text-primary font-semibold">Techno India University</span> with 
               a strong interest in programming, tech innovation, and real-world problem solving. 
@@ -56,20 +56,20 @@ const About = () => {
               Hackathon and hold certifications from IBM.
             </p>
 
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap gap-3 sm:gap-4 justify-center lg:justify-start">
               <Button
                 variant="outline"
-                className="font-mono border-primary/30 bg-transparent hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all group"
+                className="font-mono text-xs sm:text-sm border-primary/30 bg-transparent hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all group"
                 asChild
               >
                 <a href="https://www.linkedin.com/in/anush-pradhan-49412428a" target="_blank" rel="noopener noreferrer">
                   Discover More
-                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="ml-2 h-3 w-3 sm:h-4 sm:w-4 group-hover:translate-x-1 transition-transform" />
                 </a>
               </Button>
               <HireMeDialog>
                 <Button 
-                  className="font-mono bg-primary text-primary-foreground hover:bg-primary/90 transition-all"
+                  className="font-mono text-xs sm:text-sm bg-primary text-primary-foreground hover:bg-primary/90 transition-all"
                 >
                   Hire Me
                 </Button>
@@ -78,28 +78,28 @@ const About = () => {
           </div>
 
           {/* Right Content - Profile Image */}
-          <div className="relative flex justify-center lg:justify-end">
+          <div className="relative flex justify-center lg:justify-end order-1 lg:order-2">
             <div className="relative group">
               {/* Animated Border Wrapper */}
               <div className="animated-border-box rounded-2xl p-[2px]">
                 {/* Profile Container */}
-                <div className="relative w-72 h-80 md:w-80 md:h-96 rounded-2xl overflow-hidden bg-gradient-to-br from-card to-secondary">
+                <div className="relative w-60 h-72 sm:w-72 sm:h-80 md:w-80 md:h-96 rounded-2xl overflow-hidden bg-gradient-to-br from-card to-secondary">
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="text-center">
-                      <div className="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden border-2 border-primary/30">
+                      <div className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 mx-auto mb-4 sm:mb-6 rounded-full overflow-hidden border-2 border-primary/30">
                         <img src={profilePhoto} alt="Anush Pradhan" className="w-full h-full object-cover" />
                       </div>
-                      <p className="font-mono text-foreground text-lg font-semibold">Anush Pradhan</p>
-                      <p className="font-mono text-muted-foreground text-sm mt-1">CSE Student | TIU Kolkata</p>
+                      <p className="font-mono text-foreground text-base sm:text-lg font-semibold">Anush Pradhan</p>
+                      <p className="font-mono text-muted-foreground text-xs sm:text-sm mt-1">CSE Student | TIU Kolkata</p>
                     </div>
                   </div>
 
                   {/* Decorative Elements */}
-                  <div className="absolute top-4 right-4">
+                  <div className="absolute top-3 right-3 sm:top-4 sm:right-4">
                     <div className="flex gap-1">
-                      <div className="w-2 h-2 rounded-full bg-destructive" />
-                      <div className="w-2 h-2 rounded-full bg-yellow-500" />
-                      <div className="w-2 h-2 rounded-full bg-primary" />
+                      <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-destructive" />
+                      <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-yellow-500" />
+                      <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-primary" />
                     </div>
                   </div>
                 </div>
@@ -109,35 +109,35 @@ const About = () => {
         </div>
 
         {/* Certificates Section */}
-        <div className="mt-20">
-          <div className="flex items-center gap-3 mb-8">
-            <Award className="h-6 w-6 text-primary" />
-            <h3 className="font-mono text-2xl md:text-3xl font-semibold">
+        <div className="mt-12 sm:mt-16 md:mt-20">
+          <div className="flex items-center gap-2 sm:gap-3 mb-6 sm:mb-8 justify-center lg:justify-start">
+            <Award className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
+            <h3 className="font-mono text-xl sm:text-2xl md:text-3xl font-semibold">
               Certifications
             </h3>
           </div>
           
-          <div className="grid sm:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
             {certificates.map((cert, index) => (
               <div
                 key={index}
                 className="group rounded-xl border border-border bg-card overflow-hidden hover:border-primary/50 transition-all"
               >
-                <div className="h-48 overflow-hidden bg-muted flex items-center justify-center">
+                <div className="h-36 sm:h-44 md:h-48 overflow-hidden bg-muted flex items-center justify-center">
                   <img 
                     src={cert.image} 
                     alt={cert.title} 
                     className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>
-                <div className="p-5">
-                  <h4 className="font-mono font-semibold text-foreground group-hover:text-primary transition-colors">
+                <div className="p-4 sm:p-5">
+                  <h4 className="font-mono font-semibold text-sm sm:text-base text-foreground group-hover:text-primary transition-colors line-clamp-2">
                     {cert.title}
                   </h4>
-                  <p className="font-mono text-sm text-muted-foreground mt-1">
+                  <p className="font-mono text-xs sm:text-sm text-muted-foreground mt-1">
                     {cert.issuer} • {cert.date}
                   </p>
-                  <p className="text-sm text-muted-foreground/80 mt-2">
+                  <p className="text-xs sm:text-sm text-muted-foreground/80 mt-2 line-clamp-2">
                     {cert.description}
                   </p>
                 </div>

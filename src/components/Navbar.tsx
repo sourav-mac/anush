@@ -63,21 +63,21 @@ const Navbar = () => {
         isScrolled ? 'bg-background/80 backdrop-blur-lg border-b border-border' : 'bg-transparent'
       }`}
     >
-      <div className="container mx-auto px-6">
-        <div className="flex items-center justify-between h-20">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16 sm:h-18 md:h-20">
           {/* Logo */}
           <a href="#home" onClick={() => handleNavClick('#home')}>
             <Logo />
           </a>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-10">
+          <div className="hidden lg:flex items-center gap-6 xl:gap-10">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
                 onClick={() => handleNavClick(link.href)}
-                className={`font-medium text-base transition-colors relative group ${
+                className={`font-medium text-sm xl:text-base transition-colors relative group ${
                   activeSection === link.href 
                     ? 'text-primary font-semibold' 
                     : 'text-foreground hover:text-primary'
@@ -94,12 +94,13 @@ const Navbar = () => {
           </div>
 
           {/* Right Side */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2 sm:gap-4">
             <ThemeToggle />
             <HireMeDialog>
               <Button
                 variant="default"
-                className="hidden md:flex font-mono text-sm bg-foreground text-background hover:bg-foreground/90 transition-all"
+                size="sm"
+                className="hidden lg:flex font-mono text-xs sm:text-sm bg-foreground text-background hover:bg-foreground/90 transition-all"
               >
                 Hire Me
               </Button>
@@ -109,7 +110,7 @@ const Navbar = () => {
             <Button
               variant="ghost"
               size="icon"
-              className="md:hidden"
+              className="lg:hidden h-9 w-9 sm:h-10 sm:w-10"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
               {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -119,8 +120,8 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden absolute top-20 left-0 right-0 bg-background/95 backdrop-blur-lg border-b border-border">
-            <div className="flex flex-col p-6 gap-4">
+          <div className="lg:hidden absolute top-16 sm:top-18 md:top-20 left-0 right-0 bg-background/95 backdrop-blur-lg border-b border-border max-h-[calc(100vh-4rem)] overflow-y-auto">
+            <div className="flex flex-col p-4 sm:p-6 gap-3 sm:gap-4">
               {navLinks.map((link) => (
                 <a
                   key={link.name}
@@ -137,7 +138,7 @@ const Navbar = () => {
               ))}
               <HireMeDialog>
                 <Button 
-                  className="font-mono text-sm bg-primary text-primary-foreground hover:bg-primary/90 mt-2"
+                  className="font-mono text-sm bg-primary text-primary-foreground hover:bg-primary/90 mt-2 w-full"
                 >
                   Hire Me
                 </Button>
