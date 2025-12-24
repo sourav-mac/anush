@@ -19,8 +19,8 @@ const education = [
   {
     degree: 'Higher Secondary (12th)',
     specialization: 'Science Stream',
-    institution: 'CBSE Board',
-    location: 'India',
+    institution: 'WBBSE Board',
+    location: 'West Bengal, India',
     duration: '2020 - 2022',
     status: 'Completed',
     score: '94.08%',
@@ -32,8 +32,8 @@ const education = [
   {
     degree: 'Secondary (10th)',
     specialization: 'General Education',
-    institution: 'CBSE Board',
-    location: 'India',
+    institution: 'WBBSE Board',
+    location: 'West Bengal, India',
     duration: '2018 - 2020',
     status: 'Completed',
     score: '85%',
