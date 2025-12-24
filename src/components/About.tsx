@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Award, GraduationCap, Calendar, MapPin } from 'lucide-react';
+import { ArrowRight, Award, GraduationCap, Calendar, MapPin, Code } from 'lucide-react';
 import HireMeDialog from './HireMeDialog';
 import { AnimatedSection } from './AnimatedSection';
 import profilePhoto from '@/assets/profile-photo.jpg';
@@ -64,6 +64,19 @@ const education = [
     duration: '2018 - 2020',
     score: '85%',
   },
+];
+
+const skills = [
+  { name: 'C', level: 85 },
+  { name: 'C++', level: 80 },
+  { name: 'Python', level: 75 },
+  { name: 'HTML/CSS', level: 90 },
+  { name: 'JavaScript', level: 70 },
+  { name: 'React', level: 65 },
+  { name: 'SQL', level: 70 },
+  { name: 'Machine Learning', level: 60 },
+  { name: 'Git/GitHub', level: 75 },
+  { name: 'Cloud (GCP)', level: 65 },
 ];
 
 const About = () => {
@@ -216,6 +229,33 @@ const About = () => {
                     {edu.status}
                   </div>
                 )}
+              </div>
+            ))}
+          </div>
+        </AnimatedSection>
+
+        {/* Skills Section */}
+        <AnimatedSection animation="fade-up" delay={200} className="mt-12 sm:mt-16 md:mt-20">
+          <div className="flex items-center gap-2 sm:gap-3 mb-6 sm:mb-8 justify-center lg:justify-start">
+            <Code className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
+            <h3 className="font-mono text-xl sm:text-2xl md:text-3xl font-semibold">
+              Technical Skills
+            </h3>
+          </div>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+            {skills.map((skill, index) => (
+              <div key={index} className="space-y-2">
+                <div className="flex justify-between items-center">
+                  <span className="font-mono text-sm text-foreground">{skill.name}</span>
+                  <span className="font-mono text-xs text-primary">{skill.level}%</span>
+                </div>
+                <div className="h-2 bg-muted rounded-full overflow-hidden">
+                  <div 
+                    className="h-full bg-gradient-to-r from-primary to-primary/60 rounded-full transition-all duration-1000 ease-out"
+                    style={{ width: `${skill.level}%` }}
+                  />
+                </div>
               </div>
             ))}
           </div>
