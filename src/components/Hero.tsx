@@ -109,24 +109,22 @@ const Hero = () => {
           <div className="relative flex justify-center items-center mb-6 lg:mb-0">
             <div className="relative animate-float">
               {/* Minimal Circle Container with Green Glass Effect */}
-              <div className="relative w-48 sm:w-64 md:w-80 lg:w-96 xl:w-[28rem] h-48 sm:h-64 md:h-80 lg:h-96 xl:h-[28rem] rounded-full">
+              <div className="relative w-48 sm:w-64 md:w-80 lg:w-96 xl:w-[28rem] h-48 sm:h-64 md:h-80 lg:h-96 xl:h-[28rem] rounded-full overflow-hidden">
                 {/* Glass effect background */}
                 <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/15 via-primary/5 to-transparent backdrop-blur-sm border border-primary/20" />
+                {/* Background Profile Image */}
+                <img 
+                  src={profileDp} 
+                  alt="Anush Pradhan" 
+                  className="absolute inset-0 w-full h-full object-cover object-top"
+                />
               </div>
-              
-              {/* Cutout Image - overlays the circle with 3D effect */}
-              <img 
-                src={profileCutout} 
-                alt="Anush Pradhan" 
-                className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[140%] h-auto object-contain pointer-events-none"
-                style={{ clipPath: 'ellipse(50% 85% at 50% 100%)' }}
-              />
-              {/* Cutout Image - Upper part that pops out above circle */}
+              {/* Cutout Image for 3D Pop-out Effect */}
               <img 
                 src={profileCutout} 
                 alt="" 
                 aria-hidden="true"
-                className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[140%] h-auto object-contain pointer-events-none z-10"
+                className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[130%] h-auto object-contain object-bottom pointer-events-none"
               />
             </div>
 
