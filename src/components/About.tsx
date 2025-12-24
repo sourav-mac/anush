@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Award } from 'lucide-react';
+import { ArrowRight, Award, GraduationCap, Calendar, MapPin } from 'lucide-react';
 import HireMeDialog from './HireMeDialog';
 import { AnimatedSection } from './AnimatedSection';
 import profilePhoto from '@/assets/profile-photo.jpg';
@@ -36,6 +36,33 @@ const certificates = [
     date: '2024',
     description: 'Achieved All India Rank 20 in this national cloud innovation hackathon.',
     image: certVultrHackathon,
+  },
+];
+
+const education = [
+  {
+    degree: 'B.Tech in Computer Science & Engineering',
+    specialization: 'AI & ML',
+    institution: 'Techno India University',
+    location: 'Kolkata',
+    duration: '2022 - 2026',
+    status: 'Currently Pursuing',
+  },
+  {
+    degree: 'Higher Secondary (12th)',
+    specialization: 'Science',
+    institution: 'WBBSE Board',
+    location: 'West Bengal',
+    duration: '2020 - 2022',
+    score: '94.08%',
+  },
+  {
+    degree: 'Secondary (10th)',
+    specialization: 'General',
+    institution: 'WBBSE Board',
+    location: 'West Bengal',
+    duration: '2018 - 2020',
+    score: '85%',
   },
 ];
 
@@ -142,6 +169,53 @@ const About = () => {
                     {cert.description}
                   </p>
                 </div>
+              </div>
+            ))}
+          </div>
+        </AnimatedSection>
+
+        {/* Education Section */}
+        <AnimatedSection animation="fade-up" delay={100} className="mt-12 sm:mt-16 md:mt-20">
+          <div className="flex items-center gap-2 sm:gap-3 mb-6 sm:mb-8 justify-center lg:justify-start">
+            <GraduationCap className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
+            <h3 className="font-mono text-xl sm:text-2xl md:text-3xl font-semibold">
+              Education
+            </h3>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
+            {education.map((edu, index) => (
+              <div
+                key={index}
+                className="p-4 sm:p-5 md:p-6 rounded-xl border border-border bg-card hover:border-primary/30 transition-all group"
+              >
+                <div className="flex items-center gap-2 mb-3">
+                  <GraduationCap className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
+                  <h4 className="font-mono font-semibold text-sm sm:text-base text-foreground group-hover:text-primary transition-colors">
+                    {edu.degree}
+                  </h4>
+                </div>
+                <p className="font-mono text-xs sm:text-sm text-primary/80 mb-3">{edu.specialization}</p>
+                <div className="space-y-1.5 text-muted-foreground">
+                  <div className="flex items-center gap-2">
+                    <MapPin className="h-3 w-3 text-primary/60" />
+                    <span className="font-mono text-xs">{edu.institution}, {edu.location}</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Calendar className="h-3 w-3 text-primary/60" />
+                    <span className="font-mono text-xs">{edu.duration}</span>
+                  </div>
+                </div>
+                {edu.score && (
+                  <div className="mt-3 inline-block px-2 py-1 rounded-full bg-primary/10 text-primary font-mono text-xs border border-primary/20">
+                    {edu.score}
+                  </div>
+                )}
+                {edu.status && (
+                  <div className="mt-3 inline-block px-2 py-1 rounded-full bg-primary/20 text-primary font-mono text-xs border border-primary/30">
+                    {edu.status}
+                  </div>
+                )}
               </div>
             ))}
           </div>
