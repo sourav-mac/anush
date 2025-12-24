@@ -123,11 +123,11 @@ const About = () => {
                 key={index}
                 className="group rounded-xl border border-border bg-card overflow-hidden hover:border-primary/50 transition-all"
               >
-                <div className="aspect-video overflow-hidden bg-muted">
+                <div className="overflow-hidden bg-muted">
                   <img 
                     src={cert.image} 
                     alt={cert.title} 
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="w-full h-auto object-contain group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>
                 <div className="p-5">
