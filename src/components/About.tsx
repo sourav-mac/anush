@@ -82,7 +82,7 @@ const skills = [
 ];
 
 const About = () => {
-  const [activeTab, setActiveTab] = useState<'education' | 'skills'>('education');
+  const [activeTab, setActiveTab] = useState<'education' | 'skills' | 'certifications'>('education');
 
   return (
     <section id="about" className="py-16 sm:py-20 md:py-24 lg:py-32">
@@ -163,45 +163,7 @@ const About = () => {
           </AnimatedSection>
         </div>
 
-        {/* Certificates Section */}
-        <AnimatedSection animation="fade-up" className="mt-12 sm:mt-16 md:mt-20">
-          <div className="flex items-center gap-2 sm:gap-3 mb-6 sm:mb-8 justify-center lg:justify-start">
-            <Award className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
-            <h3 className="font-mono text-xl sm:text-2xl md:text-3xl font-semibold">
-              Certifications
-            </h3>
-          </div>
-          
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-            {certificates.map((cert, index) => (
-              <div
-                key={index}
-                className="group rounded-xl border border-border bg-card overflow-hidden hover:border-primary/50 transition-all"
-              >
-                <div className="h-36 sm:h-44 md:h-48 overflow-hidden bg-muted flex items-center justify-center">
-                  <img 
-                    src={cert.image} 
-                    alt={cert.title} 
-                    className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-                <div className="p-4 sm:p-5">
-                  <h4 className="font-mono font-semibold text-sm sm:text-base text-foreground group-hover:text-primary transition-colors line-clamp-2">
-                    {cert.title}
-                  </h4>
-                  <p className="font-mono text-xs sm:text-sm text-muted-foreground mt-1">
-                    {cert.issuer} • {cert.date}
-                  </p>
-                  <p className="text-xs sm:text-sm text-muted-foreground/80 mt-2 line-clamp-2">
-                    {cert.description}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </AnimatedSection>
-
-        {/* Education & Skills Toggle Section */}
+        {/* Education, Skills & Certifications Toggle Section */}
         <AnimatedSection animation="fade-up" delay={100} className="mt-12 sm:mt-16 md:mt-20">
           {/* Toggle Buttons */}
           <div className="flex justify-center lg:justify-start gap-3 sm:gap-4 mb-6 sm:mb-8">
@@ -228,6 +190,18 @@ const About = () => {
             >
               <Code className="mr-2 h-4 w-4" />
               Technical Skills
+            </Button>
+            <Button
+              variant={activeTab === 'certifications' ? 'default' : 'outline'}
+              onClick={() => setActiveTab('certifications')}
+              className={`font-mono text-xs sm:text-sm transition-all ${
+                activeTab === 'certifications' 
+                  ? 'bg-primary text-primary-foreground' 
+                  : 'border-primary/30 bg-transparent hover:bg-primary hover:text-primary-foreground hover:border-primary'
+              }`}
+            >
+              <Award className="mr-2 h-4 w-4" />
+              Certifications
             </Button>
           </div>
 
@@ -281,6 +255,37 @@ const About = () => {
                   level={skill.level} 
                   delay={index * 100}
                 />
+              ))}
+            </div>
+          )}
+
+          {/* Certifications Content */}
+          {activeTab === 'certifications' && (
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 animate-fade-in">
+              {certificates.map((cert, index) => (
+                <div
+                  key={index}
+                  className="group rounded-xl border border-border bg-card overflow-hidden hover:border-primary/50 transition-all"
+                >
+                  <div className="h-36 sm:h-44 md:h-48 overflow-hidden bg-muted flex items-center justify-center">
+                    <img 
+                      src={cert.image} 
+                      alt={cert.title} 
+                      className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                  <div className="p-4 sm:p-5">
+                    <h4 className="font-mono font-semibold text-sm sm:text-base text-foreground group-hover:text-primary transition-colors line-clamp-2">
+                      {cert.title}
+                    </h4>
+                    <p className="font-mono text-xs sm:text-sm text-muted-foreground mt-1">
+                      {cert.issuer} • {cert.date}
+                    </p>
+                    <p className="text-xs sm:text-sm text-muted-foreground/80 mt-2 line-clamp-2">
+                      {cert.description}
+                    </p>
+                  </div>
+                </div>
               ))}
             </div>
           )}
