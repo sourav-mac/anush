@@ -25,7 +25,7 @@ const ThemeToggle = () => {
   };
 
   return (
-    <button type="button" className="toggle bg-background/20 backdrop-blur-md border border-primary/30 rounded-lg p-2 hover:bg-primary/20 hover:border-primary hover:shadow-[0_0_15px_rgba(34,197,94,0.3)] transition-all" onClick={toggleTheme} aria-label="Toggle theme">
+    <button type="button" className="toggle bg-background/20 backdrop-blur-md border border-primary/30 rounded-full p-2 hover:bg-primary/20 hover:border-primary transition-all" onClick={toggleTheme} aria-label="Toggle theme">
       <div className="icon icon--moon">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
           <path
