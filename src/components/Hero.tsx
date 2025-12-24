@@ -110,7 +110,7 @@ const Hero = () => {
               {/* Minimal Circle Container with Green Glass Effect */}
               <div className="relative w-48 sm:w-64 md:w-80 lg:w-96 xl:w-[28rem] h-48 sm:h-64 md:h-80 lg:h-96 xl:h-[28rem] rounded-full">
                 {/* Glass effect background */}
-                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/15 via-primary/5 to-transparent backdrop-blur-sm border border-primary/20 shadow-[0_0_60px_rgba(34,197,94,0.15),inset_0_0_30px_rgba(34,197,94,0.05)]" />
+                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/15 via-primary/5 to-transparent backdrop-blur-sm border border-primary/20" />
                 
                 {/* Bottom clip mask - clips only lower portion */}
                 <div className="absolute inset-0 rounded-full overflow-hidden">
