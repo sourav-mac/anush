@@ -7,6 +7,7 @@ import HireMeDialog from './HireMeDialog';
 const navLinks = [
   { name: 'Home', href: '#home' },
   { name: 'About Me', href: '#about' },
+  { name: 'Education', href: '#education' },
   { name: 'Projects', href: '#projects' },
   { name: 'Services', href: '#services' },
   { name: 'Contact', href: '#contact' },
