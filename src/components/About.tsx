@@ -1,7 +1,29 @@
 import { Button } from '@/components/ui/button';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Award, ExternalLink } from 'lucide-react';
 import HireMeDialog from './HireMeDialog';
 import profilePhoto from '@/assets/profile-photo.jpg';
+
+const certificates = [
+  {
+    title: 'IBM Data Science',
+    issuer: 'IBM',
+    date: '2024',
+    link: '#', // Replace with actual certificate link
+  },
+  {
+    title: 'Python for Data Science',
+    issuer: 'IBM',
+    date: '2024',
+    link: '#',
+  },
+  {
+    title: 'Web Development Fundamentals',
+    issuer: 'Coursera',
+    date: '2023',
+    link: '#',
+  },
+  // Add more certificates here
+];
 
 const About = () => {
   return (
@@ -70,6 +92,43 @@ const About = () => {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+
+        {/* Certificates Section */}
+        <div className="mt-20">
+          <div className="flex items-center gap-3 mb-8">
+            <Award className="h-6 w-6 text-primary" />
+            <h3 className="font-mono text-2xl md:text-3xl font-semibold">
+              Certifications
+            </h3>
+          </div>
+          
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {certificates.map((cert, index) => (
+              <a
+                key={index}
+                href={cert.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group p-5 rounded-xl border border-border bg-card hover:border-primary/50 hover:bg-primary/5 transition-all"
+              >
+                <div className="flex items-start justify-between">
+                  <div className="flex-1">
+                    <h4 className="font-mono font-semibold text-foreground group-hover:text-primary transition-colors">
+                      {cert.title}
+                    </h4>
+                    <p className="font-mono text-sm text-muted-foreground mt-1">
+                      {cert.issuer}
+                    </p>
+                    <p className="font-mono text-xs text-muted-foreground/70 mt-2">
+                      {cert.date}
+                    </p>
+                  </div>
+                  <ExternalLink className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors opacity-0 group-hover:opacity-100" />
+                </div>
+              </a>
+            ))}
           </div>
         </div>
       </div>
