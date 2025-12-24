@@ -108,33 +108,26 @@ const Hero = () => {
           {/* Right Content - Image */}
           <div className="relative flex justify-center items-center mb-6 lg:mb-0">
             <div className="relative animate-float">
-              {/* Cutout Image - Upper part (above circle) */}
+              {/* Minimal Circle Container with Green Glass Effect */}
+              <div className="relative w-48 sm:w-64 md:w-80 lg:w-96 xl:w-[28rem] h-48 sm:h-64 md:h-80 lg:h-96 xl:h-[28rem] rounded-full">
+                {/* Glass effect background */}
+                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/15 via-primary/5 to-transparent backdrop-blur-sm border border-primary/20" />
+              </div>
+              
+              {/* Cutout Image - overlays the circle with 3D effect */}
+              <img 
+                src={profileCutout} 
+                alt="Anush Pradhan" 
+                className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[140%] h-auto object-contain pointer-events-none"
+                style={{ clipPath: 'ellipse(50% 85% at 50% 100%)' }}
+              />
+              {/* Cutout Image - Upper part that pops out above circle */}
               <img 
                 src={profileCutout} 
                 alt="" 
                 aria-hidden="true"
-                className="absolute bottom-[15%] left-1/2 -translate-x-1/2 w-[140%] h-auto object-contain pointer-events-none z-10"
-                style={{ clipPath: 'polygon(0 0, 100% 0, 100% 55%, 0 55%)' }}
+                className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[140%] h-auto object-contain pointer-events-none z-10"
               />
-              
-              {/* Minimal Circle Container with Green Glass Effect */}
-              <div className="relative w-48 sm:w-64 md:w-80 lg:w-96 xl:w-[28rem] h-48 sm:h-64 md:h-80 lg:h-96 xl:h-[28rem] rounded-full overflow-hidden">
-                {/* Glass effect background */}
-                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/15 via-primary/5 to-transparent backdrop-blur-sm border border-primary/20" />
-                {/* Background Profile Image */}
-                <img 
-                  src={profileDp} 
-                  alt="Anush Pradhan" 
-                  className="absolute inset-0 w-full h-full object-cover object-top"
-                />
-                {/* Cutout Image - Lower part (inside circle) */}
-                <img 
-                  src={profileCutout} 
-                  alt="" 
-                  aria-hidden="true"
-                  className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[140%] h-auto object-contain pointer-events-none"
-                />
-              </div>
             </div>
 
             {/* Scroll Indicator */}
