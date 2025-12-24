@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Github, Linkedin, Mail, Phone, ChevronDown, Calendar } from 'lucide-react';
-import heroImage from '@/assets/hero-image.png';
+import profileDp from '@/assets/profile-dp.png';
 import TimelineDialog from './TimelineDialog';
 
 const roles = ['CSE Student', 'Tech Innovator', 'Problem Solver', 'Freelance Developer'];
@@ -106,11 +106,17 @@ const Hero = () => {
 
           {/* Right Content - Image */}
           <div className="relative flex justify-center items-center mb-6 lg:mb-0">
-          <div className="relative animate-float">
+            <div className="relative animate-float">
               {/* Minimal Circle Container with Green Glass Effect */}
-              <div className="relative w-48 sm:w-64 md:w-80 lg:w-96 xl:w-[28rem] h-48 sm:h-64 md:h-80 lg:h-96 xl:h-[28rem] rounded-full">
+              <div className="relative w-48 sm:w-64 md:w-80 lg:w-96 xl:w-[28rem] h-48 sm:h-64 md:h-80 lg:h-96 xl:h-[28rem] rounded-full overflow-hidden">
                 {/* Glass effect background */}
                 <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/15 via-primary/5 to-transparent backdrop-blur-sm border border-primary/20" />
+                {/* Profile Image */}
+                <img 
+                  src={profileDp} 
+                  alt="Anush Pradhan" 
+                  className="absolute inset-0 w-full h-full object-cover object-top"
+                />
               </div>
             </div>
 
