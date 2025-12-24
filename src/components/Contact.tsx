@@ -309,7 +309,7 @@ const Contact = () => {
                 className="p-4 sm:p-5 md:p-6 rounded-xl border border-border bg-card hover:border-primary/30 transition-all"
               >
                 <div className="flex items-start gap-3 sm:gap-4">
-                  <div className="p-2 sm:p-3 rounded-lg bg-primary/10 backdrop-blur-md border border-primary/20 shadow-lg shrink-0">
+                  <div className="p-2 sm:p-3 rounded-lg bg-gradient-to-br from-primary/20 to-primary/5 backdrop-blur-xl border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.12)] ring-1 ring-white/10 shrink-0">
                     <item.icon className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
                   </div>
                   <div className="min-w-0">
@@ -334,7 +334,7 @@ const Contact = () => {
                 key={index}
                 className="p-3 sm:p-4 md:p-5 rounded-xl border border-border bg-card hover:border-primary/30 hover:bg-primary/5 transition-all text-center"
               >
-                <div className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-3 sm:mb-4 rounded-full bg-primary/10 backdrop-blur-md border border-primary/20 shadow-lg flex items-center justify-center">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-3 sm:mb-4 rounded-full bg-gradient-to-br from-primary/20 to-primary/5 backdrop-blur-xl border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.12)] ring-1 ring-white/10 flex items-center justify-center">
                   <item.icon className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
                 </div>
                 <h4 className="font-mono font-semibold text-foreground mb-1 sm:mb-2 text-xs sm:text-sm">{item.title}</h4>
