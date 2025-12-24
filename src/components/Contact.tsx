@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
-import { ArrowRight, Circle, Phone, Mail, Linkedin, Github, Code, Briefcase, Lightbulb, Users, Rocket, GraduationCap, Target, TrendingUp, Send, RotateCcw } from 'lucide-react';
+import { ArrowRight, Circle, Phone, Mail, Linkedin, Github, Code, Briefcase, Lightbulb, Users, Rocket, GraduationCap, Target, TrendingUp, Send, RotateCcw, MessageSquare, Globe, Star, Crosshair } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
 const Contact = () => {
@@ -156,8 +156,9 @@ const Contact = () => {
 
         {/* Contact Form Section */}
         <div className="max-w-2xl mx-auto mb-10 sm:mb-12 md:mb-16">
-          <h3 className="font-mono text-lg sm:text-xl md:text-2xl font-semibold text-center mb-6 sm:mb-8">
-            📬 Get In Touch
+          <h3 className="font-mono text-lg sm:text-xl md:text-2xl font-semibold text-center mb-6 sm:mb-8 flex items-center justify-center gap-2">
+            <MessageSquare className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
+            Get In Touch
           </h3>
           <form onSubmit={handleSubmit} className="p-4 sm:p-6 md:p-8 rounded-2xl border border-border bg-card space-y-4 sm:space-y-6">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -255,8 +256,9 @@ const Contact = () => {
 
         {/* Connect With Me Section */}
         <div className="max-w-2xl mx-auto mb-10 sm:mb-12 md:mb-16">
-          <h3 className="font-mono text-lg sm:text-xl md:text-2xl font-semibold text-center mb-6 sm:mb-8">
-            🌐 Connect With Me
+          <h3 className="font-mono text-lg sm:text-xl md:text-2xl font-semibold text-center mb-6 sm:mb-8 flex items-center justify-center gap-2">
+            <Globe className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
+            Connect With Me
           </h3>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
             <a 
@@ -296,8 +298,9 @@ const Contact = () => {
 
         {/* Why Recruit Me Section */}
         <div className="max-w-5xl mx-auto mb-10 sm:mb-12 md:mb-16">
-          <h3 className="font-mono text-lg sm:text-xl md:text-2xl font-semibold text-center mb-6 sm:mb-8">
-            ⭐ Why Recruit Me?
+          <h3 className="font-mono text-lg sm:text-xl md:text-2xl font-semibold text-center mb-6 sm:mb-8 flex items-center justify-center gap-2">
+            <Star className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
+            Why Recruit Me?
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
             {whyRecruitMe.map((item, index) => (
@@ -321,8 +324,9 @@ const Contact = () => {
 
         {/* What I Bring Section */}
         <div className="max-w-5xl mx-auto mb-10 sm:mb-12 md:mb-16">
-          <h3 className="font-mono text-lg sm:text-xl md:text-2xl font-semibold text-center mb-6 sm:mb-8">
-            🎯 What I Bring to Your Team
+          <h3 className="font-mono text-lg sm:text-xl md:text-2xl font-semibold text-center mb-6 sm:mb-8 flex items-center justify-center gap-2">
+            <Crosshair className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
+            What I Bring to Your Team
           </h3>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
             {whatIBring.map((item, index) => (
