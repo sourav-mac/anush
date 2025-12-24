@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Github, Linkedin, Mail, Phone, ChevronDown, Calendar } from 'lucide-react';
-import heroImage from '@/assets/hero-image.png';
 import TimelineDialog from './TimelineDialog';
 
 const roles = ['CSE Student', 'Tech Innovator', 'Problem Solver', 'Freelance Developer'];
@@ -52,7 +51,7 @@ const Hero = () => {
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="flex flex-col-reverse lg:flex-row lg:grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+        <div className="flex flex-col items-center lg:items-start gap-8">
           {/* Left Content */}
           <div className="space-y-6 sm:space-y-8 animate-fade-in text-center lg:text-left">
             <div className="space-y-3 sm:space-y-4">
@@ -104,41 +103,10 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Right Content - Image */}
-          <div className="relative flex justify-center items-center mb-6 lg:mb-0">
-            <div className="relative animate-float">
-              {/* Minimal Circle Container with Green Glass Effect */}
-              <div className="relative w-48 sm:w-64 md:w-80 lg:w-96 xl:w-[28rem] h-48 sm:h-64 md:h-80 lg:h-96 xl:h-[28rem] rounded-full">
-                {/* Glass effect background */}
-                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/15 via-primary/5 to-transparent backdrop-blur-sm border border-primary/20" />
-                
-                {/* Bottom clip mask - clips only lower portion */}
-                <div className="absolute inset-0 rounded-full overflow-hidden">
-                  <img 
-                    src={heroImage} 
-                    alt="Anush Pradhan" 
-                    className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[140%] h-auto object-contain object-bottom"
-                  />
-                </div>
-                
-                {/* Top overflow image - shows above circle */}
-                <img 
-                  src={heroImage} 
-                  alt="" 
-                  aria-hidden="true"
-                  className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[140%] h-auto object-contain object-bottom pointer-events-none"
-                  style={{ 
-                    clipPath: 'polygon(0 0, 100% 0, 100% 50%, 0 50%)'
-                  }}
-                />
-              </div>
-            </div>
-
-            {/* Scroll Indicator */}
-            <div className="absolute -bottom-16 sm:-bottom-20 right-1/2 translate-x-1/2 flex-col items-center gap-2 text-muted-foreground hidden lg:flex">
-              <span className="font-mono text-xs">Scroll Down</span>
-              <ChevronDown className="h-4 w-4 animate-bounce" />
-            </div>
+          {/* Scroll Indicator */}
+          <div className="hidden lg:flex flex-col items-center gap-2 text-muted-foreground mt-8">
+            <span className="font-mono text-xs">Scroll Down</span>
+            <ChevronDown className="h-4 w-4 animate-bounce" />
           </div>
         </div>
       </div>
