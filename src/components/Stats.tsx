@@ -54,17 +54,17 @@ const Stats = () => {
   }, [isVisible]);
 
   return (
-    <section ref={sectionRef} className="py-20 border-y border-border bg-card/30">
-      <div className="container mx-auto px-6">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+    <section ref={sectionRef} className="py-12 sm:py-16 md:py-20 border-y border-border bg-card/30">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 md:gap-12">
           {stats.map((stat, index) => (
-            <div key={index} className="text-center md:text-left flex items-center gap-4 justify-center md:justify-start">
-              <span className="font-mono text-4xl md:text-5xl lg:text-6xl font-bold text-primary">
+            <div key={index} className="text-center lg:text-left flex flex-col sm:flex-row items-center gap-2 sm:gap-4 justify-center lg:justify-start">
+              <span className="font-mono text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-primary">
                 {counts[index]}
               </span>
-              <div className="text-left">
-                <p className="text-muted-foreground text-sm font-mono">{stat.label}</p>
-                <p className="text-muted-foreground text-sm font-mono">{stat.sublabel}</p>
+              <div className="text-center sm:text-left">
+                <p className="text-muted-foreground text-xs sm:text-sm font-mono">{stat.label}</p>
+                <p className="text-muted-foreground text-xs sm:text-sm font-mono">{stat.sublabel}</p>
               </div>
             </div>
           ))}
