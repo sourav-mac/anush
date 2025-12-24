@@ -71,13 +71,13 @@ const Navbar = () => {
           </a>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-6 xl:gap-10">
+          <div className="hidden md:flex items-center gap-4 lg:gap-6 xl:gap-10">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
                 onClick={() => handleNavClick(link.href)}
-                className={`font-medium text-sm xl:text-base transition-colors relative group ${
+                className={`font-medium text-xs lg:text-sm xl:text-base transition-colors relative group ${
                   activeSection === link.href 
                     ? 'text-primary font-semibold' 
                     : 'text-foreground hover:text-primary'
@@ -100,7 +100,7 @@ const Navbar = () => {
               <Button
                 variant="default"
                 size="sm"
-                className="hidden lg:flex font-mono text-xs sm:text-sm bg-foreground text-background hover:bg-foreground/90 transition-all"
+                className="hidden md:flex font-mono text-xs sm:text-sm bg-foreground text-background hover:bg-foreground/90 transition-all"
               >
                 Hire Me
               </Button>
@@ -110,7 +110,7 @@ const Navbar = () => {
             <Button
               variant="ghost"
               size="icon"
-              className="lg:hidden h-9 w-9 sm:h-10 sm:w-10"
+              className="md:hidden h-9 w-9 sm:h-10 sm:w-10"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
               {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -120,7 +120,7 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden absolute top-16 sm:top-18 md:top-20 left-0 right-0 bg-background/95 backdrop-blur-lg border-b border-border max-h-[calc(100vh-4rem)] overflow-y-auto">
+          <div className="md:hidden absolute top-16 sm:top-18 left-0 right-0 bg-background/95 backdrop-blur-lg border-b border-border max-h-[calc(100vh-4rem)] overflow-y-auto">
             <div className="flex flex-col p-4 sm:p-6 gap-3 sm:gap-4">
               {navLinks.map((link) => (
                 <a
