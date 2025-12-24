@@ -2,6 +2,7 @@ import { Button } from '@/components/ui/button';
 import { ArrowRight, Award, GraduationCap, Calendar, MapPin, Code } from 'lucide-react';
 import HireMeDialog from './HireMeDialog';
 import { AnimatedSection } from './AnimatedSection';
+import SkillBar from './SkillBar';
 import profilePhoto from '@/assets/profile-photo.jpg';
 import certGoogleCloud from '@/assets/cert-google-cloud.png';
 import certIBMDataScience from '@/assets/cert-ibm-data-science.png';
@@ -245,18 +246,12 @@ const About = () => {
           
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
             {skills.map((skill, index) => (
-              <div key={index} className="space-y-2">
-                <div className="flex justify-between items-center">
-                  <span className="font-mono text-sm text-foreground">{skill.name}</span>
-                  <span className="font-mono text-xs text-primary">{skill.level}%</span>
-                </div>
-                <div className="h-2 bg-muted rounded-full overflow-hidden">
-                  <div 
-                    className="h-full bg-gradient-to-r from-primary to-primary/60 rounded-full transition-all duration-1000 ease-out"
-                    style={{ width: `${skill.level}%` }}
-                  />
-                </div>
-              </div>
+              <SkillBar 
+                key={index} 
+                name={skill.name} 
+                level={skill.level} 
+                delay={index * 100}
+              />
             ))}
           </div>
         </AnimatedSection>
