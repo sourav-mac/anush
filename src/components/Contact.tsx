@@ -1,7 +1,22 @@
+import { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Circle, Phone, Mail, Linkedin, Github, Code, Briefcase, Lightbulb, Users, Rocket, GraduationCap, Target, TrendingUp } from 'lucide-react';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import { Label } from '@/components/ui/label';
+import { ArrowRight, Circle, Phone, Mail, Linkedin, Github, Code, Briefcase, Lightbulb, Users, Rocket, GraduationCap, Target, TrendingUp, Send, RotateCcw } from 'lucide-react';
+import { useToast } from '@/hooks/use-toast';
 
 const Contact = () => {
+  const { toast } = useToast();
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const opportunities = [
     'Web Development',
     'Frontend / Backend Development',
@@ -40,6 +55,68 @@ const Contact = () => {
     { icon: TrendingUp, title: 'Growth-Oriented Attitude', description: 'Always learning, improving, and evolving.' }
   ];
 
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleReset = () => {
+    setFormData({
+      firstName: '',
+      lastName: '',
+      email: '',
+      phone: '',
+      message: ''
+    });
+  };
+
+  const validateForm = () => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const phoneRegex = /^[+]?[\d\s-]{10,}$/;
+
+    if (!formData.firstName.trim() || formData.firstName.length > 50) {
+      toast({ title: 'Invalid First Name', description: 'Please enter a valid first name (max 50 characters)', variant: 'destructive' });
+      return false;
+    }
+    if (!formData.lastName.trim() || formData.lastName.length > 50) {
+      toast({ title: 'Invalid Last Name', description: 'Please enter a valid last name (max 50 characters)', variant: 'destructive' });
+      return false;
+    }
+    if (!emailRegex.test(formData.email) || formData.email.length > 100) {
+      toast({ title: 'Invalid Email', description: 'Please enter a valid email address', variant: 'destructive' });
+      return false;
+    }
+    if (formData.phone && !phoneRegex.test(formData.phone)) {
+      toast({ title: 'Invalid Phone', description: 'Please enter a valid phone number', variant: 'destructive' });
+      return false;
+    }
+    if (!formData.message.trim() || formData.message.length > 1000) {
+      toast({ title: 'Invalid Message', description: 'Please enter a message (max 1000 characters)', variant: 'destructive' });
+      return false;
+    }
+    return true;
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!validateForm()) return;
+
+    setIsSubmitting(true);
+
+    // Create mailto link with form data
+    const subject = encodeURIComponent(`Contact from ${formData.firstName} ${formData.lastName}`);
+    const body = encodeURIComponent(
+      `Name: ${formData.firstName} ${formData.lastName}\nEmail: ${formData.email}\nPhone: ${formData.phone || 'Not provided'}\n\nMessage:\n${formData.message}`
+    );
+    
+    window.location.href = `mailto:pradhananush.sagar@gmail.com?subject=${subject}&body=${body}`;
+    
+    toast({ title: 'Opening Email Client', description: 'Your default email client will open with the message.' });
+    setIsSubmitting(false);
+    handleReset();
+  };
+
   return (
     <section id="contact" className="py-16 sm:py-20 md:py-24 lg:py-32 bg-card/30 border-t border-border">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -77,6 +154,105 @@ const Contact = () => {
           </div>
         </div>
 
+        {/* Contact Form Section */}
+        <div className="max-w-2xl mx-auto mb-10 sm:mb-12 md:mb-16">
+          <h3 className="font-mono text-lg sm:text-xl md:text-2xl font-semibold text-center mb-6 sm:mb-8">
+            📬 Get In Touch
+          </h3>
+          <form onSubmit={handleSubmit} className="p-4 sm:p-6 md:p-8 rounded-2xl border border-border bg-card space-y-4 sm:space-y-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="space-y-2">
+                <Label htmlFor="firstName" className="font-mono text-sm">First Name *</Label>
+                <Input
+                  id="firstName"
+                  name="firstName"
+                  value={formData.firstName}
+                  onChange={handleInputChange}
+                  placeholder="John"
+                  className="font-mono text-sm"
+                  maxLength={50}
+                  required
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="lastName" className="font-mono text-sm">Last Name *</Label>
+                <Input
+                  id="lastName"
+                  name="lastName"
+                  value={formData.lastName}
+                  onChange={handleInputChange}
+                  placeholder="Doe"
+                  className="font-mono text-sm"
+                  maxLength={50}
+                  required
+                />
+              </div>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="space-y-2">
+                <Label htmlFor="email" className="font-mono text-sm">Email Address *</Label>
+                <Input
+                  id="email"
+                  name="email"
+                  type="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  placeholder="john@example.com"
+                  className="font-mono text-sm"
+                  maxLength={100}
+                  required
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="phone" className="font-mono text-sm">Phone Number</Label>
+                <Input
+                  id="phone"
+                  name="phone"
+                  type="tel"
+                  value={formData.phone}
+                  onChange={handleInputChange}
+                  placeholder="+91-XXXXXXXXXX"
+                  className="font-mono text-sm"
+                  maxLength={20}
+                />
+              </div>
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="message" className="font-mono text-sm">Your Message *</Label>
+              <Textarea
+                id="message"
+                name="message"
+                value={formData.message}
+                onChange={handleInputChange}
+                placeholder="Type your message here..."
+                className="font-mono text-sm min-h-[120px] sm:min-h-[150px] resize-none"
+                maxLength={1000}
+                required
+              />
+              <p className="text-xs text-muted-foreground text-right">{formData.message.length}/1000</p>
+            </div>
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-2">
+              <Button
+                type="submit"
+                disabled={isSubmitting}
+                className="flex-1 font-mono bg-primary text-primary-foreground hover:bg-primary/90 transition-all"
+              >
+                <Send className="mr-2 h-4 w-4" />
+                {isSubmitting ? 'Sending...' : 'Send Message'}
+              </Button>
+              <Button
+                type="button"
+                variant="outline"
+                onClick={handleReset}
+                className="flex-1 font-mono border-border hover:bg-muted transition-all"
+              >
+                <RotateCcw className="mr-2 h-4 w-4" />
+                Reset
+              </Button>
+            </div>
+          </form>
+        </div>
+
         {/* Connect With Me Section */}
         <div className="max-w-2xl mx-auto mb-10 sm:mb-12 md:mb-16">
           <h3 className="font-mono text-lg sm:text-xl md:text-2xl font-semibold text-center mb-6 sm:mb-8">
@@ -93,7 +269,7 @@ const Contact = () => {
               <span className="font-mono text-xs sm:text-sm text-muted-foreground group-hover:text-foreground">LinkedIn</span>
             </a>
             <a 
-              href="https://github.com/anushpradhan" 
+              href="https://github.com/Anush005" 
               target="_blank" 
               rel="noopener noreferrer"
               className="flex flex-col items-center gap-2 p-3 sm:p-4 rounded-xl border border-border bg-card hover:border-primary/50 hover:bg-primary/5 transition-all group"
