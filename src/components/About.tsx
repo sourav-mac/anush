@@ -166,41 +166,44 @@ const About = () => {
         {/* Education, Skills & Certifications Toggle Section */}
         <AnimatedSection animation="fade-up" delay={100} className="mt-12 sm:mt-16 md:mt-20">
           {/* Toggle Buttons */}
-          <div className="flex justify-center lg:justify-start gap-3 sm:gap-4 mb-6 sm:mb-8">
+          <div className="flex flex-wrap justify-center lg:justify-start gap-2 sm:gap-3 mb-6 sm:mb-8">
             <Button
               variant={activeTab === 'education' ? 'default' : 'outline'}
               onClick={() => setActiveTab('education')}
-              className={`font-mono text-xs sm:text-sm transition-all ${
+              size="sm"
+              className={`font-mono text-[10px] sm:text-xs md:text-sm transition-all px-2 sm:px-3 md:px-4 ${
                 activeTab === 'education' 
                   ? 'bg-primary text-primary-foreground' 
                   : 'border-primary/30 bg-transparent hover:bg-primary hover:text-primary-foreground hover:border-primary'
               }`}
             >
-              <GraduationCap className="mr-2 h-4 w-4" />
+              <GraduationCap className="mr-1 sm:mr-2 h-3 w-3 sm:h-4 sm:w-4" />
               Education
             </Button>
             <Button
               variant={activeTab === 'skills' ? 'default' : 'outline'}
               onClick={() => setActiveTab('skills')}
-              className={`font-mono text-xs sm:text-sm transition-all ${
+              size="sm"
+              className={`font-mono text-[10px] sm:text-xs md:text-sm transition-all px-2 sm:px-3 md:px-4 ${
                 activeTab === 'skills' 
                   ? 'bg-primary text-primary-foreground' 
                   : 'border-primary/30 bg-transparent hover:bg-primary hover:text-primary-foreground hover:border-primary'
               }`}
             >
-              <Code className="mr-2 h-4 w-4" />
-              Technical Skills
+              <Code className="mr-1 sm:mr-2 h-3 w-3 sm:h-4 sm:w-4" />
+              Skills
             </Button>
             <Button
               variant={activeTab === 'certifications' ? 'default' : 'outline'}
               onClick={() => setActiveTab('certifications')}
-              className={`font-mono text-xs sm:text-sm transition-all ${
+              size="sm"
+              className={`font-mono text-[10px] sm:text-xs md:text-sm transition-all px-2 sm:px-3 md:px-4 ${
                 activeTab === 'certifications' 
                   ? 'bg-primary text-primary-foreground' 
                   : 'border-primary/30 bg-transparent hover:bg-primary hover:text-primary-foreground hover:border-primary'
               }`}
             >
-              <Award className="mr-2 h-4 w-4" />
+              <Award className="mr-1 sm:mr-2 h-3 w-3 sm:h-4 sm:w-4" />
               Certifications
             </Button>
           </div>
