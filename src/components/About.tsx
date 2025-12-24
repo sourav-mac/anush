@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Award, GraduationCap, Calendar, MapPin, Code, Download } from 'lucide-react';
+import { ArrowRight, Award, GraduationCap, Calendar, MapPin, Code, Download, ExternalLink } from 'lucide-react';
 import HireMeDialog from './HireMeDialog';
 import { AnimatedSection } from './AnimatedSection';
 import SkillBar from './SkillBar';
@@ -17,6 +17,7 @@ const certificates = [
     date: 'Mar 2024',
     description: 'Professional certification validating cloud infrastructure and deployment skills.',
     image: certGoogleCloud,
+    link: '#',
   },
   {
     title: 'IBM Data Science Professional Certificate',
@@ -24,6 +25,7 @@ const certificates = [
     date: 'Dec 2024',
     description: 'Comprehensive 9-course program covering Python, SQL, ML, and Data Visualization.',
     image: certIBMDataScience,
+    link: '#',
   },
   {
     title: 'SAP S/4 HANA Development',
@@ -31,6 +33,7 @@ const certificates = [
     date: 'Jan 2025',
     description: 'Training in enterprise SAP development conducted at Techno India University.',
     image: certSAPHana,
+    link: '#',
   },
   {
     title: 'Vultr Cloud Innovate Hackathon',
@@ -38,6 +41,7 @@ const certificates = [
     date: '2024',
     description: 'Achieved All India Rank 20 in this national cloud innovation hackathon.',
     image: certVultrHackathon,
+    link: '#',
   },
 ];
 
@@ -174,29 +178,36 @@ const About = () => {
           
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
             {certificates.map((cert, index) => (
-              <div
+              <Button
                 key={index}
-                className="group rounded-xl border border-border bg-card overflow-hidden hover:border-primary/50 transition-all"
+                variant="outline"
+                className="h-auto p-0 flex flex-col backdrop-blur-md bg-background/20 border-primary/30 hover:bg-primary/20 hover:shadow-[0_0_20px_rgba(34,197,94,0.3)] hover:border-primary/50 transition-all duration-300 rounded-xl overflow-hidden group"
+                asChild
               >
-                <div className="h-36 sm:h-44 md:h-48 overflow-hidden bg-muted flex items-center justify-center">
-                  <img 
-                    src={cert.image} 
-                    alt={cert.title} 
-                    className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-                <div className="p-4 sm:p-5">
-                  <h4 className="font-mono font-semibold text-sm sm:text-base text-foreground group-hover:text-primary transition-colors line-clamp-2">
-                    {cert.title}
-                  </h4>
-                  <p className="font-mono text-xs sm:text-sm text-muted-foreground mt-1">
-                    {cert.issuer} • {cert.date}
-                  </p>
-                  <p className="text-xs sm:text-sm text-muted-foreground/80 mt-2 line-clamp-2">
-                    {cert.description}
-                  </p>
-                </div>
-              </div>
+                <a href={cert.link} target="_blank" rel="noopener noreferrer">
+                  <div className="h-36 sm:h-44 md:h-48 w-full overflow-hidden bg-muted/50 flex items-center justify-center relative">
+                    <img 
+                      src={cert.image} 
+                      alt={cert.title} 
+                      className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
+                      <ExternalLink className="w-5 h-5 text-primary" />
+                    </div>
+                  </div>
+                  <div className="p-4 sm:p-5 text-left w-full">
+                    <h4 className="font-mono font-semibold text-sm sm:text-base text-foreground group-hover:text-primary transition-colors line-clamp-2">
+                      {cert.title}
+                    </h4>
+                    <p className="font-mono text-xs sm:text-sm text-muted-foreground mt-1">
+                      {cert.issuer} • {cert.date}
+                    </p>
+                    <p className="text-xs sm:text-sm text-muted-foreground/80 mt-2 line-clamp-2">
+                      {cert.description}
+                    </p>
+                  </div>
+                </a>
+              </Button>
             ))}
           </div>
         </AnimatedSection>
