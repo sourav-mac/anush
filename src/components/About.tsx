@@ -117,7 +117,7 @@ const About = () => {
                 className="font-mono text-xs sm:text-sm border-primary/30 bg-background/20 backdrop-blur-md hover:bg-primary/80 hover:text-primary-foreground hover:border-primary hover:shadow-[0_0_20px_rgba(34,197,94,0.3)] transition-all group"
                 asChild
               >
-                <a href="/resume.pdf" download="Anush_Pradhan_Resume.pdf">
+                <a href="/Anush_Pradhan_CV.pdf" download="Anush_Pradhan_CV.pdf">
                   <Download className="mr-2 h-3 w-3 sm:h-4 sm:w-4 group-hover:animate-bounce" />
                   Resume
                 </a>
