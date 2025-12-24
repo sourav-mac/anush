@@ -77,7 +77,7 @@ const Navbar = () => {
                 key={link.name}
                 href={link.href}
                 onClick={() => handleNavClick(link.href)}
-                className={`font-medium text-sm lg:text-base xl:text-lg transition-colors relative group ${
+                className={`font-mono text-sm lg:text-base xl:text-lg transition-colors relative group ${
                   activeSection === link.href 
                     ? 'text-primary font-semibold' 
                     : 'text-foreground hover:text-primary'
