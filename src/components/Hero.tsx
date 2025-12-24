@@ -108,6 +108,15 @@ const Hero = () => {
           {/* Right Content - Image */}
           <div className="relative flex justify-center items-center mb-6 lg:mb-0">
             <div className="relative animate-float">
+              {/* Cutout Image - Upper part (above circle) */}
+              <img 
+                src={profileCutout} 
+                alt="" 
+                aria-hidden="true"
+                className="absolute bottom-[15%] left-1/2 -translate-x-1/2 w-[140%] h-auto object-contain pointer-events-none z-10"
+                style={{ clipPath: 'polygon(0 0, 100% 0, 100% 55%, 0 55%)' }}
+              />
+              
               {/* Minimal Circle Container with Green Glass Effect */}
               <div className="relative w-48 sm:w-64 md:w-80 lg:w-96 xl:w-[28rem] h-48 sm:h-64 md:h-80 lg:h-96 xl:h-[28rem] rounded-full overflow-hidden">
                 {/* Glass effect background */}
@@ -118,14 +127,14 @@ const Hero = () => {
                   alt="Anush Pradhan" 
                   className="absolute inset-0 w-full h-full object-cover object-top"
                 />
+                {/* Cutout Image - Lower part (inside circle) */}
+                <img 
+                  src={profileCutout} 
+                  alt="" 
+                  aria-hidden="true"
+                  className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[140%] h-auto object-contain pointer-events-none"
+                />
               </div>
-              {/* Cutout Image for 3D Pop-out Effect */}
-              <img 
-                src={profileCutout} 
-                alt="" 
-                aria-hidden="true"
-                className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[130%] h-auto object-contain object-bottom pointer-events-none"
-              />
             </div>
 
             {/* Scroll Indicator */}
