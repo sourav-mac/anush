@@ -1,33 +1,37 @@
 import { ArrowUpRight } from 'lucide-react';
 import { AnimatedSection } from './AnimatedSection';
+import projectFraud from '@/assets/project-fraud-detection.jpg';
+import projectEwaste from '@/assets/project-ewaste.png';
+import projectAiDisaster from '@/assets/project-ai-disaster.jpg';
+import projectWeather from '@/assets/project-weather.jpg';
 
 const projects = [
   {
     title: 'Fraud Detection System',
     description: 'System to detect fraudulent activities in E-commerce using pattern recognition and data analysis.',
     category: 'Data Analysis',
-    image: null,
+    image: projectFraud,
     color: 'from-red-500/20 to-orange-500/20',
   },
   {
     title: 'E-Waste Management Platform',
     description: 'Platform for efficient disposal and recycling of e-waste materials with tracking system.',
     category: 'Web Platform',
-    image: null,
+    image: projectEwaste,
     color: 'from-emerald-500/20 to-teal-500/20',
   },
   {
     title: 'AI Disaster Management',
     description: 'AI-driven system to help predict and manage disaster response strategies effectively.',
     category: 'AI/ML',
-    image: null,
+    image: projectAiDisaster,
     color: 'from-blue-500/20 to-indigo-500/20',
   },
   {
     title: 'Weather App',
     description: 'A beautiful, responsive weather application with real-time weather, 5-day forecasts, and air quality information.',
     category: 'Web App',
-    image: null,
+    image: projectWeather,
     color: 'from-sky-500/20 to-cyan-500/20',
   },
 ];
@@ -58,20 +62,16 @@ const Projects = () => {
               delay={index * 100}
               className="group relative rounded-xl sm:rounded-2xl overflow-hidden border border-border bg-card hover:border-primary/50 transition-all duration-500 cursor-pointer"
             >
-              {/* Project Image/Gradient */}
+              {/* Project Image */}
               <div
                 className={`aspect-video bg-gradient-to-br ${project.color} relative overflow-hidden`}
               >
-                <div className="absolute inset-0 bg-background/20" />
-                
-                {/* Placeholder Content */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 rounded-lg sm:rounded-xl bg-background/30 backdrop-blur-sm border border-foreground/10 flex items-center justify-center">
-                    <span className="font-mono text-lg sm:text-xl md:text-2xl font-bold text-foreground/60">
-                      {project.title.slice(0, 2).toUpperCase()}
-                    </span>
-                  </div>
-                </div>
+                <img 
+                  src={project.image} 
+                  alt={project.title}
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-background/10" />
 
                 {/* Hover Overlay */}
                 <div className="absolute inset-0 bg-background/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
