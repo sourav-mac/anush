@@ -1,28 +1,41 @@
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Award, ExternalLink } from 'lucide-react';
+import { ArrowRight, Award } from 'lucide-react';
 import HireMeDialog from './HireMeDialog';
 import profilePhoto from '@/assets/profile-photo.jpg';
+import certGoogleCloud from '@/assets/cert-google-cloud.png';
+import certIBMDataScience from '@/assets/cert-ibm-data-science.png';
+import certSAPHana from '@/assets/cert-sap-hana.jpg';
+import certVultrHackathon from '@/assets/cert-vultr-hackathon.jpg';
 
 const certificates = [
   {
-    title: 'IBM Data Science',
-    issuer: 'IBM',
-    date: '2024',
-    link: '#', // Replace with actual certificate link
+    title: 'Google Cloud Certified Associate Cloud Engineer',
+    issuer: 'Google Cloud',
+    date: 'Mar 2024',
+    description: 'Professional certification validating cloud infrastructure and deployment skills.',
+    image: certGoogleCloud,
   },
   {
-    title: 'Python for Data Science',
-    issuer: 'IBM',
-    date: '2024',
-    link: '#',
+    title: 'IBM Data Science Professional Certificate',
+    issuer: 'IBM / Coursera',
+    date: 'Dec 2024',
+    description: 'Comprehensive 9-course program covering Python, SQL, ML, and Data Visualization.',
+    image: certIBMDataScience,
   },
   {
-    title: 'Web Development Fundamentals',
-    issuer: 'Coursera',
-    date: '2023',
-    link: '#',
+    title: 'SAP S/4 HANA Development',
+    issuer: 'SAP University Alliances',
+    date: 'Jan 2025',
+    description: 'Training in enterprise SAP development conducted at Techno India University.',
+    image: certSAPHana,
   },
-  // Add more certificates here
+  {
+    title: 'Vultr Cloud Innovate Hackathon',
+    issuer: 'GeeksforGeeks & Vultr',
+    date: '2024',
+    description: 'Achieved All India Rank 20 in this national cloud innovation hackathon.',
+    image: certVultrHackathon,
+  },
 ];
 
 const About = () => {
@@ -104,30 +117,31 @@ const About = () => {
             </h3>
           </div>
           
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid sm:grid-cols-2 gap-6">
             {certificates.map((cert, index) => (
-              <a
+              <div
                 key={index}
-                href={cert.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group p-5 rounded-xl border border-border bg-card hover:border-primary/50 hover:bg-primary/5 transition-all"
+                className="group rounded-xl border border-border bg-card overflow-hidden hover:border-primary/50 transition-all"
               >
-                <div className="flex items-start justify-between">
-                  <div className="flex-1">
-                    <h4 className="font-mono font-semibold text-foreground group-hover:text-primary transition-colors">
-                      {cert.title}
-                    </h4>
-                    <p className="font-mono text-sm text-muted-foreground mt-1">
-                      {cert.issuer}
-                    </p>
-                    <p className="font-mono text-xs text-muted-foreground/70 mt-2">
-                      {cert.date}
-                    </p>
-                  </div>
-                  <ExternalLink className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors opacity-0 group-hover:opacity-100" />
+                <div className="aspect-video overflow-hidden bg-muted">
+                  <img 
+                    src={cert.image} 
+                    alt={cert.title} 
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
                 </div>
-              </a>
+                <div className="p-5">
+                  <h4 className="font-mono font-semibold text-foreground group-hover:text-primary transition-colors">
+                    {cert.title}
+                  </h4>
+                  <p className="font-mono text-sm text-muted-foreground mt-1">
+                    {cert.issuer} • {cert.date}
+                  </p>
+                  <p className="text-sm text-muted-foreground/80 mt-2">
+                    {cert.description}
+                  </p>
+                </div>
+              </div>
             ))}
           </div>
         </div>
