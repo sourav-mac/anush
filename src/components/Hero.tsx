@@ -106,31 +106,11 @@ const Hero = () => {
 
           {/* Right Content - Image */}
           <div className="relative flex justify-center items-center mb-6 lg:mb-0">
-            <div className="relative animate-float">
+          <div className="relative animate-float">
               {/* Minimal Circle Container with Green Glass Effect */}
               <div className="relative w-48 sm:w-64 md:w-80 lg:w-96 xl:w-[28rem] h-48 sm:h-64 md:h-80 lg:h-96 xl:h-[28rem] rounded-full">
                 {/* Glass effect background */}
                 <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/15 via-primary/5 to-transparent backdrop-blur-sm border border-primary/20" />
-                
-                {/* Bottom clip mask - clips only lower portion */}
-                <div className="absolute inset-0 rounded-full overflow-hidden">
-                  <img 
-                    src={heroImage} 
-                    alt="Anush Pradhan" 
-                    className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[140%] h-auto object-contain object-bottom"
-                  />
-                </div>
-                
-                {/* Top overflow image - shows above circle */}
-                <img 
-                  src={heroImage} 
-                  alt="" 
-                  aria-hidden="true"
-                  className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[140%] h-auto object-contain object-bottom pointer-events-none"
-                  style={{ 
-                    clipPath: 'polygon(0 0, 100% 0, 100% 50%, 0 50%)'
-                  }}
-                />
               </div>
             </div>
 
