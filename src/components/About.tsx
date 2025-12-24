@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Award, GraduationCap, Calendar, MapPin, Code } from 'lucide-react';
 import HireMeDialog from './HireMeDialog';
@@ -81,6 +82,8 @@ const skills = [
 ];
 
 const About = () => {
+  const [activeTab, setActiveTab] = useState<'education' | 'skills'>('education');
+
   return (
     <section id="about" className="py-16 sm:py-20 md:py-24 lg:py-32">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -188,72 +191,89 @@ const About = () => {
           </div>
         </AnimatedSection>
 
-        {/* Education Section */}
+        {/* Education & Skills Toggle Section */}
         <AnimatedSection animation="fade-up" delay={100} className="mt-12 sm:mt-16 md:mt-20">
-          <div className="flex items-center gap-2 sm:gap-3 mb-6 sm:mb-8 justify-center lg:justify-start">
-            <GraduationCap className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
-            <h3 className="font-mono text-xl sm:text-2xl md:text-3xl font-semibold">
+          {/* Toggle Buttons */}
+          <div className="flex justify-center lg:justify-start gap-3 sm:gap-4 mb-6 sm:mb-8">
+            <Button
+              variant={activeTab === 'education' ? 'default' : 'outline'}
+              onClick={() => setActiveTab('education')}
+              className={`font-mono text-xs sm:text-sm transition-all ${
+                activeTab === 'education' 
+                  ? 'bg-primary text-primary-foreground' 
+                  : 'border-primary/30 bg-transparent hover:bg-primary hover:text-primary-foreground hover:border-primary'
+              }`}
+            >
+              <GraduationCap className="mr-2 h-4 w-4" />
               Education
-            </h3>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
-            {education.map((edu, index) => (
-              <div
-                key={index}
-                className="p-4 sm:p-5 md:p-6 rounded-xl border border-border bg-card hover:border-primary/30 transition-all group"
-              >
-                <div className="flex items-center gap-2 mb-3">
-                  <GraduationCap className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
-                  <h4 className="font-mono font-semibold text-sm sm:text-base text-foreground group-hover:text-primary transition-colors">
-                    {edu.degree}
-                  </h4>
-                </div>
-                <p className="font-mono text-xs sm:text-sm text-primary/80 mb-3">{edu.specialization}</p>
-                <div className="space-y-1.5 text-muted-foreground">
-                  <div className="flex items-center gap-2">
-                    <MapPin className="h-3 w-3 text-primary/60" />
-                    <span className="font-mono text-xs">{edu.institution}, {edu.location}</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Calendar className="h-3 w-3 text-primary/60" />
-                    <span className="font-mono text-xs">{edu.duration}</span>
-                  </div>
-                </div>
-                {edu.score && (
-                  <div className="mt-3 inline-block px-2 py-1 rounded-full bg-primary/10 text-primary font-mono text-xs border border-primary/20">
-                    {edu.score}
-                  </div>
-                )}
-                {edu.status && (
-                  <div className="mt-3 inline-block px-2 py-1 rounded-full bg-primary/20 text-primary font-mono text-xs border border-primary/30">
-                    {edu.status}
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-        </AnimatedSection>
-
-        {/* Skills Section */}
-        <AnimatedSection animation="fade-up" delay={200} className="mt-12 sm:mt-16 md:mt-20">
-          <div className="flex items-center gap-2 sm:gap-3 mb-6 sm:mb-8 justify-center lg:justify-start">
-            <Code className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
-            <h3 className="font-mono text-xl sm:text-2xl md:text-3xl font-semibold">
+            </Button>
+            <Button
+              variant={activeTab === 'skills' ? 'default' : 'outline'}
+              onClick={() => setActiveTab('skills')}
+              className={`font-mono text-xs sm:text-sm transition-all ${
+                activeTab === 'skills' 
+                  ? 'bg-primary text-primary-foreground' 
+                  : 'border-primary/30 bg-transparent hover:bg-primary hover:text-primary-foreground hover:border-primary'
+              }`}
+            >
+              <Code className="mr-2 h-4 w-4" />
               Technical Skills
-            </h3>
+            </Button>
           </div>
-          
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-            {skills.map((skill, index) => (
-              <SkillBar 
-                key={index} 
-                name={skill.name} 
-                level={skill.level} 
-                delay={index * 100}
-              />
-            ))}
-          </div>
+
+          {/* Education Content */}
+          {activeTab === 'education' && (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 animate-fade-in">
+              {education.map((edu, index) => (
+                <div
+                  key={index}
+                  className="p-4 sm:p-5 md:p-6 rounded-xl border border-border bg-card hover:border-primary/30 transition-all group"
+                >
+                  <div className="flex items-center gap-2 mb-3">
+                    <GraduationCap className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
+                    <h4 className="font-mono font-semibold text-sm sm:text-base text-foreground group-hover:text-primary transition-colors">
+                      {edu.degree}
+                    </h4>
+                  </div>
+                  <p className="font-mono text-xs sm:text-sm text-primary/80 mb-3">{edu.specialization}</p>
+                  <div className="space-y-1.5 text-muted-foreground">
+                    <div className="flex items-center gap-2">
+                      <MapPin className="h-3 w-3 text-primary/60" />
+                      <span className="font-mono text-xs">{edu.institution}, {edu.location}</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Calendar className="h-3 w-3 text-primary/60" />
+                      <span className="font-mono text-xs">{edu.duration}</span>
+                    </div>
+                  </div>
+                  {edu.score && (
+                    <div className="mt-3 inline-block px-2 py-1 rounded-full bg-primary/10 text-primary font-mono text-xs border border-primary/20">
+                      {edu.score}
+                    </div>
+                  )}
+                  {edu.status && (
+                    <div className="mt-3 inline-block px-2 py-1 rounded-full bg-primary/20 text-primary font-mono text-xs border border-primary/30">
+                      {edu.status}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          )}
+
+          {/* Skills Content */}
+          {activeTab === 'skills' && (
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 animate-fade-in">
+              {skills.map((skill, index) => (
+                <SkillBar 
+                  key={index} 
+                  name={skill.name} 
+                  level={skill.level} 
+                  delay={index * 100}
+                />
+              ))}
+            </div>
+          )}
         </AnimatedSection>
       </div>
     </section>
