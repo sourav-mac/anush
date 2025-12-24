@@ -104,7 +104,7 @@ const About = () => {
             <div className="flex flex-wrap gap-3 sm:gap-4 justify-center lg:justify-start">
               <Button
                 variant="outline"
-                className="font-mono text-xs sm:text-sm border-primary/30 bg-transparent hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all group"
+                className="font-mono text-xs sm:text-sm border-primary/30 bg-background/20 backdrop-blur-md hover:bg-primary/80 hover:text-primary-foreground hover:border-primary hover:shadow-[0_0_20px_rgba(34,197,94,0.3)] transition-all group"
                 asChild
               >
                 <a href="https://www.linkedin.com/in/anush-pradhan-49412428a" target="_blank" rel="noopener noreferrer">
@@ -114,7 +114,7 @@ const About = () => {
               </Button>
               <Button
                 variant="outline"
-                className="font-mono text-xs sm:text-sm border-primary/30 bg-transparent hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all group"
+                className="font-mono text-xs sm:text-sm border-primary/30 bg-background/20 backdrop-blur-md hover:bg-primary/80 hover:text-primary-foreground hover:border-primary hover:shadow-[0_0_20px_rgba(34,197,94,0.3)] transition-all group"
                 asChild
               >
                 <a href="/resume.pdf" download="Anush_Pradhan_Resume.pdf">
@@ -124,7 +124,7 @@ const About = () => {
               </Button>
               <HireMeDialog>
                 <Button 
-                  className="font-mono text-xs sm:text-sm bg-primary text-primary-foreground hover:bg-primary/90 transition-all"
+                  className="font-mono text-xs sm:text-sm bg-primary/80 backdrop-blur-md text-primary-foreground hover:bg-primary hover:shadow-[0_0_20px_rgba(34,197,94,0.3)] transition-all"
                 >
                   Hire Me
                 </Button>
