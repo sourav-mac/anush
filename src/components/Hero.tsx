@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Github, Linkedin, Mail, Phone, ChevronDown, Calendar } from 'lucide-react';
 import profileDp from '@/assets/profile-dp.png';
+import profileCutout from '@/assets/profile-cutout.png';
 import TimelineDialog from './TimelineDialog';
 
 const roles = ['CSE Student', 'Tech Innovator', 'Problem Solver', 'Freelance Developer'];
@@ -111,13 +112,20 @@ const Hero = () => {
               <div className="relative w-48 sm:w-64 md:w-80 lg:w-96 xl:w-[28rem] h-48 sm:h-64 md:h-80 lg:h-96 xl:h-[28rem] rounded-full overflow-hidden">
                 {/* Glass effect background */}
                 <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/15 via-primary/5 to-transparent backdrop-blur-sm border border-primary/20" />
-                {/* Profile Image */}
+                {/* Background Profile Image */}
                 <img 
                   src={profileDp} 
                   alt="Anush Pradhan" 
                   className="absolute inset-0 w-full h-full object-cover object-top"
                 />
               </div>
+              {/* Cutout Image for 3D Pop-out Effect */}
+              <img 
+                src={profileCutout} 
+                alt="" 
+                aria-hidden="true"
+                className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[130%] h-auto object-contain object-bottom pointer-events-none"
+              />
             </div>
 
             {/* Scroll Indicator */}
