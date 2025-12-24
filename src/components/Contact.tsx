@@ -5,6 +5,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { ArrowRight, Circle, Phone, Mail, Linkedin, Github, Code, Briefcase, Lightbulb, Users, Rocket, GraduationCap, Target, TrendingUp, Send, RotateCcw, MessageSquare, Globe, Star, Crosshair } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import { AnimatedSection } from './AnimatedSection';
 
 const Contact = () => {
   const { toast } = useToast();
@@ -121,7 +122,7 @@ const Contact = () => {
     <section id="contact" className="py-16 sm:py-20 md:py-24 lg:py-32 bg-card/30 border-t border-border">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header Section */}
-        <div className="max-w-4xl mx-auto text-center space-y-4 sm:space-y-6 mb-10 sm:mb-12 md:mb-16">
+        <AnimatedSection animation="fade-up" className="max-w-4xl mx-auto text-center space-y-4 sm:space-y-6 mb-10 sm:mb-12 md:mb-16">
           <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-primary/30 bg-primary/10">
             <Circle className="h-1.5 w-1.5 sm:h-2 sm:w-2 fill-primary text-primary animate-pulse" />
             <span className="font-mono text-xs sm:text-sm text-primary">Actively Looking for Opportunities</span>
@@ -135,10 +136,10 @@ const Contact = () => {
             I'm a passionate Computer Science (AI & ML) student and an aspiring developer eager to contribute to real-world projects.
             If you're hiring or looking for a motivated fresher to join your tech team, I'd love to connect.
           </p>
-        </div>
+        </AnimatedSection>
 
         {/* Opportunities Section */}
-        <div className="max-w-3xl mx-auto mb-10 sm:mb-12 md:mb-16">
+        <AnimatedSection animation="fade-up" delay={100} className="max-w-3xl mx-auto mb-10 sm:mb-12 md:mb-16">
           <h3 className="font-mono text-lg sm:text-xl md:text-2xl font-semibold text-center mb-4 sm:mb-6 px-2">
             Currently Seeking <span className="text-primary">Internships</span>, <span className="text-primary">Full-Time Roles</span>, or <span className="text-primary">Entry-Level Positions</span> in:
           </h3>
@@ -152,10 +153,10 @@ const Contact = () => {
               </span>
             ))}
           </div>
-        </div>
+        </AnimatedSection>
 
         {/* Contact Form Section */}
-        <div className="max-w-2xl mx-auto mb-10 sm:mb-12 md:mb-16">
+        <AnimatedSection animation="fade-up" delay={200} className="max-w-2xl mx-auto mb-10 sm:mb-12 md:mb-16">
           <h3 className="font-mono text-lg sm:text-xl md:text-2xl font-semibold text-center mb-6 sm:mb-8 flex items-center justify-center gap-2">
             <MessageSquare className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
             Get In Touch
@@ -252,10 +253,10 @@ const Contact = () => {
               </Button>
             </div>
           </form>
-        </div>
+        </AnimatedSection>
 
         {/* Connect With Me Section */}
-        <div className="max-w-2xl mx-auto mb-10 sm:mb-12 md:mb-16">
+        <AnimatedSection animation="fade-up" delay={300} className="max-w-2xl mx-auto mb-10 sm:mb-12 md:mb-16">
           <h3 className="font-mono text-lg sm:text-xl md:text-2xl font-semibold text-center mb-6 sm:mb-8 flex items-center justify-center gap-2">
             <Globe className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
             Connect With Me
@@ -294,10 +295,10 @@ const Contact = () => {
               <span className="font-mono text-xs sm:text-sm text-muted-foreground group-hover:text-foreground">Phone</span>
             </a>
           </div>
-        </div>
+        </AnimatedSection>
 
         {/* Why Recruit Me Section */}
-        <div className="max-w-5xl mx-auto mb-10 sm:mb-12 md:mb-16">
+        <AnimatedSection animation="fade-left" delay={400} className="max-w-5xl mx-auto mb-10 sm:mb-12 md:mb-16">
           <h3 className="font-mono text-lg sm:text-xl md:text-2xl font-semibold text-center mb-6 sm:mb-8 flex items-center justify-center gap-2">
             <Star className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
             Why Recruit Me?
@@ -320,10 +321,10 @@ const Contact = () => {
               </div>
             ))}
           </div>
-        </div>
+        </AnimatedSection>
 
         {/* What I Bring Section */}
-        <div className="max-w-5xl mx-auto mb-10 sm:mb-12 md:mb-16">
+        <AnimatedSection animation="fade-right" delay={500} className="max-w-5xl mx-auto mb-10 sm:mb-12 md:mb-16">
           <h3 className="font-mono text-lg sm:text-xl md:text-2xl font-semibold text-center mb-6 sm:mb-8 flex items-center justify-center gap-2">
             <Crosshair className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
             What I Bring to Your Team
@@ -342,10 +343,10 @@ const Contact = () => {
               </div>
             ))}
           </div>
-        </div>
+        </AnimatedSection>
 
         {/* CTA Section */}
-        <div className="max-w-xl mx-auto text-center px-4">
+        <AnimatedSection animation="scale" delay={600} className="max-w-xl mx-auto text-center px-4">
           <p className="font-mono text-muted-foreground text-xs sm:text-sm mb-4 sm:mb-6">
             Feel free to reach out for any career opportunities, collaborations, or technical discussions.
           </p>
@@ -359,7 +360,7 @@ const Contact = () => {
               <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </a>
           </Button>
-        </div>
+        </AnimatedSection>
       </div>
     </section>
   );

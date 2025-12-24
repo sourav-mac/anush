@@ -1,6 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Award } from 'lucide-react';
 import HireMeDialog from './HireMeDialog';
+import { AnimatedSection } from './AnimatedSection';
 import profilePhoto from '@/assets/profile-photo.jpg';
 import certGoogleCloud from '@/assets/cert-google-cloud.png';
 import certIBMDataScience from '@/assets/cert-ibm-data-science.png';
@@ -44,7 +45,7 @@ const About = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           {/* Left Content */}
-          <div className="space-y-6 sm:space-y-8 animate-slide-up order-2 lg:order-1">
+          <AnimatedSection animation="fade-right" className="space-y-6 sm:space-y-8 order-2 lg:order-1">
             <p className="text-muted-foreground font-mono text-xs sm:text-sm md:text-base leading-relaxed text-center lg:text-left">
               Hi, I'm <span className="text-primary font-semibold">Anush Pradhan</span>, a passionate
               CSE student at <span className="text-primary font-semibold">Techno India University</span> with 
@@ -75,10 +76,10 @@ const About = () => {
                 </Button>
               </HireMeDialog>
             </div>
-          </div>
+          </AnimatedSection>
 
           {/* Right Content - Profile Image */}
-          <div className="relative flex justify-center lg:justify-end order-1 lg:order-2">
+          <AnimatedSection animation="fade-left" delay={200} className="relative flex justify-center lg:justify-end order-1 lg:order-2">
             <div className="relative group">
               {/* Animated Border Wrapper */}
               <div className="animated-border-box rounded-2xl p-[2px]">
@@ -105,11 +106,11 @@ const About = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </AnimatedSection>
         </div>
 
         {/* Certificates Section */}
-        <div className="mt-12 sm:mt-16 md:mt-20">
+        <AnimatedSection animation="fade-up" className="mt-12 sm:mt-16 md:mt-20">
           <div className="flex items-center gap-2 sm:gap-3 mb-6 sm:mb-8 justify-center lg:justify-start">
             <Award className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
             <h3 className="font-mono text-xl sm:text-2xl md:text-3xl font-semibold">
@@ -144,7 +145,7 @@ const About = () => {
               </div>
             ))}
           </div>
-        </div>
+        </AnimatedSection>
       </div>
     </section>
   );

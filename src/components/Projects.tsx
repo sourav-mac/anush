@@ -1,5 +1,5 @@
-import { Button } from '@/components/ui/button';
-import { ArrowUpRight, ArrowRight } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
+import { AnimatedSection } from './AnimatedSection';
 
 const projects = [
   {
@@ -37,7 +37,7 @@ const Projects = () => {
     <section id="projects" className="py-12 sm:py-16 md:py-20 bg-card/20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-10 sm:mb-12 md:mb-16 space-y-3 sm:space-y-4">
+        <AnimatedSection animation="fade-up" className="text-center mb-10 sm:mb-12 md:mb-16 space-y-3 sm:space-y-4">
           <span className="font-mono text-xs sm:text-sm text-muted-foreground uppercase tracking-widest">
             MY WORK
           </span>
@@ -47,13 +47,15 @@ const Projects = () => {
           <p className="text-muted-foreground font-mono text-xs sm:text-sm max-w-xl mx-auto px-4">
             Here are some of my key projects showcasing my expertise in tech innovation and problem solving.
           </p>
-        </div>
+        </AnimatedSection>
 
         {/* Projects Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
           {projects.map((project, index) => (
-            <div
+            <AnimatedSection
               key={index}
+              animation="scale"
+              delay={index * 100}
               className="group relative rounded-xl sm:rounded-2xl overflow-hidden border border-border bg-card hover:border-primary/50 transition-all duration-500 cursor-pointer"
             >
               {/* Project Image/Gradient */}
@@ -89,7 +91,7 @@ const Projects = () => {
                   {project.category}
                 </span>
               </div>
-            </div>
+            </AnimatedSection>
           ))}
         </div>
       </div>
