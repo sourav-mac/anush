@@ -44,44 +44,46 @@ const Hero = () => {
   ];
 
   return (
-    <section id="home" className="min-h-[100svh] flex items-center pt-16 sm:pt-20 pb-8 relative overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/4 right-1/4 w-48 sm:w-72 lg:w-96 h-48 sm:h-72 lg:h-96 bg-primary/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 left-1/4 w-32 sm:w-48 lg:w-64 h-32 sm:h-48 lg:h-64 bg-primary/3 rounded-full blur-3xl" />
-      </div>
+    <section id="home" className="min-h-[100svh] flex items-center pt-20 pb-12 relative">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col items-center text-center gap-8 lg:gap-12 animate-fade-in">
+          
+          {/* Profile Image - Clean Round */}
+          <div className="relative">
+            <div className="w-40 h-40 sm:w-52 sm:h-52 lg:w-64 lg:h-64 rounded-full overflow-hidden border-2 border-border/30 bg-muted/10">
+              <img 
+                src={heroImage} 
+                alt="Anush Pradhan" 
+                className="w-full h-full object-cover object-top scale-125"
+              />
+            </div>
+          </div>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="flex flex-col-reverse lg:flex-row lg:grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-          {/* Left Content */}
-          <div className="space-y-6 sm:space-y-8 animate-fade-in text-center lg:text-left">
-            <div className="space-y-3 sm:space-y-4">
-              <h1 className="font-mono text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight">
-                Hello I'm
-                <br />
-                <span className="text-primary">Anush Pradhan</span>
+          {/* Content */}
+          <div className="space-y-6 max-w-2xl">
+            <div className="space-y-3">
+              <p className="font-mono text-sm text-muted-foreground">Hello, I'm</p>
+              <h1 className="font-mono text-4xl sm:text-5xl lg:text-6xl font-bold">
+                Anush Pradhan
               </h1>
-              <p className="text-base sm:text-lg md:text-xl text-muted-foreground">
-                I'm a passionate{' '}
+              <p className="text-lg sm:text-xl text-muted-foreground">
                 <span className="text-primary typing-cursor">{displayText}</span>
               </p>
             </div>
 
-            <p className="text-muted-foreground leading-relaxed max-w-lg mx-auto lg:mx-0 font-mono text-xs sm:text-sm">
-              CSE student at Techno India University with a strong interest in programming, 
-              tech innovation, and real-world problem solving. Driven, quick to learn, and 
-              passionate about turning ideas into impactful solutions.
+            <p className="text-muted-foreground leading-relaxed font-mono text-sm max-w-lg mx-auto">
+              CSE student with a strong interest in programming, tech innovation, and real-world problem solving.
             </p>
 
-            {/* CTA Buttons */}
-            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 sm:gap-4">
+            {/* Actions */}
+            <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
               <TimelineDialog>
                 <Button
                   variant="outline"
-                  size="default"
-                  className="font-mono text-xs sm:text-sm border-primary/30 bg-transparent hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all group"
+                  size="lg"
+                  className="font-mono text-sm rounded-full px-6 border-border hover:border-primary hover:bg-primary hover:text-primary-foreground transition-all"
                 >
-                  <Calendar className="mr-2 h-3 w-3 sm:h-4 sm:w-4 group-hover:animate-pulse" />
+                  <Calendar className="mr-2 h-4 w-4" />
                   Timeline
                 </Button>
               </TimelineDialog>
@@ -94,48 +96,20 @@ const Hero = () => {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-9 h-9 sm:w-11 sm:h-11 rounded-full border border-border flex items-center justify-center hover:border-primary hover:bg-primary/10 transition-all group"
+                    className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:border-primary hover:bg-primary/10 transition-all"
                     aria-label={social.label}
                   >
-                    <social.icon className="h-3 w-3 sm:h-4 sm:w-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                    <social.icon className="h-4 w-4 text-muted-foreground hover:text-primary transition-colors" />
                   </a>
                 ))}
               </div>
             </div>
           </div>
 
-          {/* Right Content - Image */}
-          <div className="relative flex justify-center items-center mb-6 lg:mb-0">
-            <div className="relative animate-float">
-              {/* Minimal Circle Container */}
-              <div className="relative w-48 sm:w-64 md:w-80 lg:w-96 xl:w-[28rem] h-48 sm:h-64 md:h-80 lg:h-96 xl:h-[28rem] rounded-full border border-border/50 bg-muted/20">
-                {/* Bottom clip mask - clips only lower portion */}
-                <div className="absolute inset-0 rounded-full overflow-hidden">
-                  <img 
-                    src={heroImage} 
-                    alt="Anush Pradhan" 
-                    className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[140%] h-auto object-contain object-bottom"
-                  />
-                </div>
-                
-                {/* Top overflow image - shows above circle */}
-                <img 
-                  src={heroImage} 
-                  alt="" 
-                  aria-hidden="true"
-                  className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[140%] h-auto object-contain object-bottom pointer-events-none"
-                  style={{ 
-                    clipPath: 'polygon(0 0, 100% 0, 100% 50%, 0 50%)'
-                  }}
-                />
-              </div>
-            </div>
-
-            {/* Scroll Indicator */}
-            <div className="absolute -bottom-16 sm:-bottom-20 right-1/2 translate-x-1/2 flex-col items-center gap-2 text-muted-foreground hidden lg:flex">
-              <span className="font-mono text-xs">Scroll Down</span>
-              <ChevronDown className="h-4 w-4 animate-bounce" />
-            </div>
+          {/* Scroll Indicator */}
+          <div className="flex flex-col items-center gap-2 text-muted-foreground pt-8">
+            <span className="font-mono text-xs">Scroll</span>
+            <ChevronDown className="h-4 w-4 animate-bounce" />
           </div>
         </div>
       </div>
