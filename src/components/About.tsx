@@ -166,11 +166,11 @@ const About = () => {
         {/* Education, Skills & Certifications Toggle Section */}
         <AnimatedSection animation="fade-up" delay={100} className="mt-12 sm:mt-16 md:mt-20">
           {/* Toggle Buttons */}
-          <div className="flex justify-center lg:justify-start gap-3 sm:gap-4 mb-6 sm:mb-8">
+          <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-2 sm:gap-4 mb-6 sm:mb-8">
             <Button
               variant={activeTab === 'education' ? 'default' : 'outline'}
               onClick={() => setActiveTab('education')}
-              className={`font-mono text-xs sm:text-sm transition-all ${
+              className={`font-mono text-xs sm:text-sm transition-all w-full sm:w-auto ${
                 activeTab === 'education' 
                   ? 'bg-primary text-primary-foreground' 
                   : 'border-primary/30 bg-transparent hover:bg-primary hover:text-primary-foreground hover:border-primary'
@@ -182,7 +182,7 @@ const About = () => {
             <Button
               variant={activeTab === 'skills' ? 'default' : 'outline'}
               onClick={() => setActiveTab('skills')}
-              className={`font-mono text-xs sm:text-sm transition-all ${
+              className={`font-mono text-xs sm:text-sm transition-all w-full sm:w-auto ${
                 activeTab === 'skills' 
                   ? 'bg-primary text-primary-foreground' 
                   : 'border-primary/30 bg-transparent hover:bg-primary hover:text-primary-foreground hover:border-primary'
@@ -194,7 +194,7 @@ const About = () => {
             <Button
               variant={activeTab === 'certifications' ? 'default' : 'outline'}
               onClick={() => setActiveTab('certifications')}
-              className={`font-mono text-xs sm:text-sm transition-all ${
+              className={`font-mono text-xs sm:text-sm transition-all w-full sm:w-auto ${
                 activeTab === 'certifications' 
                   ? 'bg-primary text-primary-foreground' 
                   : 'border-primary/30 bg-transparent hover:bg-primary hover:text-primary-foreground hover:border-primary'
