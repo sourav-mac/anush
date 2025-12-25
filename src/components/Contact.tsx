@@ -170,7 +170,7 @@ const Contact = () => {
                   name="firstName"
                   value={formData.firstName}
                   onChange={handleInputChange}
-                  placeholder="John"
+                  placeholder="Anush"
                   className="font-mono text-sm"
                   maxLength={50}
                   required
@@ -183,7 +183,7 @@ const Contact = () => {
                   name="lastName"
                   value={formData.lastName}
                   onChange={handleInputChange}
-                  placeholder="Doe"
+                  placeholder="Pradhan"
                   className="font-mono text-sm"
                   maxLength={50}
                   required
@@ -199,7 +199,7 @@ const Contact = () => {
                   type="email"
                   value={formData.email}
                   onChange={handleInputChange}
-                  placeholder="john@example.com"
+                  placeholder="anush@example.com"
                   className="font-mono text-sm"
                   maxLength={100}
                   required
