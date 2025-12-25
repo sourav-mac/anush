@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuroraBackground } from "./components/AuroraBackground";
 import { ParticleBackground } from "./components/ParticleBackground";
+import { ShootingStars } from "./components/ShootingStars";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 
@@ -15,6 +16,7 @@ const App = () => (
     <TooltipProvider>
       <AuroraBackground />
       <ParticleBackground />
+      <ShootingStars />
       <Toaster />
       <Sonner />
       <BrowserRouter>
