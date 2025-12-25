@@ -6,7 +6,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuroraBackground } from "./components/AuroraBackground";
 import { ParticleBackground } from "./components/ParticleBackground";
 import { ShootingStars } from "./components/ShootingStars";
-import { TwinklingStars } from "./components/TwinklingStars";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 
@@ -16,7 +15,6 @@ const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <AuroraBackground />
-      <TwinklingStars />
       <ParticleBackground />
       <ShootingStars />
       <Toaster />
