@@ -133,7 +133,7 @@ const Contact = () => {
           </h2>
 
           <p className="text-muted-foreground font-mono text-xs sm:text-sm md:text-base leading-relaxed max-w-2xl mx-auto px-2">
-            I'm a passionate Computer Science (AI & ML) student and an aspiring developer eager to contribute to real-world projects.
+            I'm a passionate Computer Science student and an aspiring developer eager to contribute to real-world projects.
             If you're hiring or looking for a motivated fresher to join your tech team, I'd love to connect.
           </p>
         </AnimatedSection>
