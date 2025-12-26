@@ -32,34 +32,32 @@ export const ParticleBackground = () => {
       const isDark = document.documentElement.classList.contains('dark');
       if (isDark) {
         return [
-          'rgba(99, 102, 241, 0.6)',   // Indigo
-          'rgba(139, 92, 246, 0.5)',   // Violet
-          'rgba(59, 130, 246, 0.4)',   // Blue
-          'rgba(236, 72, 153, 0.3)',   // Pink
-          'rgba(34, 211, 238, 0.4)',   // Cyan
+          'rgba(99, 102, 241, 0.4)',   // Indigo
+          'rgba(139, 92, 246, 0.35)',  // Violet
+          'rgba(59, 130, 246, 0.3)',   // Blue
+          'rgba(34, 211, 238, 0.25)',  // Cyan
         ];
       } else {
         return [
-          'rgba(99, 102, 241, 0.4)',   // Indigo
-          'rgba(139, 92, 246, 0.3)',   // Violet
-          'rgba(59, 130, 246, 0.3)',   // Blue
-          'rgba(236, 72, 153, 0.2)',   // Pink
-          'rgba(16, 185, 129, 0.3)',   // Emerald
+          'rgba(99, 102, 241, 0.25)',  // Indigo
+          'rgba(139, 92, 246, 0.2)',   // Violet
+          'rgba(59, 130, 246, 0.2)',   // Blue
+          'rgba(16, 185, 129, 0.18)',  // Emerald
         ];
       }
     };
 
     const createParticles = () => {
       const colors = getParticleColors();
-      const particleCount = Math.floor((canvas.width * canvas.height) / 15000);
+      const particleCount = Math.floor((canvas.width * canvas.height) / 20000);
       
-      particlesRef.current = Array.from({ length: Math.min(particleCount, 80) }, () => ({
+      particlesRef.current = Array.from({ length: Math.min(particleCount, 60) }, () => ({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        size: Math.random() * 3 + 1,
-        speedX: (Math.random() - 0.5) * 0.5,
-        speedY: (Math.random() - 0.5) * 0.5,
-        opacity: Math.random() * 0.5 + 0.2,
+        size: Math.random() * 2.5 + 0.8,
+        speedX: (Math.random() - 0.5) * 0.3,
+        speedY: (Math.random() - 0.5) * 0.3,
+        opacity: Math.random() * 0.4 + 0.15,
         color: colors[Math.floor(Math.random() * colors.length)],
       }));
     };
@@ -72,8 +70,8 @@ export const ParticleBackground = () => {
       ctx.fillStyle = particle.color;
       ctx.fill();
       
-      // Add glow effect
-      ctx.shadowBlur = 15;
+      // Softer glow effect
+      ctx.shadowBlur = 10;
       ctx.shadowColor = particle.color;
       ctx.fill();
       ctx.shadowBlur = 0;
@@ -91,13 +89,13 @@ export const ParticleBackground = () => {
           const dy = particles[i].y - particles[j].y;
           const distance = Math.sqrt(dx * dx + dy * dy);
 
-          if (distance < 120) {
-            const opacity = (1 - distance / 120) * 0.15;
+          if (distance < 140) {
+            const opacity = (1 - distance / 140) * 0.1;
             ctx.beginPath();
             ctx.strokeStyle = isDark 
               ? `rgba(139, 92, 246, ${opacity})` 
               : `rgba(99, 102, 241, ${opacity})`;
-            ctx.lineWidth = 0.5;
+            ctx.lineWidth = 0.4;
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
             ctx.stroke();
@@ -185,7 +183,7 @@ export const ParticleBackground = () => {
     <canvas
       ref={canvasRef}
       className="fixed inset-0 pointer-events-none z-0"
-      style={{ opacity: 0.8 }}
+      style={{ opacity: 0.7 }}
     />
   );
 };
