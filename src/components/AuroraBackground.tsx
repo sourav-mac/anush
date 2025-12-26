@@ -22,26 +22,24 @@ export const AuroraBackground = () => {
       if (isDark) {
         return {
           colors: [
-            { r: 99, g: 102, b: 241 },   // Indigo
-            { r: 139, g: 92, b: 246 },   // Violet
-            { r: 236, g: 72, b: 153 },   // Pink
-            { r: 34, g: 211, b: 238 },   // Cyan
-            { r: 59, g: 130, b: 246 },   // Blue
+            { r: 79, g: 82, b: 201 },    // Softer Indigo
+            { r: 119, g: 72, b: 206 },   // Softer Violet
+            { r: 196, g: 52, b: 133 },   // Softer Pink
+            { r: 24, g: 171, b: 198 },   // Softer Cyan
           ],
-          opacity: 0.15,
-          bgColor: 'rgba(10, 10, 20, 0.3)',
+          opacity: 0.1,
+          bgColor: 'rgba(10, 10, 20, 0.15)',
         };
       } else {
         return {
           colors: [
-            { r: 99, g: 102, b: 241 },   // Indigo
-            { r: 167, g: 139, b: 250 },  // Light Violet
-            { r: 244, g: 114, b: 182 },  // Light Pink
-            { r: 34, g: 211, b: 238 },   // Cyan
-            { r: 96, g: 165, b: 250 },   // Light Blue
+            { r: 129, g: 132, b: 251 },  // Lighter Indigo
+            { r: 187, g: 159, b: 250 },  // Lighter Violet
+            { r: 248, g: 154, b: 202 },  // Lighter Pink
+            { r: 114, g: 221, b: 248 },  // Lighter Cyan
           ],
-          opacity: 0.12,
-          bgColor: 'rgba(255, 255, 255, 0.1)',
+          opacity: 0.08,
+          bgColor: 'rgba(255, 255, 255, 0.05)',
         };
       }
     };
@@ -63,10 +61,10 @@ export const AuroraBackground = () => {
       blobs = colors.map((color, i) => ({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        radius: Math.random() * 300 + 200,
+        radius: Math.random() * 400 + 250,
         color,
-        speedX: (Math.random() - 0.5) * 0.3,
-        speedY: (Math.random() - 0.5) * 0.3,
+        speedX: (Math.random() - 0.5) * 0.15,
+        speedY: (Math.random() - 0.5) * 0.15,
         phase: (i * Math.PI * 2) / colors.length,
       }));
     };
@@ -76,10 +74,10 @@ export const AuroraBackground = () => {
       
       const { opacity } = getGradientColors();
       
-      // Animate position with sine wave
-      const animatedX = blob.x + Math.sin(time * 0.001 + blob.phase) * 50;
-      const animatedY = blob.y + Math.cos(time * 0.0008 + blob.phase) * 40;
-      const animatedRadius = blob.radius + Math.sin(time * 0.0005 + blob.phase) * 30;
+      // Smoother, slower sine wave animation
+      const animatedX = blob.x + Math.sin(time * 0.0004 + blob.phase) * 80;
+      const animatedY = blob.y + Math.cos(time * 0.0003 + blob.phase) * 60;
+      const animatedRadius = blob.radius + Math.sin(time * 0.0002 + blob.phase) * 50;
 
       const gradient = ctx.createRadialGradient(
         animatedX, animatedY, 0,
@@ -87,7 +85,8 @@ export const AuroraBackground = () => {
       );
 
       gradient.addColorStop(0, `rgba(${blob.color.r}, ${blob.color.g}, ${blob.color.b}, ${opacity})`);
-      gradient.addColorStop(0.5, `rgba(${blob.color.r}, ${blob.color.g}, ${blob.color.b}, ${opacity * 0.5})`);
+      gradient.addColorStop(0.4, `rgba(${blob.color.r}, ${blob.color.g}, ${blob.color.b}, ${opacity * 0.4})`);
+      gradient.addColorStop(0.7, `rgba(${blob.color.r}, ${blob.color.g}, ${blob.color.b}, ${opacity * 0.15})`);
       gradient.addColorStop(1, `rgba(${blob.color.r}, ${blob.color.g}, ${blob.color.b}, 0)`);
 
       ctx.fillStyle = gradient;
@@ -135,19 +134,19 @@ export const AuroraBackground = () => {
       if (!ctx || !canvas) return;
       
       const isDark = document.documentElement.classList.contains('dark');
-      const gridSize = 60;
-      const lineOpacity = isDark ? 0.03 : 0.04;
+      const gridSize = 80;
+      const lineOpacity = isDark ? 0.02 : 0.025;
       
       ctx.strokeStyle = isDark 
         ? `rgba(139, 92, 246, ${lineOpacity})` 
         : `rgba(99, 102, 241, ${lineOpacity})`;
-      ctx.lineWidth = 1;
+      ctx.lineWidth = 0.5;
 
-      // Vertical lines with wave distortion
+      // Vertical lines with gentler wave distortion
       for (let x = 0; x < canvas.width; x += gridSize) {
         ctx.beginPath();
-        for (let y = 0; y < canvas.height; y += 10) {
-          const wave = Math.sin((y + timeRef.current * 0.02) * 0.01) * 5;
+        for (let y = 0; y < canvas.height; y += 15) {
+          const wave = Math.sin((y + timeRef.current * 0.008) * 0.008) * 3;
           if (y === 0) {
             ctx.moveTo(x + wave, y);
           } else {
@@ -157,11 +156,11 @@ export const AuroraBackground = () => {
         ctx.stroke();
       }
 
-      // Horizontal lines with wave distortion
+      // Horizontal lines with gentler wave distortion
       for (let y = 0; y < canvas.height; y += gridSize) {
         ctx.beginPath();
-        for (let x = 0; x < canvas.width; x += 10) {
-          const wave = Math.sin((x + timeRef.current * 0.02) * 0.01) * 5;
+        for (let x = 0; x < canvas.width; x += 15) {
+          const wave = Math.sin((x + timeRef.current * 0.008) * 0.008) * 3;
           if (x === 0) {
             ctx.moveTo(x, y + wave);
           } else {
