@@ -4,8 +4,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion';
-import ParallaxLayer from './ParallaxLayer';
-import TextReveal from './TextReveal';
+import { AnimatedSection } from './AnimatedSection';
 
 const faqs = [
   {
@@ -35,29 +34,21 @@ const FAQ = () => {
     <section id="services" className="py-12 sm:py-16 md:py-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
         {/* Header */}
-        <div className="text-center mb-10 sm:mb-12 md:mb-16 space-y-3 sm:space-y-4">
-          <ParallaxLayer speed={0.05} direction="up" fadeIn>
-            <span className="font-mono text-xs sm:text-sm text-muted-foreground uppercase tracking-widest">
-              FAQS
-            </span>
-          </ParallaxLayer>
-          <ParallaxLayer speed={0.04} direction="up" fadeIn>
-            <h2 className="font-mono text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold">
-              <TextReveal>Have Questions?</TextReveal>
-            </h2>
-          </ParallaxLayer>
-        </div>
+        <AnimatedSection animation="fade-up" className="text-center mb-10 sm:mb-12 md:mb-16 space-y-3 sm:space-y-4">
+          <span className="font-mono text-xs sm:text-sm text-muted-foreground uppercase tracking-widest">
+            FAQS
+          </span>
+          <h2 className="font-mono text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold">
+            Have <span className="text-primary">Questions?</span>
+          </h2>
+        </AnimatedSection>
 
         {/* FAQ Accordion */}
-        <Accordion type="single" collapsible className="space-y-3 sm:space-y-4">
-          {faqs.map((faq, index) => (
-            <ParallaxLayer 
-              key={index} 
-              speed={0.03 + index * 0.01} 
-              direction="up"
-              fadeIn
-            >
+        <AnimatedSection animation="fade-up" delay={200}>
+          <Accordion type="single" collapsible className="space-y-3 sm:space-y-4">
+            {faqs.map((faq, index) => (
               <AccordionItem
+                key={index}
                 value={`item-${index}`}
                 className="border border-border rounded-lg sm:rounded-xl px-4 sm:px-6 bg-card/50 hover:border-primary/30 transition-colors data-[state=open]:border-primary/50"
               >
@@ -73,9 +64,9 @@ const FAQ = () => {
                   {faq.answer}
                 </AccordionContent>
               </AccordionItem>
-            </ParallaxLayer>
-          ))}
-        </Accordion>
+            ))}
+          </Accordion>
+        </AnimatedSection>
       </div>
     </section>
   );

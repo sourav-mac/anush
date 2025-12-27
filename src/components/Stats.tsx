@@ -1,5 +1,4 @@
 import { useEffect, useState, useRef } from 'react';
-import ParallaxLayer from './ParallaxLayer';
 
 const stats = [
   { value: 3, label: 'Projects', sublabel: 'Completed' },
@@ -59,22 +58,15 @@ const Stats = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 md:gap-12">
           {stats.map((stat, index) => (
-            <ParallaxLayer 
-              key={index} 
-              speed={0.05 + index * 0.02} 
-              direction={index % 2 === 0 ? 'left' : 'right'}
-              fadeIn
-            >
-              <div className="text-center lg:text-left flex flex-col sm:flex-row items-center gap-2 sm:gap-4 justify-center lg:justify-start">
-                <span className="font-mono text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-primary">
-                  {counts[index]}
-                </span>
-                <div className="text-center sm:text-left">
-                  <p className="text-muted-foreground text-xs sm:text-sm font-mono">{stat.label}</p>
-                  <p className="text-muted-foreground text-xs sm:text-sm font-mono">{stat.sublabel}</p>
-                </div>
+            <div key={index} className="text-center lg:text-left flex flex-col sm:flex-row items-center gap-2 sm:gap-4 justify-center lg:justify-start">
+              <span className="font-mono text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-primary">
+                {counts[index]}
+              </span>
+              <div className="text-center sm:text-left">
+                <p className="text-muted-foreground text-xs sm:text-sm font-mono">{stat.label}</p>
+                <p className="text-muted-foreground text-xs sm:text-sm font-mono">{stat.sublabel}</p>
               </div>
-            </ParallaxLayer>
+            </div>
           ))}
         </div>
       </div>

@@ -7,7 +7,6 @@ import Projects from '@/components/Projects';
 import FAQ from '@/components/FAQ';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
-import FloatingElements from '@/components/FloatingElements';
 
 const Index = () => {
   useEffect(() => {
@@ -16,7 +15,6 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <FloatingElements />
       <Navbar />
       <main className="pt-16 sm:pt-18 md:pt-20">
         <Hero />
