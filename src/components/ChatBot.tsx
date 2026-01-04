@@ -14,27 +14,98 @@ interface Message {
 const portfolioData = {
   name: "Anush Pradhan",
   role: "Computer Science Student (Final Year CSE)",
-  about: "Anush Pradhan is a final-year Computer Science and Engineering student with a strong interest in programming, technology innovation, and real-world problem solving. He is self-motivated, quick to learn, and passionate about turning ideas into impactful solutions.",
-  education: [
-    "B.Tech in Computer Science and Engineering at Techno India University (TIU), Kolkata (2022–2026)",
-    "Higher Secondary (12th): 94.08% (2022–2023)",
-    "Secondary (10th): 85% (2020–2021)"
-  ],
-  skills: ["C", "C++", "Python", "HTML", "CSS", "MySQL", "Git", "VS Code", "Windows", "Linux (Ubuntu)", "macOS"],
+
+  about:
+    "Anush Pradhan is a final-year Computer Science and Engineering student with a strong interest in programming, technology innovation, and real-world problem solving. He is self-motivated, quick to learn, and passionate about turning ideas into impactful solutions.",
+
+  education: {
+    college: "B.Tech in Computer Science and Engineering at Techno India University (TIU), Kolkata (2022–2026)",
+    higherSecondary: {
+      school: "Sundarban Janakalyan Sangha Vidyaniketan",
+      percentage: "94.08%",
+      year: "2022–2023"
+    },
+    secondary: {
+      school: "Manasadwip Ramakrishna Mission High School",
+      percentage: "85%",
+      year: "2020–2021"
+    }
+  },
+
+  skills: {
+    programmingLanguages: ["C", "C++", "Python"],
+    webDevelopment: ["HTML", "CSS"],
+    tools: ["MySQL", "Git", "VS Code"],
+    operatingSystems: ["Windows", "Linux (Ubuntu)", "macOS"]
+  },
+
   projects: [
-    { name: "Fraud Detection System for E-commerce", desc: "Built a system to detect fraudulent activities using pattern recognition and data analysis." },
-    { name: "E-Waste Management Platform", desc: "Designed a solution for efficient disposal and recycling of e-waste materials." },
-    { name: "AI-Driven Disaster Management System", desc: "Developed an AI model to assist in predicting and managing disaster response strategies." }
+    {
+      name: "Fraud Detection System for E-commerce",
+      description:
+        "Built a system to detect fraudulent activities using pattern recognition and data analysis."
+    },
+    {
+      name: "E-Waste Management Platform",
+      description:
+        "Designed a solution for efficient disposal and recycling of e-waste materials."
+    },
+    {
+      name: "AI-Driven Disaster Management System",
+      description:
+        "Developed an AI model to assist in predicting and managing disaster response strategies."
+    }
   ],
+
   experience: [
-    "Freelance Developer – Worked on various independent tech-based assignments",
+    "Freelance Developer – Worked on various independent tech-based assignments, gaining real-world exposure in software development",
     "Entrepreneurship Skill Development Projects – Participated in ideation, planning, and execution of startup-oriented tech solutions",
-    "Vultr Cloud Innovate Hackathon – Achieved All India Rank 20"
+    "Vultr Cloud Innovate Hackathon – Achieved All India Rank 20 by developing innovative solutions under pressure"
   ],
-  certifications: ["Vultr Cloud Innovate Hackathon Certificate – AIR 20", "IBM Certificate", "SAP Certificate", "Google Cloud Certificate"],
-  languages: ["Bengali", "English", "Hindi"],
-  strengths: ["Self-motivated", "Quick learner and adaptable", "Strong work ethic"],
-  hobbies: ["Listening to music", "Playing games (cricket and badminton)", "Writing", "Tidying up the house", "Photography"],
+
+  certifications: [
+    "Vultr Cloud Innovate Hackathon Certificate – All India Rank 20",
+    "IBM Certificate",
+    "SAP Certificate",
+    "Google Cloud Certificate"
+  ],
+
+  languagesSpoken: ["Bengali", "English", "Hindi"],
+
+  strengths: [
+    "Self-motivated",
+    "Quick learner and adaptable",
+    "Strong work ethic"
+  ],
+
+  hobbiesAndInterests: [
+    "Listening to music",
+    "Playing cricket",
+    "Playing badminton",
+    "Writing",
+    "Tidying up the house",
+    "Photography"
+  ],
+
+  family: {
+    father: "Tapas Pradhan",
+    mother: "Priyashi Pradhan",
+    elderSister: "Ankita Pradhan"
+  },
+
+  relationships: {
+    girlfriend: {
+      name: "Sudipta Bera",
+      nickname: "Tuli"
+    },
+    bestFriend: "Sourav Mandal"
+  },
+
+  socialMedia: {
+    instagram:
+      "https://www.instagram.com/anush_2021129?igsh=Z2s3ZXQ1a3JxbWti"
+  },
+
   contact: {
     email: "pradhananush.sagar@gmail.com",
     phone: "+91 7319229955",
