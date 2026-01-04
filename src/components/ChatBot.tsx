@@ -122,122 +122,154 @@ const generateResponse = (query: string): string => {
     /solve/,
   ];
 
-  for (const pattern of offTopicPatterns) {
-    if (pattern.test(q) && !q.includes("anush") && !q.includes("portfolio")) {
-      return "I'm designed to answer only questions about Anush Pradhan and his portfolio.";
-    }
+  // 🚫 Off-topic guard
+for (const pattern of offTopicPatterns) {
+  if (pattern.test(q) && !q.includes("anush") && !q.includes("portfolio")) {
+    return "I'm designed to answer only questions about Anush Pradhan and his portfolio.";
   }
+}
 
-  // Name/Introduction
-  if (q.includes("who") && (q.includes("anush") || q.includes("you") || q.includes("he"))) {
-    return `${portfolioData.name} is a ${portfolioData.role}. ${portfolioData.about}`;
-  }
+// 👤 Name / Introduction
+if (
+  q.includes("who") &&
+  (q.includes("anush") || q.includes("you") || q.includes("he"))
+) {
+  return `${portfolioData.name} is a ${portfolioData.role}. ${portfolioData.about}`;
+}
 
-  if (q.includes("name") || q.includes("introduce")) {
-    return `This portfolio belongs to ${portfolioData.name}, a ${portfolioData.role}.`;
-  }
+if (q.includes("name") || q.includes("introduce")) {
+  return `This portfolio belongs to ${portfolioData.name}, a ${portfolioData.role}.`;
+}
 
-  // About
-  if (q.includes("about") || q.includes("tell me") || q.includes("describe")) {
-    return portfolioData.about;
-  }
+// ℹ️ About
+if (q.includes("about") || q.includes("tell me") || q.includes("describe")) {
+  return portfolioData.about;
+}
 
-  // Education
-  if (
-    q.includes("education") ||
-    q.includes("study") ||
-    q.includes("degree") ||
-    q.includes("college") ||
-    q.includes("university") ||
-    q.includes("school") ||
-    q.includes("academic")
-  ) {
-    return `Education Background:\n• ${portfolioData.education.join("\n• ")}`;
-  }
+// 🎓 Education (FIXED)
+if (
+  q.includes("education") ||
+  q.includes("study") ||
+  q.includes("degree") ||
+  q.includes("college") ||
+  q.includes("university") ||
+  q.includes("school") ||
+  q.includes("academic")
+) {
+  const edu = portfolioData.education;
 
-  // Skills
-  if (
-    q.includes("skill") ||
-    q.includes("technology") ||
-    q.includes("tech stack") ||
-    q.includes("programming") ||
-    (q.includes("language") && q.includes("programming"))
-  ) {
-    return `Technical Skills: ${portfolioData.skills.join(", ")}. Anush is proficient in multiple programming languages and development tools.`;
-  }
+  return `Education Background:
+• ${edu.college}
+• Higher Secondary (12th): ${edu.higherSecondary.school} – ${edu.higherSecondary.percentage}
+• Secondary (10th): ${edu.secondary.school} – ${edu.secondary.percentage}`;
+}
 
-  // Projects
-  if (q.includes("project") || q.includes("work") || q.includes("built") || q.includes("developed")) {
-    const projectList = portfolioData.projects.map((p) => `• ${p.name}: ${p.desc}`).join("\n");
-    return `Projects by Anush Pradhan:\n${projectList}`;
-  }
 
-  // Experience
-  if (q.includes("experience") || q.includes("internship") || q.includes("job") || q.includes("freelance")) {
-    return `Professional Experience:\n• ${portfolioData.experience.join("\n• ")}`;
-  }
+  // 🧠 Skills (FIXED)
+if (
+  q.includes("skill") ||
+  q.includes("technology") ||
+  q.includes("tech stack") ||
+  q.includes("programming")
+) {
+  const s = portfolioData.skills;
 
-  // Certifications
-  if (q.includes("certificate") || q.includes("certification") || q.includes("achievement") || q.includes("award")) {
-    return `Certifications & Achievements:\n• ${portfolioData.certifications.join("\n• ")}`;
-  }
+  return `Technical Skills:
+• Programming Languages: ${s.programmingLanguages.join(", ")}
+• Web Development: ${s.webDevelopment.join(", ")}
+• Tools: ${s.tools.join(", ")}
+• Operating Systems: ${s.operatingSystems.join(", ")}`;
+}
 
-  // Languages
-  if (q.includes("language") && !q.includes("programming")) {
-    return `Languages Spoken: ${portfolioData.languages.join(", ")}`;
-  }
+// 🛠 Projects (FIXED)
+if (q.includes("project") || q.includes("work") || q.includes("built") || q.includes("developed")) {
+  const projectList = portfolioData.projects
+    .map(p => `• ${p.name}: ${p.description}`)
+    .join("\n");
 
-  // Strengths
-  if (q.includes("strength") || q.includes("quality") || q.includes("trait")) {
-    return `Key Strengths: ${portfolioData.strengths.join(", ")}`;
-  }
+  return `Projects by Anush Pradhan:\n${projectList}`;
+}
 
-  // Hobbies
-  if (
-    q.includes("hobby") ||
-    q.includes("hobbies") ||
-    q.includes("interest") ||
-    q.includes("free time") ||
-    q.includes("fun")
-  ) {
-    return `Hobbies & Interests: ${portfolioData.hobbies.join(", ")}`;
-  }
+// 💼 Experience (FIXED)
+if (
+  q.includes("experience") ||
+  q.includes("internship") ||
+  q.includes("job") ||
+  q.includes("freelance")
+) {
+  return `Professional Experience:\n• ${portfolioData.experience.join("\n• ")}`;
+}
 
-  // Contact
-  if (
-    q.includes("contact") ||
-    q.includes("email") ||
-    q.includes("phone") ||
-    q.includes("reach") ||
-    q.includes("hire") ||
-    q.includes("connect")
-  ) {
-    return `Contact Information:\nEmail: ${portfolioData.contact.email}\nPhone: ${portfolioData.contact.phone}\nLocation: ${portfolioData.contact.location}`;
-  }
+// 🏆 Certifications (FIXED)
+if (
+  q.includes("certificate") ||
+  q.includes("certification") ||
+  q.includes("achievement") ||
+  q.includes("award")
+) {
+  return `Certifications & Achievements:\n• ${portfolioData.certifications.join("\n• ")}`;
+}
 
-  // Location
-  if (q.includes("location") || q.includes("where") || q.includes("address") || q.includes("live")) {
-    return `Anush Pradhan is based in ${portfolioData.contact.location}.`;
-  }
+// 🌍 Languages Spoken (FIXED)
+if (q.includes("language") && !q.includes("programming")) {
+  return `Languages Spoken: ${portfolioData.languagesSpoken.join(", ")}`;
+}
 
-  // Hackathon
-  if (q.includes("hackathon") || q.includes("vultr") || q.includes("rank")) {
-    return "Anush Pradhan participated in the Vultr Cloud Innovate Hackathon and achieved All India Rank 20, demonstrating his ability to develop innovative solutions under time pressure.";
-  }
+// 💪 Strengths (OK, but cleaned)
+if (q.includes("strength") || q.includes("quality") || q.includes("trait")) {
+  return `Key Strengths: ${portfolioData.strengths.join(", ")}`;
+}
 
-  // Greeting
-  if (q.includes("hello") || q.includes("hi") || q.includes("hey") || q.includes("good")) {
-    return `Hello! Welcome to Anush Pradhan's portfolio. I'm here to help you learn about his education, skills, projects, experience, and more. What would you like to know?`;
-  }
+// 🎯 Hobbies & Interests (FIXED)
+if (
+  q.includes("hobby") ||
+  q.includes("hobbies") ||
+  q.includes("interest") ||
+  q.includes("free time") ||
+  q.includes("fun")
+) {
+  return `Hobbies & Interests: ${portfolioData.hobbiesAndInterests.join(", ")}`;
+}
 
-  // Help
-  if (q.includes("help") || q.includes("what can you")) {
-    return "I can help you learn about Anush Pradhan's education, technical skills, projects, work experience, certifications, hobbies, and contact information. Feel free to ask!";
-  }
+// 📞 Contact Information (OK)
+if (
+  q.includes("contact") ||
+  q.includes("email") ||
+  q.includes("phone") ||
+  q.includes("reach") ||
+  q.includes("hire") ||
+  q.includes("connect")
+) {
+  const c = portfolioData.contact;
+  return `Contact Information:
+• Email: ${c.email}
+• Phone: ${c.phone}
+• Location: ${c.location}`;
+}
 
-  // Default response for unclear questions
-  return "I can answer questions about Anush Pradhan's education, skills, projects, experience, certifications, and contact details. Could you please be more specific about what you'd like to know?";
-};
+// 📍 Location (OK)
+if (q.includes("location") || q.includes("where") || q.includes("address") || q.includes("live")) {
+  return `Anush Pradhan is based in ${portfolioData.contact.location}.`;
+}
+
+// 🏅 Hackathon (OK)
+if (q.includes("hackathon") || q.includes("vultr") || q.includes("rank")) {
+  return "Anush Pradhan participated in the Vultr Cloud Innovate Hackathon and achieved All India Rank 20, showcasing his problem-solving and innovation skills.";
+}
+
+// 👋 Greeting (OK)
+if (q.includes("hello") || q.includes("hi") || q.includes("hey")) {
+  return "Hello! Welcome to Anush Pradhan’s portfolio. Ask me about his education, skills, projects, or experience.";
+}
+
+// 🆘 Help (OK)
+if (q.includes("help") || q.includes("what can you")) {
+  return "I can help you learn about Anush Pradhan’s education, skills, projects, experience, certifications, hobbies, and contact information.";
+}
+
+// ❓ Default fallback
+return "Please ask something specific about Anush Pradhan’s portfolio.";
+
 
 const ChatBot = () => {
   const [isOpen, setIsOpen] = useState(false);
