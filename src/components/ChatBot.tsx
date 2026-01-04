@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MessageCircle, X, Send, Bot, User } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useChatSounds } from '@/hooks/use-chat-sounds';
 
 interface Message {
   id: string;
@@ -161,6 +162,7 @@ const ChatBot = () => {
   const [input, setInput] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const { playSendSound, playReceiveSound } = useChatSounds();
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -183,6 +185,7 @@ const ChatBot = () => {
     setMessages(prev => [...prev, userMessage]);
     setInput('');
     setIsTyping(true);
+    playSendSound();
 
     // Simulate typing delay
     setTimeout(() => {
@@ -195,6 +198,7 @@ const ChatBot = () => {
       };
       setMessages(prev => [...prev, assistantMessage]);
       setIsTyping(false);
+      playReceiveSound();
     }, 800 + Math.random() * 700);
   };
 
