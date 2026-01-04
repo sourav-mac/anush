@@ -164,8 +164,7 @@ if (
 • Secondary (10th): ${edu.secondary.school} – ${edu.secondary.percentage}`;
 }
 
-
-  // 🧠 Skills (FIXED)
+// 🧠 Skills (FIXED)
 if (
   q.includes("skill") ||
   q.includes("technology") ||
