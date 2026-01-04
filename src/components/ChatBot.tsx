@@ -1,16 +1,18 @@
-import { useState, useRef, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { MessageCircle, X, Send, Bot, User } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { useChatSounds } from '@/hooks/use-chat-sounds';
+import { useState, useRef, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { MessageCircle, X, Send, Bot, User } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { useChatSounds } from "@/hooks/use-chat-sounds";
 
+/* ===================== TYPES ===================== */
 interface Message {
   id: string;
   content: string;
-  role: 'user' | 'assistant';
+  role: "user" | "assistant";
   timestamp: Date;
 }
 
+/* ===================== DATA ===================== */
 const portfolioData = {
   name: "Anush Pradhan",
   role: "Computer Science Student (Final Year CSE)",
@@ -23,544 +25,256 @@ const portfolioData = {
     higherSecondary: {
       school: "Sundarban Janakalyan Sangha Vidyaniketan",
       percentage: "94.08%",
-      year: "2022–2023"
     },
     secondary: {
       school: "Manasadwip Ramakrishna Mission High School",
       percentage: "85%",
-      year: "2020–2021"
-    }
+    },
   },
 
   skills: {
     programmingLanguages: ["C", "C++", "Python"],
     webDevelopment: ["HTML", "CSS"],
     tools: ["MySQL", "Git", "VS Code"],
-    operatingSystems: ["Windows", "Linux (Ubuntu)", "macOS"]
+    operatingSystems: ["Windows", "Linux (Ubuntu)", "macOS"],
   },
 
   projects: [
     {
       name: "Fraud Detection System for E-commerce",
-      description:
-        "Built a system to detect fraudulent activities using pattern recognition and data analysis."
+      description: "Built a system to detect fraudulent activities using pattern recognition and data analysis.",
     },
     {
       name: "E-Waste Management Platform",
-      description:
-        "Designed a solution for efficient disposal and recycling of e-waste materials."
+      description: "Designed a solution for efficient disposal and recycling of e-waste materials.",
     },
     {
       name: "AI-Driven Disaster Management System",
-      description:
-        "Developed an AI model to assist in predicting and managing disaster response strategies."
-    }
+      description: "Developed an AI model to assist in predicting and managing disaster response strategies.",
+    },
   ],
 
   experience: [
-    "Freelance Developer – Worked on various independent tech-based assignments, gaining real-world exposure in software development",
-    "Entrepreneurship Skill Development Projects – Participated in ideation, planning, and execution of startup-oriented tech solutions",
-    "Vultr Cloud Innovate Hackathon – Achieved All India Rank 20 by developing innovative solutions under pressure"
+    "Freelance Developer – Worked on independent tech-based assignments",
+    "Entrepreneurship Skill Development Projects",
+    "Vultr Cloud Innovate Hackathon – All India Rank 20",
   ],
 
   certifications: [
-    "Vultr Cloud Innovate Hackathon Certificate – All India Rank 20",
+    "Vultr Cloud Innovate Hackathon Certificate – AIR 20",
     "IBM Certificate",
     "SAP Certificate",
-    "Google Cloud Certificate"
+    "Google Cloud Certificate",
   ],
 
   languagesSpoken: ["Bengali", "English", "Hindi"],
 
-  strengths: [
-    "Self-motivated",
-    "Quick learner and adaptable",
-    "Strong work ethic"
-  ],
+  strengths: ["Self-motivated", "Quick learner", "Strong work ethic"],
 
-  hobbiesAndInterests: [
-    "Listening to music",
-    "Playing cricket",
-    "Playing badminton",
-    "Writing",
-    "Tidying up the house",
-    "Photography"
-  ],
+  hobbiesAndInterests: ["Listening to music", "Playing cricket", "Playing badminton", "Writing", "Photography"],
 
   family: {
     father: "Tapas Pradhan",
     mother: "Priyashi Pradhan",
-    elderSister: "Ankita Pradhan"
+    elderSister: "Ankita Pradhan",
   },
 
   relationships: {
-    girlfriend: {
-      name: "Sudipta Bera",
-      nickname: "Tuli"
-    },
-    bestFriend: "Sourav Mandal"
+    girlfriend: { name: "Sudipta Bera", nickname: "Tuli" },
+    bestFriend: "Sourav Mandal",
   },
 
   socialMedia: {
-    instagram:
-      "https://www.instagram.com/anush_2021129?igsh=Z2s3ZXQ1a3JxbWti"
+    instagram: "https://www.instagram.com/anush_2021129?igsh=Z2s3ZXQ1a3JxbWti",
   },
 
   contact: {
     email: "pradhananush.sagar@gmail.com",
     phone: "+91 7319229955",
-    location: "Harinbari, Sagar, South 24 Parganas, West Bengal – 743373"
-  }
+    location: "Harinbari, Sagar, South 24 Parganas, West Bengal – 743373",
+  },
 };
 
+/* ===================== LOGIC ===================== */
 const generateResponse = (query: string): string => {
   const q = query.toLowerCase();
-  
-  // Check for off-topic questions
-  const offTopicPatterns = [
-    /what is .*(capital|president|minister|country|city|weather|news)/,
-    /how to .*(code|program|cook|make|build|create|fix|solve)/,
-    /explain .*(concept|theory|algorithm|formula)/,
-    /tell me about .*(history|science|math|physics|chemistry)/,
-    /who is .*(celebrity|politician|actor|singer)/,
-    /what do you think/,
-    /your opinion/,
-    /write .*(code|program|essay|story)/,
-    /calculate/,
-    /solve/,
-  ];
-  
-  for (const pattern of offTopicPatterns) {
-    if (pattern.test(q) && !q.includes('anush') && !q.includes('portfolio')) {
-      return "I'm designed to answer only questions about Anush Pradhan and his portfolio.";
-    }
+
+  const offTopic = /what is|how to|explain|solve|write|calculate|news|weather|capital|president/;
+
+  if (offTopic.test(q) && !q.includes("anush")) {
+    return "I'm designed to answer only questions about Anush Pradhan and his portfolio.";
   }
 
-  // Name/Introduction
-  if (q.includes('who') && (q.includes('anush') || q.includes('you') || q.includes('he'))) {
+  if (q.includes("who") || q.includes("introduce")) {
     return `${portfolioData.name} is a ${portfolioData.role}. ${portfolioData.about}`;
   }
-  
-  if (q.includes('name') || q.includes('introduce')) {
-    return `This portfolio belongs to ${portfolioData.name}, a ${portfolioData.role}.`;
+
+  if (q.includes("education") || q.includes("college") || q.includes("school")) {
+    const e = portfolioData.education;
+    return `Education:
+• ${e.college}
+• Higher Secondary: ${e.higherSecondary.school} (${e.higherSecondary.percentage})
+• Secondary: ${e.secondary.school} (${e.secondary.percentage})`;
   }
 
-  // About
-  if (q.includes('about') || q.includes('tell me') || q.includes('describe')) {
-    return portfolioData.about;
+  if (q.includes("skill") || q.includes("tech")) {
+    const s = portfolioData.skills;
+    return `Skills:
+• Programming: ${s.programmingLanguages.join(", ")}
+• Web: ${s.webDevelopment.join(", ")}
+• Tools: ${s.tools.join(", ")}
+• OS: ${s.operatingSystems.join(", ")}`;
   }
 
-  // Education
-  if (q.includes('education') || q.includes('study') || q.includes('degree') || q.includes('college') || q.includes('university') || q.includes('school') || q.includes('academic')) {
-    return `Education Background:\n• ${portfolioData.education.join('\n• ')}`;
+  if (q.includes("project")) {
+    return portfolioData.projects.map((p) => `• ${p.name}: ${p.description}`).join("\n");
   }
 
-  // Skills
-  if (q.includes('skill') || q.includes('technology') || q.includes('tech stack') || q.includes('programming') || q.includes('language') && q.includes('programming')) {
-    return `Technical Skills: ${portfolioData.skills.join(', ')}. Anush is proficient in multiple programming languages and development tools.`;
+  if (q.includes("experience") || q.includes("hackathon")) {
+    return portfolioData.experience.map((e) => `• ${e}`).join("\n");
   }
 
-  // Projects
-  if (q.includes('project') || q.includes('work') || q.includes('built') || q.includes('developed')) {
-    const projectList = portfolioData.projects.map(p => `• ${p.name}: ${p.desc}`).join('\n');
-    return `Projects by Anush Pradhan:\n${projectList}`;
+  if (q.includes("certificate")) {
+    return portfolioData.certifications.map((c) => `• ${c}`).join("\n");
   }
 
-  // Experience
-  if (q.includes('experience') || q.includes('internship') || q.includes('job') || q.includes('freelance')) {
-    return `Professional Experience:\n• ${portfolioData.experience.join('\n• ')}`;
+  if (q.includes("language")) {
+    return `Languages: ${portfolioData.languagesSpoken.join(", ")}`;
   }
 
-  // Certifications
-  if (q.includes('certificate') || q.includes('certification') || q.includes('achievement') || q.includes('award')) {
-    return `Certifications & Achievements:\n• ${portfolioData.certifications.join('\n• ')}`;
+  if (q.includes("hobby") || q.includes("interest")) {
+    return `Hobbies: ${portfolioData.hobbiesAndInterests.join(", ")}`;
   }
 
-  // Languages
-  if (q.includes('language') && !q.includes('programming')) {
-    return `Languages Spoken: ${portfolioData.languages.join(', ')}`;
+  if (q.includes("family") || q.includes("father") || q.includes("mother")) {
+    const f = portfolioData.family;
+    return `Family:
+• Father: ${f.father}
+• Mother: ${f.mother}
+• Sister: ${f.elderSister}`;
   }
 
-  // Strengths
-  if (q.includes('strength') || q.includes('quality') || q.includes('trait')) {
-    return `Key Strengths: ${portfolioData.strengths.join(', ')}`;
+  if (q.includes("contact") || q.includes("email") || q.includes("phone")) {
+    const c = portfolioData.contact;
+    return `Contact:
+• Email: ${c.email}
+• Phone: ${c.phone}
+• Location: ${c.location}`;
   }
 
-  // Hobbies
-  if (q.includes('hobby') || q.includes('hobbies') || q.includes('interest') || q.includes('free time') || q.includes('fun')) {
-    return `Hobbies & Interests: ${portfolioData.hobbies.join(', ')}`;
+  if (q.includes("instagram")) {
+    return `Instagram Profile: ${portfolioData.socialMedia.instagram}`;
   }
 
-  // Contact
-  if (q.includes('contact') || q.includes('email') || q.includes('phone') || q.includes('reach') || q.includes('hire') || q.includes('connect')) {
-    return `Contact Information:\nEmail: ${portfolioData.contact.email}\nPhone: ${portfolioData.contact.phone}\nLocation: ${portfolioData.contact.location}`;
+  if (q.includes("hi") || q.includes("hello")) {
+    return "Hello! I’m Anush Pradhan’s portfolio assistant. Ask me about his skills, projects, or education.";
   }
 
-  // Location
-  if (q.includes('location') || q.includes('where') || q.includes('address') || q.includes('live')) {
-    return `Anush Pradhan is based in ${portfolioData.contact.location}.`;
-  }
-
-  // Hackathon
-  if (q.includes('hackathon') || q.includes('vultr') || q.includes('rank')) {
-    return "Anush Pradhan participated in the Vultr Cloud Innovate Hackathon and achieved All India Rank 20, demonstrating his ability to develop innovative solutions under time pressure.";
-  }
-
-  // Greeting
-  if (q.includes('hello') || q.includes('hi') || q.includes('hey') || q.includes('good')) {
-    return `Hello! Welcome to Anush Pradhan's portfolio. I'm here to help you learn about his education, skills, projects, experience, and more. What would you like to know?`;
-  }
-
-  // Help
-  if (q.includes('help') || q.includes('what can you')) {
-    return "I can help you learn about Anush Pradhan's education, technical skills, projects, work experience, certifications, hobbies, and contact information. Feel free to ask!";
-  }
-
-  // Default response for unclear questions
-  return "I can answer questions about Anush Pradhan's education, skills, projects, experience, certifications, and contact details. Could you please be more specific about what you'd like to know?";
+  return "Please ask something related to Anush Pradhan’s portfolio.";
 };
 
+/* ===================== COMPONENT ===================== */
 const ChatBot = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
     {
-      id: '1',
-      content: "Hello! I'm Anush's portfolio assistant. Ask me about his education, skills, projects, or anything else from his portfolio.",
-      role: 'assistant',
-      timestamp: new Date()
-    }
+      id: "1",
+      content: "Hello! I’m Anush Pradhan’s portfolio assistant. Ask me about his education, skills, or projects.",
+      role: "assistant",
+      timestamp: new Date(),
+    },
   ]);
-  const [input, setInput] = useState('');
+  const [input, setInput] = useState("");
   const [isTyping, setIsTyping] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const { playSendSound, playReceiveSound } = useChatSounds();
 
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  };
-
   useEffect(() => {
-    scrollToBottom();
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
-  const handleSend = async () => {
+  const handleSend = () => {
     if (!input.trim()) return;
 
-    const userMessage: Message = {
+    const userMsg: Message = {
       id: Date.now().toString(),
       content: input,
-      role: 'user',
-      timestamp: new Date()
+      role: "user",
+      timestamp: new Date(),
     };
 
-    setMessages(prev => [...prev, userMessage]);
-    setInput('');
+    setMessages((prev) => [...prev, userMsg]);
+    setInput("");
     setIsTyping(true);
     playSendSound();
 
-    // Simulate typing delay
     setTimeout(() => {
-      const response = generateResponse(input);
-      const assistantMessage: Message = {
-        id: (Date.now() + 1).toString(),
-        content: response,
-        role: 'assistant',
-        timestamp: new Date()
-      };
-      setMessages(prev => [...prev, assistantMessage]);
+      const reply = generateResponse(userMsg.content);
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: Date.now().toString(),
+          content: reply,
+          role: "assistant",
+          timestamp: new Date(),
+        },
+      ]);
       setIsTyping(false);
       playReceiveSound();
-    }, 800 + Math.random() * 700);
-  };
-
-  const handleKeyPress = (e: React.KeyboardEvent) => {
-    if (e.key === 'Enter' && !e.shiftKey) {
-      e.preventDefault();
-      handleSend();
-    }
+    }, 800);
   };
 
   return (
     <>
-      {/* Floating Chat Button */}
-      <motion.button
+      {/* Floating Button */}
+      <button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full flex items-center justify-center group"
-        style={{
-          background: 'linear-gradient(135deg, hsl(var(--primary) / 0.8), hsl(var(--primary) / 0.4))',
-          backdropFilter: 'blur(20px)',
-          border: '1px solid hsl(var(--primary) / 0.5)',
-          boxShadow: '0 8px 32px hsl(var(--primary) / 0.3), inset 0 1px 0 hsl(var(--primary) / 0.5)'
-        }}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.95 }}
-        transition={{ type: 'spring', stiffness: 400, damping: 17 }}
+        className="fixed bottom-6 right-6 z-50 h-14 w-14 rounded-full bg-primary text-primary-foreground flex items-center justify-center shadow-lg"
       >
-        <AnimatePresence mode="wait">
-          {isOpen ? (
-            <motion.div
-              key="close"
-              initial={{ rotate: -90, opacity: 0 }}
-              animate={{ rotate: 0, opacity: 1 }}
-              exit={{ rotate: 90, opacity: 0 }}
-              transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-            >
-              <X className="h-6 w-6 text-primary-foreground" />
-            </motion.div>
-          ) : (
-            <motion.div
-              key="open"
-              initial={{ rotate: 90, opacity: 0 }}
-              animate={{ rotate: 0, opacity: 1 }}
-              exit={{ rotate: -90, opacity: 0 }}
-              transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-            >
-              <MessageCircle className="h-6 w-6 text-primary-foreground" />
-            </motion.div>
-          )}
-        </AnimatePresence>
-        
-        {/* Pulse ring */}
-        {!isOpen && (
-          <motion.span 
-            className="absolute inset-0 rounded-full bg-primary/30"
-            animate={{ scale: [1, 1.5, 1.5], opacity: [0.5, 0.2, 0] }}
-            transition={{ duration: 2, repeat: Infinity, ease: 'easeOut' }}
-          />
-        )}
-      </motion.button>
+        {isOpen ? <X /> : <MessageCircle />}
+      </button>
 
-      {/* Chat Panel */}
+      {/* Chat Window */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="fixed bottom-24 right-6 z-50 w-[360px] max-w-[calc(100vw-48px)]"
-            initial={{ opacity: 0, scale: 0.85, y: 20, originX: 1, originY: 1 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.85, y: 20 }}
-            transition={{ 
-              type: 'spring', 
-              stiffness: 350, 
-              damping: 25,
-              mass: 0.8
-            }}
+            className="fixed bottom-24 right-6 z-50 w-80 rounded-xl bg-card border shadow-xl flex flex-col"
+            initial={{ opacity: 0, y: 20, scale: 0.9 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 20, scale: 0.9 }}
           >
-            {/* Glass container */}
-            <motion.div
-              className="rounded-3xl overflow-hidden"
-              style={{
-                background: 'linear-gradient(135deg, hsl(var(--card) / 0.7), hsl(var(--card) / 0.4))',
-                backdropFilter: 'blur(40px) saturate(180%)',
-                border: '1px solid hsl(var(--primary) / 0.2)',
-                boxShadow: `
-                  0 25px 50px -12px hsl(var(--background) / 0.5),
-                  0 0 0 1px hsl(var(--primary) / 0.1),
-                  inset 0 1px 0 hsl(var(--primary) / 0.15),
-                  inset 0 -1px 0 hsl(var(--primary) / 0.05)
-                `
-              }}
-              initial={{ backdropFilter: 'blur(0px)' }}
-              animate={{ backdropFilter: 'blur(40px) saturate(180%)' }}
-              transition={{ duration: 0.3, delay: 0.1 }}
-            >
-              {/* Header */}
-              <motion.div 
-                className="px-5 py-4 flex items-center gap-3"
-                style={{
-                  background: 'linear-gradient(135deg, hsl(var(--primary) / 0.15), hsl(var(--primary) / 0.05))',
-                  borderBottom: '1px solid hsl(var(--primary) / 0.15)'
-                }}
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1, type: 'spring', stiffness: 300 }}
-              >
-                <motion.div 
-                  className="w-10 h-10 rounded-xl flex items-center justify-center"
-                  style={{
-                    background: 'linear-gradient(135deg, hsl(var(--primary) / 0.6), hsl(var(--primary) / 0.3))',
-                    boxShadow: '0 4px 12px hsl(var(--primary) / 0.3)'
-                  }}
-                  whileHover={{ rotate: [0, -10, 10, 0] }}
-                  transition={{ duration: 0.5 }}
-                >
-                  <Bot className="h-5 w-5 text-primary-foreground" />
-                </motion.div>
-                <div>
-                  <h3 className="font-mono font-semibold text-sm text-foreground">Portfolio Assistant</h3>
-                  <p className="text-xs text-muted-foreground">Ask about Anush Pradhan</p>
-                </div>
-                <div className="ml-auto flex items-center gap-1.5">
-                  <motion.span 
-                    className="w-2 h-2 rounded-full bg-emerald-400"
-                    animate={{ scale: [1, 1.2, 1] }}
-                    transition={{ duration: 2, repeat: Infinity }}
-                  />
-                  <span className="text-xs text-muted-foreground">Online</span>
-                </div>
-              </motion.div>
+            <div className="p-3 border-b font-semibold flex items-center gap-2">
+              <Bot size={18} /> Portfolio Assistant
+            </div>
 
-              {/* Messages */}
-              <div 
-                className="h-[340px] overflow-y-auto p-4 space-y-4 scrollbar-thin scrollbar-thumb-primary/20"
-                style={{
-                  background: 'linear-gradient(180deg, transparent, hsl(var(--background) / 0.3))'
-                }}
-              >
-                <AnimatePresence mode="popLayout">
-                  {messages.map((message, index) => (
-                    <motion.div
-                      key={message.id}
-                      className={`flex gap-2.5 ${message.role === 'user' ? 'flex-row-reverse' : ''}`}
-                      initial={{ opacity: 0, y: 20, scale: 0.9 }}
-                      animate={{ opacity: 1, y: 0, scale: 1 }}
-                      exit={{ opacity: 0, scale: 0.9 }}
-                      transition={{ 
-                        type: 'spring', 
-                        stiffness: 350, 
-                        damping: 25,
-                        delay: index === messages.length - 1 ? 0 : 0
-                      }}
-                      layout
-                    >
-                      {/* Avatar */}
-                      <motion.div 
-                        className={`w-8 h-8 rounded-lg flex-shrink-0 flex items-center justify-center ${
-                          message.role === 'user' 
-                            ? 'bg-primary/20' 
-                            : ''
-                        }`}
-                        style={message.role === 'assistant' ? {
-                          background: 'linear-gradient(135deg, hsl(var(--primary) / 0.5), hsl(var(--primary) / 0.2))',
-                        } : {}}
-                        initial={{ scale: 0 }}
-                        animate={{ scale: 1 }}
-                        transition={{ type: 'spring', stiffness: 500, damping: 25, delay: 0.1 }}
-                      >
-                        {message.role === 'user' ? (
-                          <User className="h-4 w-4 text-primary" />
-                        ) : (
-                          <Bot className="h-4 w-4 text-primary-foreground" />
-                        )}
-                      </motion.div>
-
-                      {/* Message bubble */}
-                      <motion.div
-                        className={`max-w-[75%] px-4 py-2.5 rounded-2xl text-sm leading-relaxed ${
-                          message.role === 'user'
-                            ? 'rounded-tr-sm'
-                            : 'rounded-tl-sm'
-                        }`}
-                        style={{
-                          background: message.role === 'user'
-                            ? 'linear-gradient(135deg, hsl(var(--primary) / 0.8), hsl(var(--primary) / 0.6))'
-                            : 'linear-gradient(135deg, hsl(var(--muted) / 0.6), hsl(var(--muted) / 0.3))',
-                          backdropFilter: 'blur(10px)',
-                          border: `1px solid ${message.role === 'user' ? 'hsl(var(--primary) / 0.4)' : 'hsl(var(--border) / 0.5)'}`,
-                          color: message.role === 'user' ? 'hsl(var(--primary-foreground))' : 'hsl(var(--foreground))'
-                        }}
-                        whileHover={{ scale: 1.02 }}
-                        transition={{ type: 'spring', stiffness: 400 }}
-                      >
-                        <p className="whitespace-pre-line">{message.content}</p>
-                      </motion.div>
-                    </motion.div>
-                  ))}
-                </AnimatePresence>
-
-                {/* Typing indicator */}
-                <AnimatePresence>
-                  {isTyping && (
-                    <motion.div 
-                      className="flex gap-2.5"
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -10 }}
-                      transition={{ type: 'spring', stiffness: 300 }}
-                    >
-                      <div 
-                        className="w-8 h-8 rounded-lg flex items-center justify-center"
-                        style={{
-                          background: 'linear-gradient(135deg, hsl(var(--primary) / 0.5), hsl(var(--primary) / 0.2))',
-                        }}
-                      >
-                        <Bot className="h-4 w-4 text-primary-foreground" />
-                      </div>
-                      <div 
-                        className="px-4 py-3 rounded-2xl rounded-tl-sm flex items-center gap-1.5"
-                        style={{
-                          background: 'linear-gradient(135deg, hsl(var(--muted) / 0.6), hsl(var(--muted) / 0.3))',
-                          border: '1px solid hsl(var(--border) / 0.5)'
-                        }}
-                      >
-                        {[0, 1, 2].map((i) => (
-                          <motion.span 
-                            key={i}
-                            className="w-2 h-2 rounded-full bg-primary/60"
-                            animate={{ y: [0, -6, 0] }}
-                            transition={{ 
-                              duration: 0.6, 
-                              repeat: Infinity, 
-                              delay: i * 0.15,
-                              ease: 'easeInOut'
-                            }}
-                          />
-                        ))}
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-
-                <div ref={messagesEndRef} />
-              </div>
-
-              {/* Input */}
-              <motion.div 
-                className="p-4"
-                style={{
-                  background: 'linear-gradient(135deg, hsl(var(--card) / 0.8), hsl(var(--card) / 0.5))',
-                  borderTop: '1px solid hsl(var(--primary) / 0.1)'
-                }}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2, type: 'spring', stiffness: 300 }}
-              >
-                <motion.div 
-                  className="flex items-center gap-2 px-4 py-2 rounded-2xl"
-                  style={{
-                    background: 'linear-gradient(135deg, hsl(var(--muted) / 0.4), hsl(var(--muted) / 0.2))',
-                    border: '1px solid hsl(var(--primary) / 0.15)',
-                    boxShadow: 'inset 0 2px 4px hsl(var(--background) / 0.2)'
-                  }}
-                  whileFocus={{ boxShadow: '0 0 0 2px hsl(var(--primary) / 0.3)' }}
-                >
-                  <input
-                    type="text"
-                    value={input}
-                    onChange={(e) => setInput(e.target.value)}
-                    onKeyPress={handleKeyPress}
-                    placeholder="Ask about Anush..."
-                    className="flex-1 bg-transparent text-sm text-foreground placeholder:text-muted-foreground focus:outline-none font-mono"
-                  />
-                  <motion.div
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
-                    transition={{ type: 'spring', stiffness: 400, damping: 17 }}
+            <div className="flex-1 overflow-y-auto p-3 space-y-3">
+              {messages.map((msg) => (
+                <div key={msg.id} className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
+                  <div
+                    className={`px-3 py-2 rounded-lg text-sm max-w-[80%] ${
+                      msg.role === "user" ? "bg-primary text-primary-foreground" : "bg-muted"
+                    }`}
                   >
-                    <Button
-                      size="icon"
-                      onClick={handleSend}
-                      disabled={!input.trim()}
-                      className="h-8 w-8 rounded-xl bg-primary hover:bg-primary/90 disabled:opacity-40 transition-all"
-                    >
-                      <Send className="h-4 w-4" />
-                    </Button>
-                  </motion.div>
-                </motion.div>
-                <p className="text-[10px] text-muted-foreground text-center mt-2 font-mono">
-                  Powered by Anush's Portfolio
-                </p>
-              </motion.div>
-            </motion.div>
+                    {msg.content}
+                  </div>
+                </div>
+              ))}
+              {isTyping && <div className="text-xs text-muted-foreground">Assistant is typing...</div>}
+              <div ref={messagesEndRef} />
+            </div>
+
+            <div className="p-3 border-t flex gap-2">
+              <input
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                onKeyDown={(e) => e.key === "Enter" && handleSend()}
+                className="flex-1 rounded-md border px-2 text-sm"
+                placeholder="Ask about Anush..."
+              />
+              <Button size="icon" onClick={handleSend}>
+                <Send size={16} />
+              </Button>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
