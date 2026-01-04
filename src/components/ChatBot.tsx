@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { MessageCircle, X, Send, Bot, User } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
@@ -207,198 +208,287 @@ const ChatBot = () => {
   return (
     <>
       {/* Floating Chat Button */}
-      <button
+      <motion.button
         onClick={() => setIsOpen(!isOpen)}
-        className={`fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full flex items-center justify-center transition-all duration-500 group ${
-          isOpen ? 'rotate-0' : 'hover:scale-110'
-        }`}
+        className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full flex items-center justify-center group"
         style={{
           background: 'linear-gradient(135deg, hsl(var(--primary) / 0.8), hsl(var(--primary) / 0.4))',
           backdropFilter: 'blur(20px)',
           border: '1px solid hsl(var(--primary) / 0.5)',
           boxShadow: '0 8px 32px hsl(var(--primary) / 0.3), inset 0 1px 0 hsl(var(--primary) / 0.5)'
         }}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.95 }}
+        transition={{ type: 'spring', stiffness: 400, damping: 17 }}
       >
-        {isOpen ? (
-          <X className="h-6 w-6 text-primary-foreground" />
-        ) : (
-          <MessageCircle className="h-6 w-6 text-primary-foreground" />
-        )}
+        <AnimatePresence mode="wait">
+          {isOpen ? (
+            <motion.div
+              key="close"
+              initial={{ rotate: -90, opacity: 0 }}
+              animate={{ rotate: 0, opacity: 1 }}
+              exit={{ rotate: 90, opacity: 0 }}
+              transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+            >
+              <X className="h-6 w-6 text-primary-foreground" />
+            </motion.div>
+          ) : (
+            <motion.div
+              key="open"
+              initial={{ rotate: 90, opacity: 0 }}
+              animate={{ rotate: 0, opacity: 1 }}
+              exit={{ rotate: -90, opacity: 0 }}
+              transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+            >
+              <MessageCircle className="h-6 w-6 text-primary-foreground" />
+            </motion.div>
+          )}
+        </AnimatePresence>
         
         {/* Pulse ring */}
         {!isOpen && (
-          <span className="absolute inset-0 rounded-full animate-ping bg-primary/30" />
+          <motion.span 
+            className="absolute inset-0 rounded-full bg-primary/30"
+            animate={{ scale: [1, 1.5, 1.5], opacity: [0.5, 0.2, 0] }}
+            transition={{ duration: 2, repeat: Infinity, ease: 'easeOut' }}
+          />
         )}
-      </button>
+      </motion.button>
 
       {/* Chat Panel */}
-      <div
-        className={`fixed bottom-24 right-6 z-50 w-[360px] max-w-[calc(100vw-48px)] transition-all duration-500 ${
-          isOpen 
-            ? 'opacity-100 translate-y-0 pointer-events-auto' 
-            : 'opacity-0 translate-y-4 pointer-events-none'
-        }`}
-      >
-        {/* Glass container */}
-        <div
-          className="rounded-3xl overflow-hidden"
-          style={{
-            background: 'linear-gradient(135deg, hsl(var(--card) / 0.7), hsl(var(--card) / 0.4))',
-            backdropFilter: 'blur(40px) saturate(180%)',
-            border: '1px solid hsl(var(--primary) / 0.2)',
-            boxShadow: `
-              0 25px 50px -12px hsl(var(--background) / 0.5),
-              0 0 0 1px hsl(var(--primary) / 0.1),
-              inset 0 1px 0 hsl(var(--primary) / 0.15),
-              inset 0 -1px 0 hsl(var(--primary) / 0.05)
-            `
-          }}
-        >
-          {/* Header */}
-          <div 
-            className="px-5 py-4 flex items-center gap-3"
-            style={{
-              background: 'linear-gradient(135deg, hsl(var(--primary) / 0.15), hsl(var(--primary) / 0.05))',
-              borderBottom: '1px solid hsl(var(--primary) / 0.15)'
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            className="fixed bottom-24 right-6 z-50 w-[360px] max-w-[calc(100vw-48px)]"
+            initial={{ opacity: 0, scale: 0.85, y: 20, originX: 1, originY: 1 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.85, y: 20 }}
+            transition={{ 
+              type: 'spring', 
+              stiffness: 350, 
+              damping: 25,
+              mass: 0.8
             }}
           >
-            <div 
-              className="w-10 h-10 rounded-xl flex items-center justify-center"
+            {/* Glass container */}
+            <motion.div
+              className="rounded-3xl overflow-hidden"
               style={{
-                background: 'linear-gradient(135deg, hsl(var(--primary) / 0.6), hsl(var(--primary) / 0.3))',
-                boxShadow: '0 4px 12px hsl(var(--primary) / 0.3)'
+                background: 'linear-gradient(135deg, hsl(var(--card) / 0.7), hsl(var(--card) / 0.4))',
+                backdropFilter: 'blur(40px) saturate(180%)',
+                border: '1px solid hsl(var(--primary) / 0.2)',
+                boxShadow: `
+                  0 25px 50px -12px hsl(var(--background) / 0.5),
+                  0 0 0 1px hsl(var(--primary) / 0.1),
+                  inset 0 1px 0 hsl(var(--primary) / 0.15),
+                  inset 0 -1px 0 hsl(var(--primary) / 0.05)
+                `
               }}
+              initial={{ backdropFilter: 'blur(0px)' }}
+              animate={{ backdropFilter: 'blur(40px) saturate(180%)' }}
+              transition={{ duration: 0.3, delay: 0.1 }}
             >
-              <Bot className="h-5 w-5 text-primary-foreground" />
-            </div>
-            <div>
-              <h3 className="font-mono font-semibold text-sm text-foreground">Portfolio Assistant</h3>
-              <p className="text-xs text-muted-foreground">Ask about Anush Pradhan</p>
-            </div>
-            <div className="ml-auto flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              <span className="text-xs text-muted-foreground">Online</span>
-            </div>
-          </div>
-
-          {/* Messages */}
-          <div 
-            className="h-[340px] overflow-y-auto p-4 space-y-4 scrollbar-thin scrollbar-thumb-primary/20"
-            style={{
-              background: 'linear-gradient(180deg, transparent, hsl(var(--background) / 0.3))'
-            }}
-          >
-            {messages.map((message) => (
-              <div
-                key={message.id}
-                className={`flex gap-2.5 ${message.role === 'user' ? 'flex-row-reverse' : ''}`}
+              {/* Header */}
+              <motion.div 
+                className="px-5 py-4 flex items-center gap-3"
+                style={{
+                  background: 'linear-gradient(135deg, hsl(var(--primary) / 0.15), hsl(var(--primary) / 0.05))',
+                  borderBottom: '1px solid hsl(var(--primary) / 0.15)'
+                }}
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1, type: 'spring', stiffness: 300 }}
               >
-                {/* Avatar */}
-                <div 
-                  className={`w-8 h-8 rounded-lg flex-shrink-0 flex items-center justify-center ${
-                    message.role === 'user' 
-                      ? 'bg-primary/20' 
-                      : ''
-                  }`}
-                  style={message.role === 'assistant' ? {
-                    background: 'linear-gradient(135deg, hsl(var(--primary) / 0.5), hsl(var(--primary) / 0.2))',
-                  } : {}}
+                <motion.div 
+                  className="w-10 h-10 rounded-xl flex items-center justify-center"
+                  style={{
+                    background: 'linear-gradient(135deg, hsl(var(--primary) / 0.6), hsl(var(--primary) / 0.3))',
+                    boxShadow: '0 4px 12px hsl(var(--primary) / 0.3)'
+                  }}
+                  whileHover={{ rotate: [0, -10, 10, 0] }}
+                  transition={{ duration: 0.5 }}
                 >
-                  {message.role === 'user' ? (
-                    <User className="h-4 w-4 text-primary" />
-                  ) : (
-                    <Bot className="h-4 w-4 text-primary-foreground" />
+                  <Bot className="h-5 w-5 text-primary-foreground" />
+                </motion.div>
+                <div>
+                  <h3 className="font-mono font-semibold text-sm text-foreground">Portfolio Assistant</h3>
+                  <p className="text-xs text-muted-foreground">Ask about Anush Pradhan</p>
+                </div>
+                <div className="ml-auto flex items-center gap-1.5">
+                  <motion.span 
+                    className="w-2 h-2 rounded-full bg-emerald-400"
+                    animate={{ scale: [1, 1.2, 1] }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                  />
+                  <span className="text-xs text-muted-foreground">Online</span>
+                </div>
+              </motion.div>
+
+              {/* Messages */}
+              <div 
+                className="h-[340px] overflow-y-auto p-4 space-y-4 scrollbar-thin scrollbar-thumb-primary/20"
+                style={{
+                  background: 'linear-gradient(180deg, transparent, hsl(var(--background) / 0.3))'
+                }}
+              >
+                <AnimatePresence mode="popLayout">
+                  {messages.map((message, index) => (
+                    <motion.div
+                      key={message.id}
+                      className={`flex gap-2.5 ${message.role === 'user' ? 'flex-row-reverse' : ''}`}
+                      initial={{ opacity: 0, y: 20, scale: 0.9 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.9 }}
+                      transition={{ 
+                        type: 'spring', 
+                        stiffness: 350, 
+                        damping: 25,
+                        delay: index === messages.length - 1 ? 0 : 0
+                      }}
+                      layout
+                    >
+                      {/* Avatar */}
+                      <motion.div 
+                        className={`w-8 h-8 rounded-lg flex-shrink-0 flex items-center justify-center ${
+                          message.role === 'user' 
+                            ? 'bg-primary/20' 
+                            : ''
+                        }`}
+                        style={message.role === 'assistant' ? {
+                          background: 'linear-gradient(135deg, hsl(var(--primary) / 0.5), hsl(var(--primary) / 0.2))',
+                        } : {}}
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                        transition={{ type: 'spring', stiffness: 500, damping: 25, delay: 0.1 }}
+                      >
+                        {message.role === 'user' ? (
+                          <User className="h-4 w-4 text-primary" />
+                        ) : (
+                          <Bot className="h-4 w-4 text-primary-foreground" />
+                        )}
+                      </motion.div>
+
+                      {/* Message bubble */}
+                      <motion.div
+                        className={`max-w-[75%] px-4 py-2.5 rounded-2xl text-sm leading-relaxed ${
+                          message.role === 'user'
+                            ? 'rounded-tr-sm'
+                            : 'rounded-tl-sm'
+                        }`}
+                        style={{
+                          background: message.role === 'user'
+                            ? 'linear-gradient(135deg, hsl(var(--primary) / 0.8), hsl(var(--primary) / 0.6))'
+                            : 'linear-gradient(135deg, hsl(var(--muted) / 0.6), hsl(var(--muted) / 0.3))',
+                          backdropFilter: 'blur(10px)',
+                          border: `1px solid ${message.role === 'user' ? 'hsl(var(--primary) / 0.4)' : 'hsl(var(--border) / 0.5)'}`,
+                          color: message.role === 'user' ? 'hsl(var(--primary-foreground))' : 'hsl(var(--foreground))'
+                        }}
+                        whileHover={{ scale: 1.02 }}
+                        transition={{ type: 'spring', stiffness: 400 }}
+                      >
+                        <p className="whitespace-pre-line">{message.content}</p>
+                      </motion.div>
+                    </motion.div>
+                  ))}
+                </AnimatePresence>
+
+                {/* Typing indicator */}
+                <AnimatePresence>
+                  {isTyping && (
+                    <motion.div 
+                      className="flex gap-2.5"
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      transition={{ type: 'spring', stiffness: 300 }}
+                    >
+                      <div 
+                        className="w-8 h-8 rounded-lg flex items-center justify-center"
+                        style={{
+                          background: 'linear-gradient(135deg, hsl(var(--primary) / 0.5), hsl(var(--primary) / 0.2))',
+                        }}
+                      >
+                        <Bot className="h-4 w-4 text-primary-foreground" />
+                      </div>
+                      <div 
+                        className="px-4 py-3 rounded-2xl rounded-tl-sm flex items-center gap-1.5"
+                        style={{
+                          background: 'linear-gradient(135deg, hsl(var(--muted) / 0.6), hsl(var(--muted) / 0.3))',
+                          border: '1px solid hsl(var(--border) / 0.5)'
+                        }}
+                      >
+                        {[0, 1, 2].map((i) => (
+                          <motion.span 
+                            key={i}
+                            className="w-2 h-2 rounded-full bg-primary/60"
+                            animate={{ y: [0, -6, 0] }}
+                            transition={{ 
+                              duration: 0.6, 
+                              repeat: Infinity, 
+                              delay: i * 0.15,
+                              ease: 'easeInOut'
+                            }}
+                          />
+                        ))}
+                      </div>
+                    </motion.div>
                   )}
-                </div>
+                </AnimatePresence>
 
-                {/* Message bubble */}
-                <div
-                  className={`max-w-[75%] px-4 py-2.5 rounded-2xl text-sm leading-relaxed ${
-                    message.role === 'user'
-                      ? 'rounded-tr-sm'
-                      : 'rounded-tl-sm'
-                  }`}
-                  style={{
-                    background: message.role === 'user'
-                      ? 'linear-gradient(135deg, hsl(var(--primary) / 0.8), hsl(var(--primary) / 0.6))'
-                      : 'linear-gradient(135deg, hsl(var(--muted) / 0.6), hsl(var(--muted) / 0.3))',
-                    backdropFilter: 'blur(10px)',
-                    border: `1px solid ${message.role === 'user' ? 'hsl(var(--primary) / 0.4)' : 'hsl(var(--border) / 0.5)'}`,
-                    color: message.role === 'user' ? 'hsl(var(--primary-foreground))' : 'hsl(var(--foreground))'
-                  }}
-                >
-                  <p className="whitespace-pre-line">{message.content}</p>
-                </div>
+                <div ref={messagesEndRef} />
               </div>
-            ))}
 
-            {/* Typing indicator */}
-            {isTyping && (
-              <div className="flex gap-2.5">
-                <div 
-                  className="w-8 h-8 rounded-lg flex items-center justify-center"
-                  style={{
-                    background: 'linear-gradient(135deg, hsl(var(--primary) / 0.5), hsl(var(--primary) / 0.2))',
-                  }}
-                >
-                  <Bot className="h-4 w-4 text-primary-foreground" />
-                </div>
-                <div 
-                  className="px-4 py-3 rounded-2xl rounded-tl-sm flex items-center gap-1.5"
-                  style={{
-                    background: 'linear-gradient(135deg, hsl(var(--muted) / 0.6), hsl(var(--muted) / 0.3))',
-                    border: '1px solid hsl(var(--border) / 0.5)'
-                  }}
-                >
-                  <span className="w-2 h-2 rounded-full bg-primary/60 animate-bounce" style={{ animationDelay: '0ms' }} />
-                  <span className="w-2 h-2 rounded-full bg-primary/60 animate-bounce" style={{ animationDelay: '150ms' }} />
-                  <span className="w-2 h-2 rounded-full bg-primary/60 animate-bounce" style={{ animationDelay: '300ms' }} />
-                </div>
-              </div>
-            )}
-
-            <div ref={messagesEndRef} />
-          </div>
-
-          {/* Input */}
-          <div 
-            className="p-4"
-            style={{
-              background: 'linear-gradient(135deg, hsl(var(--card) / 0.8), hsl(var(--card) / 0.5))',
-              borderTop: '1px solid hsl(var(--primary) / 0.1)'
-            }}
-          >
-            <div 
-              className="flex items-center gap-2 px-4 py-2 rounded-2xl"
-              style={{
-                background: 'linear-gradient(135deg, hsl(var(--muted) / 0.4), hsl(var(--muted) / 0.2))',
-                border: '1px solid hsl(var(--primary) / 0.15)',
-                boxShadow: 'inset 0 2px 4px hsl(var(--background) / 0.2)'
-              }}
-            >
-              <input
-                type="text"
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                onKeyPress={handleKeyPress}
-                placeholder="Ask about Anush..."
-                className="flex-1 bg-transparent text-sm text-foreground placeholder:text-muted-foreground focus:outline-none font-mono"
-              />
-              <Button
-                size="icon"
-                onClick={handleSend}
-                disabled={!input.trim()}
-                className="h-8 w-8 rounded-xl bg-primary hover:bg-primary/90 disabled:opacity-40 transition-all"
+              {/* Input */}
+              <motion.div 
+                className="p-4"
+                style={{
+                  background: 'linear-gradient(135deg, hsl(var(--card) / 0.8), hsl(var(--card) / 0.5))',
+                  borderTop: '1px solid hsl(var(--primary) / 0.1)'
+                }}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2, type: 'spring', stiffness: 300 }}
               >
-                <Send className="h-4 w-4" />
-              </Button>
-            </div>
-            <p className="text-[10px] text-muted-foreground text-center mt-2 font-mono">
-              Powered by Anush's Portfolio
-            </p>
-          </div>
-        </div>
-      </div>
+                <motion.div 
+                  className="flex items-center gap-2 px-4 py-2 rounded-2xl"
+                  style={{
+                    background: 'linear-gradient(135deg, hsl(var(--muted) / 0.4), hsl(var(--muted) / 0.2))',
+                    border: '1px solid hsl(var(--primary) / 0.15)',
+                    boxShadow: 'inset 0 2px 4px hsl(var(--background) / 0.2)'
+                  }}
+                  whileFocus={{ boxShadow: '0 0 0 2px hsl(var(--primary) / 0.3)' }}
+                >
+                  <input
+                    type="text"
+                    value={input}
+                    onChange={(e) => setInput(e.target.value)}
+                    onKeyPress={handleKeyPress}
+                    placeholder="Ask about Anush..."
+                    className="flex-1 bg-transparent text-sm text-foreground placeholder:text-muted-foreground focus:outline-none font-mono"
+                  />
+                  <motion.div
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    transition={{ type: 'spring', stiffness: 400, damping: 17 }}
+                  >
+                    <Button
+                      size="icon"
+                      onClick={handleSend}
+                      disabled={!input.trim()}
+                      className="h-8 w-8 rounded-xl bg-primary hover:bg-primary/90 disabled:opacity-40 transition-all"
+                    >
+                      <Send className="h-4 w-4" />
+                    </Button>
+                  </motion.div>
+                </motion.div>
+                <p className="text-[10px] text-muted-foreground text-center mt-2 font-mono">
+                  Powered by Anush's Portfolio
+                </p>
+              </motion.div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 };
