@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuroraBackground } from "./components/AuroraBackground";
 import { ParticleBackground } from "./components/ParticleBackground";
+import ChatBot from "./components/ChatBot";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 
@@ -17,6 +18,7 @@ const App = () => (
       <ParticleBackground />
       <Toaster />
       <Sonner />
+      <ChatBot />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
